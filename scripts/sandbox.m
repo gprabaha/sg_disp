@@ -113,6 +113,9 @@ disp( 'Done' );
 
 %%
 
+pause_time = 0.05;
+n_frames = 1000;
+
 params                      = struct();
 params.pos_file_list        = pos_file_list;
 params.fix_file_list        = fix_file_list;
@@ -128,12 +131,12 @@ params.run_numbers          = run_numbers;
 params.current_run          = current_run;
 params.current_time_ind     = current_time_ind;
 params.disp_time_win        = disp_time_win;
+params.pause_time           = pause_time;
+params.n_frames             = n_frames;
 
 params.monitor_size         = monitor_size;
 
 plot_gaze_loc_last_n_sec(params);
-
-
 
 
 
@@ -217,6 +220,9 @@ function plot_gaze_loc_last_n_sec(params)
     current_time_ind = params.current_time_ind;
     disp_time_win = params.disp_time_win;
     rois_of_interest = params.rois_of_interest;
+    pause_time = params.pause_time;
+    n_frames = params.n_frames;
+
 
     if isempty(current_session)
         current_session = sessions{1};
@@ -269,34 +275,41 @@ function plot_gaze_loc_last_n_sec(params)
         roi_rects = get_roi_rects(roi_struct, rois_of_interest);
 
         % using current time, time window, and time
-
         n_inds_disp_time = disp_time_win * 1e3; % seconds to milli-seconds
-        disp_ind_start = max(1, current_time_ind - n_inds_disp_time + 1);
 
-        disp_time_inds = disp_ind_start:current_time_ind;
-
-        x_vec = pos_vec_m1(1, disp_time_inds)';
-        y_vec = pos_vec_m1(2, disp_time_inds)';
-
-        [~, cmap] = plot_gaze_locs_with_increasing_opacity(x_vec, y_vec);
-
-        start_time = time_vec(disp_ind_start);
-        current_time = time_vec(current_time_ind);
-
-        % Set colorbar to reflect the colormap
-        colormap(gca, cmap);
-        caxis([start_time, current_time]); % Set colorbar limits
+        while current_time_ind < 151263 + n_frames
+        
+            disp_ind_start = max(1, current_time_ind - n_inds_disp_time + 1);
+            disp_time_inds = disp_ind_start:current_time_ind;
     
-        colorbar;
+            x_vec = pos_vec_m1(1, disp_time_inds)';
+            y_vec = pos_vec_m1(2, disp_time_inds)';
 
-        title( sprintf('M1 Gaze Location from t=%0.3fs to %0.3fs'...
-            , start_time, current_time )...
-            );
+            [~, cmap] = plot_gaze_locs_with_cmap(x_vec, y_vec);
+    
+            start_time = time_vec(disp_ind_start);
+            current_time = time_vec(current_time_ind);
+
+            % Set colorbar to reflect the colormap
+            colormap(gca, cmap);
+            caxis([start_time, current_time]); % Set colorbar limits
+        
+            colorbar;
+
+            title( sprintf('M1 Gaze Location from t=%0.3fs to %0.3fs'...
+                , start_time, current_time )...
+                );
+
+            current_time_ind = current_time_ind + 1;
+
+            pause(pause_time);
+
+        end
 
     end
 end
 
-function [scatter_handle, cmap] = plot_gaze_locs_with_increasing_opacity(x_vec, y_vec)
+function [scatter_handle, cmap] = plot_gaze_locs_with_cmap(x_vec, y_vec)
     % Calculate colormap going from white to black
     white_to_black_cmap = linspace(1, 0, length(x_vec))';
     cmap = [white_to_black_cmap, white_to_black_cmap, white_to_black_cmap]; % RGB values

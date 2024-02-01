@@ -133,6 +133,13 @@ params.monitor_size         = monitor_size;
 
 plot_gaze_loc_last_n_sec(params);
 
+
+
+
+
+
+
+
 %%
 monkey = 'm1';
 
@@ -271,27 +278,31 @@ function plot_gaze_loc_last_n_sec(params)
         x_vec = pos_vec_m1(1, disp_time_inds)';
         y_vec = pos_vec_m1(2, disp_time_inds)';
 
-        scatter_handle = plot_gaze_locs_with_increasing_opacity(x_vec, y_vec);
+        [plot_handle, cmap] = plot_gaze_locs_with_cmap(x_vec, y_vec);
 
-        title( , sprintf('M1 Gaze Location from t=%0.3fs to %0.3fs'...
-            , time_vec(disp_ind_start), time_vec(current_time_ind)) );
+        start_time = time_vec(disp_ind_start);
+        current_time = time_vec(current_time_ind);
+
+        % Set colorbar to reflect the colormap
+        colormap(plot_handle, cmap);
+        caxis([start_time, current_time]); % Set colorbar limits
+    
+        colorbar;
+
+        title( sprintf('M1 Gaze Location from t=%0.3fs to %0.3fs'...
+            , start_time, current_time )...
+            );
 
     end
 end
 
-function scatter_handle = plot_gaze_locs_with_increasing_opacity(x_vec, y_vec)
+function [scatter_handle, cmap] = plot_gaze_locs_with_cmap(x_vec, y_vec)
     % Calculate colormap going from white to black
     white_to_black_cmap = linspace(1, 0, length(x_vec))';
     cmap = [white_to_black_cmap, white_to_black_cmap, white_to_black_cmap]; % RGB values
     
     % Plot scatter points with specified color and size
     scatter_handle = scatter(x_vec, y_vec, 50, cmap, 'filled');
-    
-    % Set colorbar to reflect the colormap
-    colormap(gca, cmap);
-    caxis([min(x_vec), max(x_vec)]); % Set colorbar limits
-    
-    colorbar;
 end
 
 
