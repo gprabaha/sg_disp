@@ -19,19 +19,28 @@ rois_of_interest = {'eyes'...
     , 'left_nonsocial_object'...
     , 'right_nonsocial_object'};    
 
+% Viewer design parameters
+border_fraction         = 0.05;
+font_size = 20;
+menu_pos_wrt_fig = [0.7 0.85];
+menu_width = 100; %px
+menu_height = 30; %px
+menu_x_offset = 0.065;
+run_menu_y_offset = 0.04;
+menu_font_size = 16;
+
 % Paremeters for viewer
 current_session         = '';
 current_run             = '';
 current_time_ind        = 151263;
 disp_time_win           = 0.5; % seconds
 monitor_size            = [1024 768]; % x1 y1 x2 y2
-border_fraction         = 0.05;
-font_size               = 20;
-dropdown_font_size      = 14;
+
 
 disp_size               = [1024*3 768]; % x1 y1 x2 y2
 refresh_rate            = 10; % roughly the number of times a new screen-flip happens per second | human perception is 10hz
 n_frames                = 1000;
+pause_time              = 0;
 
 %%
 % Paths for raw beavior
@@ -43,6 +52,7 @@ fix_dir             = fullfile(raw_behavior_root, 'aligned_raw_samples/raw_eye_m
 meta_dir            = fullfile(raw_behavior_root, 'meta');
 events_dir          = fullfile(raw_behavior_root, 'raw_events_remade');
 roi_dir             = fullfile(raw_behavior_root, 'rois');
+offset_dir          = fullfile(raw_behavior_root, 'single_origin_offsets');
 
 % List of positions, fixations, and ROIs
 pos_file_list = shared_utils.io.findmat( pos_dir );
@@ -50,6 +60,7 @@ fix_file_list = shared_utils.io.findmat( fix_dir );
 roi_file_list = shared_utils.io.findmat( roi_dir );
 bounds_file_list = shared_utils.io.findmat( bounds_dir );
 time_file_list = shared_utils.io.findmat( time_dir );
+offset_file_list = shared_utils.io.findmat( offset_dir );
 
 % Make sure we have the only the files that correspond with each other
 pos_file_list(is_hidden(pos_file_list)) = [];
@@ -64,33 +75,16 @@ roi_file_list(~ismember(fnames_roi, fnames_pos)) = [];
 bounds_file_list(~ismember(fnames_roi, fnames_pos)) = [];
 time_file_list(~ismember(fnames_roi, fnames_pos)) = [];
 
-sessions = cell( numel( pos_file_list ), 1 );
-run_numbers = cell( numel( pos_file_list ), 1 );
+session_per_file = cell( numel( pos_file_list ), 1 );
+run_number_per_file = cell( numel( pos_file_list ), 1 );
 
 % Loop through each path and extract the session and run number from the
 % filename
 for i = 1:numel(pos_file_list)
     [~, filename, ~] = fileparts(pos_file_list{i});
     split_filename = strsplit(filename, '_');
-    sessions{i} = split_filename{1};
-    run_numbers{i} = split_filename{3};
-end
-
-%%
-% disp_size tells us about the calibration window size for the task. The
-% offset kinda tells us how far the (0,0) point is from the top left edge
-% of the 3-monitor window. so, if the offset is added to each data point or
-% bounding box coordinate, then the points will be mapped in the space
-% of the 3-monitor calibration window
-
-% Gets you the offsets
-
-offset_files = shared_utils.io.find( '/Users/prabaha/repositories/sg_disp/processed_data/raw_behavior/single_origin_offsets', '.mat' );
-offsets = table();
-for i = 1:numel(offset_files)
-    offset_file = shared_utils.io.fload( offset_files{i} );
-    offsets = [ offsets; table(offset_file.m1(:)', string(offset_file.unified_filename) ...
-        , 'va', {'offsets', 'unified_filename'}) ];
+    session_per_file{i} = split_filename{1};
+    run_number_per_file{i} = split_filename{3};
 end
 
 
@@ -135,12 +129,47 @@ replace( spike_labels, 'm', 'broad' );
 replace( spike_labels, 'b', 'outlier' );
 disp( 'Done' );
 
+
+%%
+% disp_size tells us about the calibration window size for the task. The
+% offset kinda tells us how far the (0,0) point is from the top left edge
+% of the 3-monitor window. so, if the offset is added to each data point or
+% bounding box coordinate, then the points will be mapped in the space
+% of the 3-monitor calibration window
+
+% Gets you the offsets
+
+for i = 1:numel(offset_file_list)
+    offset_file = shared_utils.io.fload( offset_file_list{i} );
+    offsets = [ offsets; table(offset_file.m1(:)', string(offset_file.unified_filename) ...
+        , 'va', {'offsets', 'unified_filename'}) ];
+end
+
 %%
 
-font_size                   = 20;
-dropdown_font_size          = 14;
+% Viewer design parameters
+border_fraction         = 0.05;
+font_size = 20;
+menu_pos_wrt_fig = [0.7 0.85];
+menu_width = 100; %px
+menu_height = 30; %px
+menu_x_offset = 0.065;
+run_menu_y_offset = 0.03;
+menu_font_size = 16;
+
 
 params                      = struct();
+
+% Viewer design parameters
+params.font_size                = font_size;
+params.menu_pos_wrt_fig         = menu_pos_wrt_fig;
+params.menu_width               = menu_width; %px
+params.menu_height              = menu_height; %px
+params.menu_x_offset            = menu_x_offset;
+params.run_menu_y_offset        = run_menu_y_offset;
+params.menu_font_size           = menu_font_size;
+params.border_fraction          = border_fraction;
+
 params.pos_file_list        = pos_file_list;
 params.fix_file_list        = fix_file_list;
 params.roi_file_list        = roi_file_list;
@@ -149,17 +178,14 @@ params.time_file_list       = time_file_list;
 
 params.rois_of_interest     = rois_of_interest;
 
-params.sessions             = sessions;
+params.session_per_file     = session_per_file;
 params.current_session      = current_session;
-params.run_numbers          = run_numbers;
+params.run_number_per_file  = run_number_per_file;
 params.current_run          = current_run;
 params.current_time_ind     = current_time_ind;
 params.disp_time_win        = disp_time_win;
 params.pause_time           = pause_time;
 params.n_frames             = n_frames;
-params.border_fraction      = border_fraction;
-params.font_size            = font_size;
-params.dropdown_font_size   = dropdown_font_size;
 
 params.monitor_size         = monitor_size;
 
@@ -173,129 +199,235 @@ start_social_gaze_viewer(params);
 %%
 function start_social_gaze_viewer(params)
     % Extract parameters from the structure
+
     current_session = params.current_session;
     current_run = params.current_run;
-    sessions = params.sessions;
-    run_numbers = params.run_numbers;
+    session_per_file = params.session_per_file;
+    run_number_per_file = params.run_number_per_file;
+
     pos_file_list = params.pos_file_list;
     time_file_list = params.time_file_list;
     fix_file_list = params.fix_file_list;
     roi_file_list = params.roi_file_list;
+
+
     bounds_file_list = params.bounds_file_list;
     current_time_ind = params.current_time_ind;
     disp_time_win = params.disp_time_win;
+
     rois_of_interest = params.rois_of_interest;
     pause_time = params.pause_time;
     n_frames = params.n_frames;
-    border_fraction = params.border_fraction;
-    font_size = params.font_size;
-    dropdown_font_size = params.dropdown_font_size;
-
-    % Get unique sessions and run numbers
-    unique_sessions = unique(sessions);
-    unique_run_numbers = unique(run_numbers);
-
-    % Create viewer
-    fig = make_gaze_viewer(border_fraction, font_size);
-
-    % Create dropdown menus for session and run number
-    [session_menu, run_menu] = create_dropdown_menus(fig,...
-        unique_sessions, unique_run_numbers,...
-        dropdown_font_size, @get_file_ind);
-
-    % Axes for displaying file index
-    ax = axes('Position', [0.05, 0.05, 0.95, 0.95]);
 
     % Initialize file index
-    file_ind = [];
+    current_file_ind = [];
+    all_sessions = [];
+    runs_in_session = [];
 
-    % Load initial file
-    get_file_ind();
+    pos_vecs = [];
+    fix_vecs = [];
+    time_vec = [];
+    roi_rects = [];
 
-    function get_file_ind(~, ~)
+    % Create viewer
+    fig = make_viewer_fig( params );
+
+    [session_menu, run_menu, all_sessions, runs_in_session] = make_dropdown_menus(fig, ...
+        params, @get_relevant_files);
+    
+    get_relevant_files();
+
+    function get_relevant_files(~, ~)
         % Get the selected session and run number
         sessionIdx = get(session_menu, 'Value');
         runIdx = get(run_menu, 'Value');
 
         % Extract the current session and run number
-        current_session = unique_sessions{sessionIdx};
-        current_run = unique_run_numbers{runIdx};
+        current_session = all_sessions{sessionIdx};
+        current_run = runs_in_session{runIdx};
+        current_file_ind = find(strcmp(session_per_file, current_session) & strcmp(run_number_per_file, current_run));
+        
+        pos_file = pos_file_list{current_file_ind};
+        time_file = time_file_list{current_file_ind};
+        fix_file = fix_file_list{current_file_ind};
+        roi_file = roi_file_list{current_file_ind};
+        
+        disp('Loading eyetracking files...');
+        time_struct = load(time_file);
+        pos_struct = load(pos_file);
+        fix_struct = load(fix_file);
+        roi_struct = load(roi_file);
+        disp('Done');
 
-        % Update file index
-        file_ind = find(strcmp(sessions, current_session) & strcmp(run_numbers, current_run));
+        time_vec = time_struct.var.t;
+        pos_vecs = pos_struct.var;
+        fix_vecs = fix_struct.var;
+        roi_rects = get_roi_rects(roi_struct.var, rois_of_interest);
 
-        % Display file index
-        cla(ax);
-        text(0.5, 0.5, ['Selected file index: ' num2str(file_ind)], 'HorizontalAlignment', 'center');
-        axis(ax, 'off');
+        make_display( fig, time_vec, pos_vecs, fix_vecs, roi_rects, params );
     end
 end
 
 
-
-function fig = make_gaze_viewer(border_fraction, font_size)
-    % Default border fraction if not provided
-    if nargin < 1
-        border_fraction = 0.1; % Default border fraction
-    end
-
-    % Default font size if not provided
-    if nargin < 2
-        font_size = 12; % Default font size
-    end
-
+function fig = make_viewer_fig(params)
+    border_fraction = params.border_fraction;
+    font_size = params.font_size;
     % Get the figure position for the primary screen with borders
     fig_position = [border_fraction border_fraction...
         1-(2*border_fraction) 1-(2*border_fraction)];
-
     % Create a figure on the primary screen with borders
     fig = figure('Units', 'normalized', 'Position', fig_position);
-
     % Set default font size for all text within the figure
     set(fig, 'DefaultTextFontSize', font_size);
 end
 
 
+function [session_menu, run_menu, all_sessions, runs_in_session] = make_dropdown_menus(fig,...
+        params, callback_function)
+    
+    menu_pos_wrt_fig = params.menu_pos_wrt_fig; % x and y relative to figure (0 to 1)
+    menu_width = params.menu_width;
+    menu_height = params.menu_height;
+    menu_x_offset = params.menu_x_offset;
+    run_menu_y_offset = params.run_menu_y_offset;
+    menu_font_size = params.menu_font_size;
+    
+    session_per_file = params.session_per_file;
+    current_session = params.current_session;
+    run_number_per_file = params.run_number_per_file;
 
-function [session_menu, run_menu] = create_dropdown_menus(fig, unique_sessions, unique_run_numbers, dropdown_font_size, get_file_ind_callback)
+    all_sessions = unique(session_per_file);
+
     % Set figure units to pixels
     set(fig, 'Units', 'pixels');
-
     % Get figure position in pixels
     fig_position_px = get(fig, 'Position');
 
-    % Calculate the position for the dropdown menus and text
-    text_x = fig_position_px(3) * 0.7;
-    text_y = fig_position_px(4) * 0.85;
-    dropdown_width = 130;
-    dropdown_height = 30;
-    menu_x = fig_position_px(3) * 0.765;
-    menu_y = fig_position_px(4) * 0.85;
+    session_text_x = fig_position_px(3) * menu_pos_wrt_fig(1);
+    session_text_y = fig_position_px(4) * menu_pos_wrt_fig(2);
+    session_menu_x = fig_position_px(3) * (menu_pos_wrt_fig(1) + menu_x_offset);
+    session_menu_y = session_text_y;
 
     % Create dropdown menu for session
-    session_text = uicontrol('Parent', fig, 'Style', 'text', ...
-                             'FontSize', dropdown_font_size, ...
-                             'Position', [text_x, text_y, 100, 30], ...
-                             'String', 'Session:', ...
-                             'HorizontalAlignment', 'right');
-    session_menu = uicontrol('Parent', fig, 'Style', 'popupmenu', ...
-                             'FontSize', dropdown_font_size, ...
-                             'Position', [menu_x, menu_y, dropdown_width, dropdown_height], ...
-                             'String', unique_sessions, ...
-                             'Callback', get_file_ind_callback);  % Set callback function handle
+    session_text = uicontrol('Parent', fig, ...
+        'Style', 'text', ...
+        'FontSize', menu_font_size, ...
+        'Position', [session_text_x, session_text_y, menu_width, menu_height], ...
+        'String', 'Session: ', ...
+        'HorizontalAlignment', 'right');
+    session_menu = uicontrol('Parent', fig, ...
+        'Style', 'popupmenu', ...
+        'FontSize', menu_font_size, ...
+        'Position', [session_menu_x, session_menu_y, menu_width, menu_height], ...
+        'String', all_sessions, ...
+        'Callback', callback_function);  % Set callback function handle
 
-    % Create dropdown menu for run number
-    dropdown_offset_frac = 0.03;
-    run_text = uicontrol('Parent', fig, 'Style', 'text', ...
-                         'FontSize', dropdown_font_size, ...
-                         'Position', [text_x, text_y - ceil(text_y*dropdown_offset_frac), 100, 30], ...
-                         'String', 'Run Number:', ...
-                         'HorizontalAlignment', 'right');
-    run_menu = uicontrol('Parent', fig, 'Style', 'popupmenu', ...
-                         'FontSize', dropdown_font_size, ...
-                         'Position', [menu_x, menu_y - ceil(text_y*dropdown_offset_frac), dropdown_width, dropdown_height], ...
-                         'String', unique_run_numbers, ...
-                         'Callback', get_file_ind_callback);  % Set callback function handle
+    sessionIdx = get(session_menu, 'Value');
+    if isempty(current_session)
+        current_session = all_sessions{sessionIdx};
+    end
+    runs_in_session = run_number_per_file( strcmp(session_per_file, current_session) );
+
+    run_text_x = fig_position_px(3) * menu_pos_wrt_fig(1);
+    run_text_y = fig_position_px(4) * (menu_pos_wrt_fig(2) - run_menu_y_offset);
+    run_menu_x = fig_position_px(3) * (menu_pos_wrt_fig(1) + menu_x_offset);
+    run_menu_y = run_text_y;
+
+    run_text = uicontrol('Parent', fig, ...
+        'Style', 'text', ...
+        'FontSize', menu_font_size, ...
+        'Position', [run_text_x, run_text_y , menu_width, menu_height], ...
+        'String', 'Run Number:', ...
+        'HorizontalAlignment', 'right');
+    run_menu = uicontrol('Parent', fig, ...
+        'Style', 'popupmenu', ...
+        'FontSize', menu_font_size, ...
+        'Position', [run_menu_x, run_menu_y, menu_width, menu_height], ...
+        'String', runs_in_session, ...
+        'Callback', callback_function);  % Set callback function handle
+end
+
+
+
+function params = make_display( fig, time_vec, pos_vecs, fix_vecs, roi_rects, params )
+    
+    current_time_ind = params.current_time_ind;
+    if isempty(current_time_ind)
+        current_time_ind = 1;
+    end
+
+    set(fig, 'KeyPressFcn', @space_bar_callback);
+    set(fig, 'KeyPressFcn', @escape_callback);
+    is_paused = false;
+    stop_time_loop = false;
+
+    while current_time_ind < numel(time_vec)
+        if ( is_paused )
+            drawnow;
+            pause(0.1);
+            continue;
+        end
+
+        if ( stop_time_loop )
+            params.current_time_ind = current_time_ind;
+            break;
+        end
+
+        draw_current_gaze_location( current_time_ind, time_vec, pos_vecs, fix_vecs, roi_rects, params );
+        
+        current_time_ind = current_time_ind + 1;
+    end
+
+
+    function space_bar_callback(~, event)
+        if ( strcmp(event.Key, 'space') )
+            is_paused = ~is_paused;
+        end
+    end
+
+    function escape_callback(~, event)
+        if ( strcmp(event.Key, 'esc') )
+            stop_time_loop = ~stop_time_loop;
+        end
+    end
+end
+
+
+function draw_current_gaze_location( current_time_ind, time_vec, pos_vecs, fix_vecs, roi_recs, params )
+
+disp_time_win = params.disp_time_win;
+
+num_time_inds_to_disp = disp_time_win * 1e3;
+
+disp_ind_start = max(1, current_time_ind - num_time_inds_to_disp + 1);
+disp_time_inds = disp_ind_start:current_time_ind;
+
+axes('Position', [0.1 0.1 0.4 0.4]);
+
+pos_vec_m1 = pos_vecs.m1;
+x_vec = pos_vec_m1(1, disp_time_inds)';
+y_vec = pos_vec_m1(2, disp_time_inds)';
+cmap = plot_last_n_gaze_locs_and_get_cmap(x_vec, y_vec);
+    
+start_time = time_vec(disp_ind_start);
+current_time = time_vec(current_time_ind);
+colormap(gca, cmap);
+caxis([start_time, current_time]); % Set colorbar limits
+colorbar;
+title( sprintf('M1 Gaze Location from t=%0.3fs to %0.3fs'...
+    , start_time, current_time )...
+    );
+drawnow;
+end
+
+function cmap = plot_last_n_gaze_locs_and_get_cmap(x_vec, y_vec)
+    % Calculate colormap going from white to black
+    white_to_black_cmap = linspace(1, 0, length(x_vec))';
+    cmap = [white_to_black_cmap, white_to_black_cmap, white_to_black_cmap]; % RGB values
+    
+    % Plot scatter points with specified color and size
+    scatter(x_vec, y_vec, 50, cmap, 'filled');
+    drawnow;
 end
 
 
@@ -348,7 +480,8 @@ end
 
 end
 
-%%
+%% Old display function
+
 function plot_gaze_loc_last_n_sec(params)
 
 % Use the tic and toc functions in here to see how much time it takes for
