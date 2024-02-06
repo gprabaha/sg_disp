@@ -17,7 +17,7 @@ rois_of_interest = {'eyes'...
     , 'mouth'...
     , 'face'...
     , 'left_nonsocial_object'...
-    , 'right_nonsocial_object'};
+    , 'right_nonsocial_object'};    
 
 % Paremeters for viewer
 current_session         = '';
@@ -25,31 +25,15 @@ current_run             = '';
 current_time_ind        = 151263;
 disp_time_win           = 0.5; % seconds
 monitor_size            = [1024 768]; % x1 y1 x2 y2
-border_fraction         = 0.1;
-
-% disp_size tells us about the calibration window size for the task. The
-% offset kinda tells us how far the (0,0) point is from the top left edge
-% of the 3-monitor window. so, if the offset is added to each data point or
-% bounding box coordinate, then the points will be mapped in the space
-% of the 3-monitor calibration window
-
-%% Gets you the offsets
-
-offset_files = shared_utils.io.find( '/Users/prabaha/repositories/sg_disp/processed_data/raw_behavior/single_origin_offsets', '.mat' );
-offsets = table();
-for i = 1:numel(offset_files)
-    offset_file = shared_utils.io.fload( offset_files{i} );
-    offsets = [ offsets; table(offset_file.m1(:)', string(offset_file.unified_filename) ...
-        , 'va', {'offsets', 'unified_filename'}) ];
-end
-%%
+border_fraction         = 0.05;
+font_size               = 20;
+dropdown_font_size      = 14;
 
 disp_size               = [1024*3 768]; % x1 y1 x2 y2
 refresh_rate            = 10; % roughly the number of times a new screen-flip happens per second | human perception is 10hz
-pause_time              = 0.005;
 n_frames                = 1000;
 
-
+%%
 % Paths for raw beavior
 raw_behavior_root   = fullfile(data_p,            'raw_behavior');
 pos_dir             = fullfile(raw_behavior_root, 'aligned_raw_samples/position');
@@ -90,6 +74,23 @@ for i = 1:numel(pos_file_list)
     split_filename = strsplit(filename, '_');
     sessions{i} = split_filename{1};
     run_numbers{i} = split_filename{3};
+end
+
+%%
+% disp_size tells us about the calibration window size for the task. The
+% offset kinda tells us how far the (0,0) point is from the top left edge
+% of the 3-monitor window. so, if the offset is added to each data point or
+% bounding box coordinate, then the points will be mapped in the space
+% of the 3-monitor calibration window
+
+% Gets you the offsets
+
+offset_files = shared_utils.io.find( '/Users/prabaha/repositories/sg_disp/processed_data/raw_behavior/single_origin_offsets', '.mat' );
+offsets = table();
+for i = 1:numel(offset_files)
+    offset_file = shared_utils.io.fload( offset_files{i} );
+    offsets = [ offsets; table(offset_file.m1(:)', string(offset_file.unified_filename) ...
+        , 'va', {'offsets', 'unified_filename'}) ];
 end
 
 
@@ -136,7 +137,8 @@ disp( 'Done' );
 
 %%
 
-pause_time = 0.00;
+font_size                   = 20;
+dropdown_font_size          = 14;
 
 params                      = struct();
 params.pos_file_list        = pos_file_list;
@@ -156,6 +158,8 @@ params.disp_time_win        = disp_time_win;
 params.pause_time           = pause_time;
 params.n_frames             = n_frames;
 params.border_fraction      = border_fraction;
+params.font_size            = font_size;
+params.dropdown_font_size   = dropdown_font_size;
 
 params.monitor_size         = monitor_size;
 
@@ -173,64 +177,36 @@ function start_social_gaze_viewer(params)
     current_run = params.current_run;
     sessions = params.sessions;
     run_numbers = params.run_numbers;
-
     pos_file_list = params.pos_file_list;
     time_file_list = params.time_file_list;
     fix_file_list = params.fix_file_list;
     roi_file_list = params.roi_file_list;
     bounds_file_list = params.bounds_file_list;
-    
     current_time_ind = params.current_time_ind;
     disp_time_win = params.disp_time_win;
     rois_of_interest = params.rois_of_interest;
     pause_time = params.pause_time;
     n_frames = params.n_frames;
-
     border_fraction = params.border_fraction;
+    font_size = params.font_size;
+    dropdown_font_size = params.dropdown_font_size;
 
     % Get unique sessions and run numbers
     unique_sessions = unique(sessions);
     unique_run_numbers = unique(run_numbers);
 
-    % Create viewer on the largest screen available
-    fig = make_gaze_viewer(border_fraction);
+    % Create viewer
+    fig = make_gaze_viewer(border_fraction, font_size);
 
-    % Calculate the position for the dropdown menus and text
-    fig_position = get(fig, 'Position');
-    text_x = fig_position(3) * 0.35;
-    text_y = fig_position(4) * 0.85;
-    dropdown_width = 100;
-    dropdown_height = 30;
-    menu_x = fig_position(3) * 0.47;
-    menu_y = fig_position(4) * 0.85;
-
-    % Create dropdown menu for session
-    session_text = uicontrol('Style', 'text', ...
-                             'Position', [text_x, text_y, 100, 30], ...
-                             'String', 'Session:', ...
-                             'HorizontalAlignment', 'right');
-    session_menu = uicontrol('Style', 'popupmenu', ...
-                             'Position', [menu_x, menu_y, dropdown_width, dropdown_height], ...
-                             'String', unique_sessions, ...
-                             'Callback', @get_file_ind);
-                            
-    % Create dropdown menu for run number
-    dropdown_offset_frac = 0.05;
-    run_text = uicontrol('Style', 'text', ...
-                         'Position', [text_x, text_y - ceil(text_y*dropdown_offset_frac), 100, 30], ...
-                         'String', 'Run Number:', ...
-                         'HorizontalAlignment', 'right');
-    run_menu = uicontrol('Style', 'popupmenu', ...
-                         'Position', [menu_x, menu_y - ceil(text_y*dropdown_offset_frac), dropdown_width, dropdown_height], ...
-                         'String', unique_run_numbers, ...
-                         'Callback', @get_file_ind);
+    % Create dropdown menus for session and run number
+    [session_menu, run_menu] = create_dropdown_menus(fig, unique_sessions, unique_run_numbers, dropdown_font_size, @get_file_ind);
 
     % Axes for displaying file index
-    ax = axes('Position', [0.1, 0.1, 0.8, 0.6]);
-    
+    ax = axes('Position', [0.05, 0.05, 0.95, 0.95]);
+
     % Initialize file index
     file_ind = [];
-    
+
     % Load initial file
     get_file_ind();
 
@@ -238,14 +214,14 @@ function start_social_gaze_viewer(params)
         % Get the selected session and run number
         sessionIdx = get(session_menu, 'Value');
         runIdx = get(run_menu, 'Value');
-        
+
         % Extract the current session and run number
         current_session = unique_sessions{sessionIdx};
         current_run = unique_run_numbers{runIdx};
-        
+
         % Update file index
         file_ind = find(strcmp(sessions, current_session) & strcmp(run_numbers, current_run));
-        
+
         % Display file index
         cla(ax);
         text(0.5, 0.5, ['Selected file index: ' num2str(file_ind)], 'HorizontalAlignment', 'center');
@@ -254,33 +230,75 @@ function start_social_gaze_viewer(params)
 end
 
 
-function fig = make_gaze_viewer(border_fraction)
+
+function fig = make_gaze_viewer(border_fraction, font_size)
     % Default border fraction if not provided
     if nargin < 1
         border_fraction = 0.1; % Default border fraction
     end
 
+    % Default font size if not provided
+    if nargin < 2
+        font_size = 12; % Default font size
+    end
+
     % Get the figure position for the primary screen with borders
-    fig_position = get_primary_screen_figure_position(border_fraction);
+    fig_position = [border_fraction border_fraction...
+        1-(2*border_fraction) 1-(2*border_fraction)];
 
     % Create a figure on the primary screen with borders
-    fig = figure('Position', fig_position);
+    fig = figure('Units', 'normalized', 'Position', fig_position);
+
+    % Set default font size for all text within the figure
+    set(fig, 'DefaultTextFontSize', font_size);
 end
 
-function fig_position = get_primary_screen_figure_position(border_fraction)
-    % Get screen information for the primary screen
-    screen_rect = Screen('Rect', 1); % Get screen dimensions for screen 1
 
-    % Adjust screen_rect if dimensions match the specified values
-%     if screen_rect(3) == 2048 && screen_rect(4) == 1152
-%         screen_rect = [1, 1, 1024, 576];
-%     end
 
-    % Calculate figure position with the specified border fraction
-    border_width = ceil(border_fraction * (screen_rect(3) - screen_rect(1)));
-    border_height = ceil(border_fraction * (screen_rect(4) - screen_rect(2)));
-    fig_position = [screen_rect(1) + border_width, screen_rect(2) + border_height, screen_rect(3) - border_width, screen_rect(4) - border_height];
+function [session_menu, run_menu] = create_dropdown_menus(fig, unique_sessions, unique_run_numbers, dropdown_font_size, get_file_ind_callback)
+    % Set figure units to pixels
+    set(fig, 'Units', 'pixels');
+
+    % Get figure position in pixels
+    fig_position_px = get(fig, 'Position');
+
+    % Calculate the position for the dropdown menus and text
+    text_x = fig_position_px(3) * 0.7;
+    text_y = fig_position_px(4) * 0.85;
+    dropdown_width = 130;
+    dropdown_height = 30;
+    menu_x = fig_position_px(3) * 0.765;
+    menu_y = fig_position_px(4) * 0.85;
+
+    % Create dropdown menu for session
+    session_text = uicontrol('Parent', fig, 'Style', 'text', ...
+                             'FontSize', dropdown_font_size, ...
+                             'Position', [text_x, text_y, 100, 30], ...
+                             'String', 'Session:', ...
+                             'HorizontalAlignment', 'right');
+    session_menu = uicontrol('Parent', fig, 'Style', 'popupmenu', ...
+                             'FontSize', dropdown_font_size, ...
+                             'Position', [menu_x, menu_y, dropdown_width, dropdown_height], ...
+                             'String', unique_sessions, ...
+                             'Callback', get_file_ind_callback);  % Set callback function handle
+
+    % Create dropdown menu for run number
+    dropdown_offset_frac = 0.03;
+    run_text = uicontrol('Parent', fig, 'Style', 'text', ...
+                         'FontSize', dropdown_font_size, ...
+                         'Position', [text_x, text_y - ceil(text_y*dropdown_offset_frac), 100, 30], ...
+                         'String', 'Run Number:', ...
+                         'HorizontalAlignment', 'right');
+    run_menu = uicontrol('Parent', fig, 'Style', 'popupmenu', ...
+                         'FontSize', dropdown_font_size, ...
+                         'Position', [menu_x, menu_y - ceil(text_y*dropdown_offset_frac), dropdown_width, dropdown_height], ...
+                         'String', unique_run_numbers, ...
+                         'Callback', get_file_ind_callback);  % Set callback function handle
 end
+
+
+
+
 
 
 %% Helper functions
