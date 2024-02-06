@@ -19,14 +19,36 @@ rois_of_interest = {'eyes'...
     , 'left_nonsocial_object'...
     , 'right_nonsocial_object'};
 
-
 % Paremeters for viewer
 current_session         = '';
 current_run             = '';
 current_time_ind        = 151263;
-disp_time_win           = 2; % seconds
-monitor_size            = [1 1 1200 800]; % x1 y1 x2 y2
+disp_time_win           = 0.5; % seconds
+monitor_size            = [1024 768]; % x1 y1 x2 y2
+border_fraction         = 0.1;
+
+% disp_size tells us about the calibration window size for the task. The
+% offset kinda tells us how far the (0,0) point is from the top left edge
+% of the 3-monitor window. so, if the offset is added to each data point or
+% bounding box coordinate, then the points will be mapped in the space
+% of the 3-monitor calibration window
+
+%% Gets you the offsets
+
+offset_files = shared_utils.io.find( '/Users/prabaha/repositories/sg_disp/processed_data/raw_behavior/single_origin_offsets', '.mat' );
+offsets = table();
+for i = 1:numel(offset_files)
+    offset_file = shared_utils.io.fload( offset_files{i} );
+    offsets = [ offsets; table(offset_file.m1(:)', string(offset_file.unified_filename) ...
+        , 'va', {'offsets', 'unified_filename'}) ];
+end
+%%
+
+disp_size               = [1024*3 768]; % x1 y1 x2 y2
 refresh_rate            = 10; % roughly the number of times a new screen-flip happens per second | human perception is 10hz
+pause_time              = 0.005;
+n_frames                = 1000;
+
 
 % Paths for raw beavior
 raw_behavior_root   = fullfile(data_p,            'raw_behavior');
@@ -69,6 +91,7 @@ for i = 1:numel(pos_file_list)
     sessions{i} = split_filename{1};
     run_numbers{i} = split_filename{3};
 end
+
 
 %% Loading Data
 disp( 'Loading data...' );
@@ -113,8 +136,7 @@ disp( 'Done' );
 
 %%
 
-pause_time = 0.05;
-n_frames = 1000;
+pause_time = 0.00;
 
 params                      = struct();
 params.pos_file_list        = pos_file_list;
@@ -133,33 +155,132 @@ params.current_time_ind     = current_time_ind;
 params.disp_time_win        = disp_time_win;
 params.pause_time           = pause_time;
 params.n_frames             = n_frames;
+params.border_fraction      = border_fraction;
 
 params.monitor_size         = monitor_size;
 
-plot_gaze_loc_last_n_sec(params);
+start_social_gaze_viewer(params);
 
-
-
-
-
+% plot_gaze_loc_last_n_sec(params);
 
 %%
-monkey = 'm1';
+start_social_gaze_viewer(params);
 
 %%
+function start_social_gaze_viewer(params)
+    % Extract parameters from the structure
+    current_session = params.current_session;
+    current_run = params.current_run;
+    sessions = params.sessions;
+    run_numbers = params.run_numbers;
 
-screenSize = get(0, 'ScreenSize');
-width = screenSize(3);
-height = screenSize(4);
+    pos_file_list = params.pos_file_list;
+    time_file_list = params.time_file_list;
+    fix_file_list = params.fix_file_list;
+    roi_file_list = params.roi_file_list;
+    bounds_file_list = params.bounds_file_list;
+    
+    current_time_ind = params.current_time_ind;
+    disp_time_win = params.disp_time_win;
+    rois_of_interest = params.rois_of_interest;
+    pause_time = params.pause_time;
+    n_frames = params.n_frames;
 
-fprintf('Screen width: %d pixels\n', width);
-fprintf('Screen height: %d pixels\n', height);
+    border_fraction = params.border_fraction;
 
-%%
+    % Get unique sessions and run numbers
+    unique_sessions = unique(sessions);
+    unique_run_numbers = unique(run_numbers);
+
+    % Create viewer on the largest screen available
+    fig = make_gaze_viewer(border_fraction);
+
+    % Calculate the position for the dropdown menus and text
+    fig_position = get(fig, 'Position');
+    text_x = fig_position(3) * 0.7;
+    text_y = fig_position(4) * 0.85;
+    dropdown_width = 100;
+    dropdown_height = 30;
+    menu_x = fig_position(3) * 0.76;
+    menu_y = fig_position(4) * 0.85;
+
+    % Create dropdown menu for session
+    session_text = uicontrol('Style', 'text', ...
+                             'Position', [text_x, text_y, 100, 30], ...
+                             'String', 'Session:', ...
+                             'HorizontalAlignment', 'right');
+    session_menu = uicontrol('Style', 'popupmenu', ...
+                             'Position', [menu_x, menu_y, dropdown_width, dropdown_height], ...
+                             'String', unique_sessions, ...
+                             'Callback', @get_file_ind);
+                            
+    % Create dropdown menu for run number
+    dropdown_offset_frac = 0.03;
+    run_text = uicontrol('Style', 'text', ...
+                         'Position', [text_x, text_y - ceil(text_y*dropdown_offset_frac), 100, 30], ...
+                         'String', 'Run Number:', ...
+                         'HorizontalAlignment', 'right');
+    run_menu = uicontrol('Style', 'popupmenu', ...
+                         'Position', [menu_x, menu_y - ceil(text_y*dropdown_offset_frac), dropdown_width, dropdown_height], ...
+                         'String', unique_run_numbers, ...
+                         'Callback', @get_file_ind);
+
+    % Axes for displaying file index
+    ax = axes('Position', [0.05, 0.05, 0.95, 0.95]);
+    
+    % Initialize file index
+    file_ind = [];
+    
+    % Load initial file
+    get_file_ind();
+
+    function get_file_ind(~, ~)
+        % Get the selected session and run number
+        sessionIdx = get(session_menu, 'Value');
+        runIdx = get(run_menu, 'Value');
+        
+        % Extract the current session and run number
+        current_session = unique_sessions{sessionIdx};
+        current_run = unique_run_numbers{runIdx};
+        
+        % Update file index
+        file_ind = find(strcmp(sessions, current_session) & strcmp(run_numbers, current_run));
+        
+        % Display file index
+        cla(ax);
+        text(0.5, 0.5, ['Selected file index: ' num2str(file_ind)], 'HorizontalAlignment', 'center');
+        axis(ax, 'off');
+    end
+end
 
 
+function fig = make_gaze_viewer(border_fraction)
+    % Default border fraction if not provided
+    if nargin < 1
+        border_fraction = 0.1; % Default border fraction
+    end
 
+    % Get the figure position for the primary screen with borders
+    fig_position = get_primary_screen_figure_position(border_fraction);
 
+    % Create a figure on the primary screen with borders
+    fig = figure('Position', fig_position);
+end
+
+function fig_position = get_primary_screen_figure_position(border_fraction)
+    % Get screen information for the primary screen
+    screen_rect = Screen('Rect', 1); % Get screen dimensions for screen 1
+
+    % Adjust screen_rect if dimensions match the specified values
+    if screen_rect(3) == 2048 && screen_rect(4) == 1152
+        screen_rect = [1, 1, 1024, 576];
+    end
+
+    % Calculate figure position with the specified border fraction
+    border_width = ceil(border_fraction * (screen_rect(3) - screen_rect(1)));
+    border_height = ceil(border_fraction * (screen_rect(4) - screen_rect(2)));
+    fig_position = [screen_rect(1) + border_width, screen_rect(2) + border_height, screen_rect(3) - border_width, screen_rect(4) - border_height];
+end
 
 
 %% Helper functions
@@ -209,6 +330,13 @@ end
 
 %%
 function plot_gaze_loc_last_n_sec(params)
+
+% Use the tic and toc functions in here to see how much time it takes for
+% the set of computations needed for each frame of the plot. Set your
+% refresh rate accordingly. Also check of you have mean_comp_time=x and
+% then you add a pause for y amount of time, then does the time gap now
+% become x+y on an average. Will help with setting up a parametrised
+% refresh rate with a good approximation of the max value
     current_session = params.current_session;
     current_run = params.current_run;
     pos_file_list = params.pos_file_list;
@@ -222,7 +350,6 @@ function plot_gaze_loc_last_n_sec(params)
     rois_of_interest = params.rois_of_interest;
     pause_time = params.pause_time;
     n_frames = params.n_frames;
-
 
     if isempty(current_session)
         current_session = sessions{1};
@@ -239,6 +366,10 @@ function plot_gaze_loc_last_n_sec(params)
     tot_files = numel(pos_file_list);
     current_file_ind = strcmp(sessions, current_session) & ...
         strcmp(run_numbers, current_run);
+
+    fig = gcf;
+    set(fig, 'KeyPressFcn', @key_pressed_callback);
+    is_paused = false;
 
     if ~(current_file_ind > tot_files)
         pos_file = pos_file_list{current_file_ind};
@@ -276,8 +407,19 @@ function plot_gaze_loc_last_n_sec(params)
 
         % using current time, time window, and time
         n_inds_disp_time = disp_time_win * 1e3; % seconds to milli-seconds
+        
+        %%%% LOTS OF HARDCODING HERE!!! %%%%
+        current_time_ind = randsample( numel(time_vec), 1 );
+        n_frames = randsample( numel(time_vec) - current_time_ind, 1 );
+        end_ind = current_time_ind + n_frames;
+        %%%% LOTS OF HARDCODING HERE!!! %%%%
 
-        while current_time_ind < 151263 + n_frames
+        while current_time_ind < end_ind
+            if ( is_paused )
+                drawnow;
+                pause(0.1);
+                continue;
+            end
         
             disp_ind_start = max(1, current_time_ind - n_inds_disp_time + 1);
             disp_time_inds = disp_ind_start:current_time_ind;
@@ -302,10 +444,18 @@ function plot_gaze_loc_last_n_sec(params)
 
             current_time_ind = current_time_ind + 1;
 
-            pause(pause_time);
+            drawnow;
+
+            %pause(pause_time);
 
         end
 
+    end
+
+    function key_pressed_callback(~, event)
+        if ( strcmp(event.Key, 'space') )
+            is_paused = ~is_paused;
+        end
     end
 end
 
@@ -316,6 +466,7 @@ function [scatter_handle, cmap] = plot_gaze_locs_with_cmap(x_vec, y_vec)
     
     % Plot scatter points with specified color and size
     scatter_handle = scatter(x_vec, y_vec, 50, cmap, 'filled');
+    % drawnow;
 end
 
 
