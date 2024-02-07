@@ -150,12 +150,15 @@ end
 % Viewer design parameters
 border_fraction         = 0.05;
 font_size               = 20;
-menu_pos_wrt_fig        = [0.7 0.85];
+play_pause_position     = [0.5 0.85];
+menu_pos_wrt_fig        = [0.43 0.87];
 menu_width              = 100; %px
 menu_height             = 30; %px
 menu_x_offset           = 0.065;
 run_menu_y_offset       = 0.03;
 menu_font_size          = 16;
+m1_axes                 = [0.05 0.55 0.4 0.4];
+m2_axes                 = [0.55 0.55 0.4 0.4];
 
 %
 pause_time = 0.02;
@@ -165,6 +168,7 @@ params                      = struct();
 
 % Viewer design parameters
 params.font_size                = font_size;
+params.play_pause_position      = play_pause_position;
 params.menu_pos_wrt_fig         = menu_pos_wrt_fig;
 params.menu_width               = menu_width; %px
 params.menu_height              = menu_height; %px
@@ -172,6 +176,8 @@ params.menu_x_offset            = menu_x_offset;
 params.run_menu_y_offset        = run_menu_y_offset;
 params.menu_font_size           = menu_font_size;
 params.border_fraction          = border_fraction;
+params.m1_axes                  = m1_axes;
+params.m2_axes                  = m2_axes;
 
 params.pos_file_list        = pos_file_list;
 params.fix_file_list        = fix_file_list;
@@ -232,12 +238,18 @@ function start_social_gaze_viewer(params)
     % Create viewer
     fig = make_viewer_fig( params );
 
-    [session_menu, run_menu, all_sessions, runs_in_session] = make_dropdown_menus(fig, ...
-        params, @get_files_and_make_plots);
+    [fig, session_menu, run_menu, all_sessions, runs_in_session] = make_dropdown_menus(fig, ...
+        params, @fetch_behavioral_data);
     
-    get_files_and_make_plots();
+    [fig, play_pause_button] = make_play_pause_button(fig, params, @generate_updating_plots);
 
-    function get_files_and_make_plots(~, ~)
+    [fig, ax] = make_display_architecture(fig, params);
+
+    [fig, params] = make_display( fig, behav_data, params );
+
+    fetch_behavioral_data();
+
+    function fetch_behavioral_data(~, ~)
         % Get the selected session and run number
         sessionIdx = get(session_menu, 'Value');
         runIdx = get(run_menu, 'Value');
@@ -263,9 +275,20 @@ function start_social_gaze_viewer(params)
         behav_data.pos_vecs = pos_struct.var;
         behav_data.fix_vecs = fix_struct.var;
         behav_data.roi_rects = get_roi_rects( roi_struct.var, rois_of_interest );
+    end
 
+    % Callback function for the play/pause button
+    function generate_updating_plots(~, event)
 
-        params = make_display( fig, behav_data, params );
+        if get(play_pause_button, 'Value')
+            set(source, 'String', 'Pause');
+            % Call your play function here
+            
+        else
+            set(play_pause_button, 'String', 'Play');
+            % Call your pause function here
+            drawnow;
+        end
     end
 end
 
@@ -283,7 +306,7 @@ function fig = make_viewer_fig(params)
 end
 
 
-function [session_menu, run_menu, all_sessions, runs_in_session] = make_dropdown_menus(fig,...
+function [fig, session_menu, run_menu, all_sessions, runs_in_session] = make_dropdown_menus(fig,...
         params, callback_function)
     
     menu_pos_wrt_fig = params.menu_pos_wrt_fig; % x and y relative to figure (0 to 1)
@@ -348,13 +371,31 @@ function [session_menu, run_menu, all_sessions, runs_in_session] = make_dropdown
         'Callback', callback_function);  % Set callback function handle
 end
 
+function [fig, play_pause_button] = make_play_pause_button(fig, params, callback_funcition)
+    position = params.play_pause_position;
+    play_pause_button = uicontrol('Parent', fig, ...
+        'Style', 'togglebutton', ...
+        'String', 'Play', ...
+        'Units', 'normalized', ...
+        'Position', position, ...
+        'Callback', callback_funcition);  % Set callback function handle
+end
+
+function [fig, ax] = make_display_architecture(fig, params)
+    m1_axes = params.m1_axes;
+    m2_axes = params.m2_axes;
 
 
-function params = make_display(fig, behav_data, params)
+end
+
+function [fig, params] = make_display(fig, behav_data, params)
     
     current_time_ind = params.current_time_ind;
     disp_time_win = params.disp_time_win;
     pause_time = params.pause_time;
+
+    m1_axes = params.m1_axes;
+    m2_axes = params.m2_axes;
 
     if isempty(current_time_ind)
         current_time_ind = 1;
@@ -366,8 +407,8 @@ function params = make_display(fig, behav_data, params)
     stop_time_loop = false;
     
     ax = struct();
-    ax.m1 = axes('Position', [0.1 0.6 0.4 0.9]);
-    ax.m2 = axes('Position', [0.6 0.6 0.9 0.9]);
+    ax.m1 = axes('Position', m1_axes); % x1 y1 width height
+    ax.m2 = axes('Position', m2_axes);
 
     time_vec = behav_data.time_vec;
 
@@ -390,7 +431,8 @@ function params = make_display(fig, behav_data, params)
 
         monkey = 'm2';
         draw_gaze_timecourse_for_one_monkey( monkey, ax, disp_time_inds, behav_data );
-
+        
+        drawnow;
         pause(pause_time);
         
         current_time_ind = current_time_ind + 1;
@@ -422,8 +464,8 @@ function draw_gaze_timecourse_for_one_monkey( monkey, ax, disp_time_inds, behav_
 relevant_axis = ax.(monkey);
 
 pos_vec = behav_data.pos_vecs.(monkey);
+time_vec = behav_data.time_vec;
 
-behav_data.time_vec;
 x_vec = pos_vec(1, disp_time_inds)';
 y_vec = pos_vec(2, disp_time_inds)';
 
@@ -432,16 +474,15 @@ cmap = [white_to_black_cmap, white_to_black_cmap, white_to_black_cmap]; % RGB va
 
 % Plot scatter points with specified color and size
 cla(relevant_axis);
-scatter(x_vec, y_vec, 50, cmap, 'filled');
+scatter(relevant_axis, x_vec, y_vec, 50, cmap, 'filled');
     
 start_time = time_vec(disp_time_inds(1));
 current_time = time_vec(disp_time_inds(2));
-colormap(gca, cmap);
-clim([start_time, current_time]); % Set colorbar limits
-colorbar;
-title( sprintf('%s Gaze Location from t=%0.3fs to %0.3fs', ...
+colormap(relevant_axis, cmap);
+clim( relevant_axis, [start_time, current_time] ); % Set colorbar limits
+colorbar( relevant_axis );
+title( relevant_axis, sprintf('%s Gaze Location from t=%0.3fs to %0.3fs', ...
     monkey, start_time, current_time ) );
-drawnow;
 
 end
 
