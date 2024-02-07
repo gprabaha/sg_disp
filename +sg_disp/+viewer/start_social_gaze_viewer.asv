@@ -80,7 +80,7 @@ function start_social_gaze_viewer(params)
         while play_pause_button.Value == 1
             current_time_ind = params.current_time_ind;
             disp_time_inds = calculate_disp_time_inds( current_time_ind, disp_time_win );
-            if sum( ~isnan( behav_data.time_vec(disp_time_inds) ) ) > 1
+            if ~numel( (behav_data.time_vec(disp_time_inds) ) > 1
                 monkey = 'm1';
                 sg_disp.plotting.draw_one_timeframe_for_one_monkey( monkey, ax, disp_time_inds, behav_data, params );
                 monkey = 'm2';

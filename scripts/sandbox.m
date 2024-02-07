@@ -35,6 +35,8 @@ current_run             = '';
 current_time_ind        = 151263;
 disp_time_win           = 0.5; % seconds
 monitor_size            = [1024 768]; % x1 y1 x2 y2
+% centre screen is used for calibration. this determines how much of the left and right screen is to be displayed
+flanking_screen_prop    = 0.5;
 
 
 disp_size               = [1024*3 768]; % x1 y1 x2 y2
@@ -86,7 +88,6 @@ for i = 1:numel(pos_file_list)
     session_per_file{i} = split_filename{1};
     run_number_per_file{i} = split_filename{3};
 end
-
 
 %% Loading Data
 disp( 'Loading data...' );
@@ -150,7 +151,7 @@ end
 % Viewer design parameters
 border_fraction         = 0.05;
 font_size               = 20;
-play_pause_position     = [0.43 0.85];
+play_pause_position     = [0.44 0.85];
 play_pause_size         = [0.07 0.05];
 menu_pos_wrt_fig        = [0.43 0.87];
 menu_width              = 100; %px
@@ -160,9 +161,10 @@ run_menu_y_offset       = 0.03;
 menu_font_size          = 16;
 m1_axes                 = [0.05 0.55 0.37 0.37];
 m2_axes                 = [0.55 0.55 0.37 0.37];
+flanking_screen_prop = 0.9;
 
 %
-pause_time = 0.02;
+pause_time              = 0.01;
 
 
 params                      = struct();
@@ -186,6 +188,7 @@ params.fix_file_list        = fix_file_list;
 params.roi_file_list        = roi_file_list;
 params.bounds_file_list     = bounds_file_list;
 params.time_file_list       = time_file_list;
+params.offset_file_list     = offset_file_list;
 
 params.rois_of_interest     = rois_of_interest;
 
@@ -199,15 +202,9 @@ params.pause_time           = pause_time;
 params.n_frames             = n_frames;
 
 params.monitor_size         = monitor_size;
+params.flanking_screen_prop = flanking_screen_prop;
 
 sg_disp.viewer.start_social_gaze_viewer(params);
-
-% plot_gaze_loc_last_n_sec(params);
-
-%%
-start_social_gaze_viewer(params);
-
-%%
 
 
 
@@ -219,6 +216,4 @@ fnames = shared_utils.io.filenames( f );
 tf = startsWith( fnames, '.' );
 
 end
-
-
 
