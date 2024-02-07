@@ -21,13 +21,13 @@ rois_of_interest = {'eyes'...
 
 % Viewer design parameters
 border_fraction         = 0.05;
-font_size = 20;
-menu_pos_wrt_fig = [0.7 0.85];
-menu_width = 100; %px
-menu_height = 30; %px
-menu_x_offset = 0.065;
-run_menu_y_offset = 0.04;
-menu_font_size = 16;
+font_size               = 20;
+menu_pos_wrt_fig        = [0.7 0.85];
+menu_width              = 100; %px
+menu_height             = 30; %px
+menu_x_offset           = 0.065;
+run_menu_y_offset       = 0.04;
+menu_font_size          = 16;
 
 % Paremeters for viewer
 current_session         = '';
@@ -138,7 +138,7 @@ disp( 'Done' );
 % of the 3-monitor calibration window
 
 % Gets you the offsets
-
+offsets = table();
 for i = 1:numel(offset_file_list)
     offset_file = shared_utils.io.fload( offset_file_list{i} );
     offsets = [ offsets; table(offset_file.m1(:)', string(offset_file.unified_filename) ...
@@ -149,13 +149,16 @@ end
 
 % Viewer design parameters
 border_fraction         = 0.05;
-font_size = 20;
-menu_pos_wrt_fig = [0.7 0.85];
-menu_width = 100; %px
-menu_height = 30; %px
-menu_x_offset = 0.065;
-run_menu_y_offset = 0.03;
-menu_font_size = 16;
+font_size               = 20;
+menu_pos_wrt_fig        = [0.7 0.85];
+menu_width              = 100; %px
+menu_height             = 30; %px
+menu_x_offset           = 0.065;
+run_menu_y_offset       = 0.03;
+menu_font_size          = 16;
+
+%
+pause_time = 0.02;
 
 
 params                      = struct();
@@ -223,21 +226,18 @@ function start_social_gaze_viewer(params)
     current_file_ind = [];
     all_sessions = [];
     runs_in_session = [];
-
-    pos_vecs = [];
-    fix_vecs = [];
-    time_vec = [];
-    roi_rects = [];
+    behav_data = struct();
+    neural_data = struct();
 
     % Create viewer
     fig = make_viewer_fig( params );
 
     [session_menu, run_menu, all_sessions, runs_in_session] = make_dropdown_menus(fig, ...
-        params, @get_relevant_files);
+        params, @get_files_and_make_plots);
     
-    get_relevant_files();
+    get_files_and_make_plots();
 
-    function get_relevant_files(~, ~)
+    function get_files_and_make_plots(~, ~)
         % Get the selected session and run number
         sessionIdx = get(session_menu, 'Value');
         runIdx = get(run_menu, 'Value');
@@ -259,12 +259,13 @@ function start_social_gaze_viewer(params)
         roi_struct = load(roi_file);
         disp('Done');
 
-        time_vec = time_struct.var.t;
-        pos_vecs = pos_struct.var;
-        fix_vecs = fix_struct.var;
-        roi_rects = get_roi_rects(roi_struct.var, rois_of_interest);
+        behav_data.time_vec = time_struct.var.t;
+        behav_data.pos_vecs = pos_struct.var;
+        behav_data.fix_vecs = fix_struct.var;
+        behav_data.roi_rects = get_roi_rects( roi_struct.var, rois_of_interest );
 
-        make_display( fig, time_vec, pos_vecs, fix_vecs, roi_rects, params );
+
+        params = make_display( fig, behav_data, params );
     end
 end
 
@@ -349,9 +350,12 @@ end
 
 
 
-function params = make_display( fig, time_vec, pos_vecs, fix_vecs, roi_rects, params )
+function params = make_display(fig, behav_data, params)
     
     current_time_ind = params.current_time_ind;
+    disp_time_win = params.disp_time_win;
+    pause_time = params.pause_time;
+
     if isempty(current_time_ind)
         current_time_ind = 1;
     end
@@ -360,6 +364,12 @@ function params = make_display( fig, time_vec, pos_vecs, fix_vecs, roi_rects, pa
     set(fig, 'KeyPressFcn', @escape_callback);
     is_paused = false;
     stop_time_loop = false;
+    
+    ax = struct();
+    ax.m1 = axes('Position', [0.1 0.6 0.4 0.9]);
+    ax.m2 = axes('Position', [0.6 0.6 0.9 0.9]);
+
+    time_vec = behav_data.time_vec;
 
     while current_time_ind < numel(time_vec)
         if ( is_paused )
@@ -372,8 +382,16 @@ function params = make_display( fig, time_vec, pos_vecs, fix_vecs, roi_rects, pa
             params.current_time_ind = current_time_ind;
             break;
         end
+        
+        disp_time_inds = calculate_disp_time_inds(current_time_ind, disp_time_win);
+        
+        monkey = 'm1';
+        draw_gaze_timecourse_for_one_monkey( monkey, ax, disp_time_inds, behav_data );
 
-        draw_current_gaze_location( current_time_ind, time_vec, pos_vecs, fix_vecs, roi_rects, params );
+        monkey = 'm2';
+        draw_gaze_timecourse_for_one_monkey( monkey, ax, disp_time_inds, behav_data );
+
+        pause(pause_time);
         
         current_time_ind = current_time_ind + 1;
     end
@@ -392,101 +410,42 @@ function params = make_display( fig, time_vec, pos_vecs, fix_vecs, roi_rects, pa
     end
 end
 
+function disp_time_inds = calculate_disp_time_inds(current_time_ind, disp_time_win)
+    num_time_inds_to_disp = disp_time_win * 1e3;
+    disp_ind_start = max(1, current_time_ind - num_time_inds_to_disp + 1);
+    disp_time_inds = disp_ind_start:current_time_ind;
+end
 
-function draw_current_gaze_location( current_time_ind, time_vec, pos_vecs, fix_vecs, roi_recs, params )
 
-disp_time_win = params.disp_time_win;
+function draw_gaze_timecourse_for_one_monkey( monkey, ax, disp_time_inds, behav_data )
 
-num_time_inds_to_disp = disp_time_win * 1e3;
+relevant_axis = ax.(monkey);
 
-disp_ind_start = max(1, current_time_ind - num_time_inds_to_disp + 1);
-disp_time_inds = disp_ind_start:current_time_ind;
+pos_vec = behav_data.pos_vecs.(monkey);
 
-axes('Position', [0.1 0.1 0.4 0.4]);
+behav_data.time_vec;
+x_vec = pos_vec(1, disp_time_inds)';
+y_vec = pos_vec(2, disp_time_inds)';
 
-pos_vec_m1 = pos_vecs.m1;
-x_vec = pos_vec_m1(1, disp_time_inds)';
-y_vec = pos_vec_m1(2, disp_time_inds)';
-cmap = plot_gaze_locs_and_get_cmap(x_vec, y_vec);
+white_to_black_cmap = linspace(1, 0, length(x_vec))';
+cmap = [white_to_black_cmap, white_to_black_cmap, white_to_black_cmap]; % RGB values
+
+% Plot scatter points with specified color and size
+cla(relevant_axis);
+scatter(x_vec, y_vec, 50, cmap, 'filled');
     
-start_time = time_vec(disp_ind_start);
-current_time = time_vec(current_time_ind);
+start_time = time_vec(disp_time_inds(1));
+current_time = time_vec(disp_time_inds(2));
 colormap(gca, cmap);
-caxis([start_time, current_time]); % Set colorbar limits
+clim([start_time, current_time]); % Set colorbar limits
 colorbar;
-title( sprintf('M1 Gaze Location from t=%0.3fs to %0.3fs'...
-    , start_time, current_time )...
-    );
+title( sprintf('%s Gaze Location from t=%0.3fs to %0.3fs', ...
+    monkey, start_time, current_time ) );
 drawnow;
-end
 
-function cmap = plot_gaze_locs_and_get_cmap(x_vec, y_vec)
-    % Calculate colormap going from white to black
-    white_to_black_cmap = linspace(1, 0, length(x_vec))';
-    cmap = [white_to_black_cmap, white_to_black_cmap, white_to_black_cmap]; % RGB values
-    
-    % Plot scatter points with specified color and size
-    scatter(x_vec, y_vec, 50, cmap, 'filled');
-    drawnow;
 end
 
 
-
-
-
-
-
-% function make_viewer(fig, params)
-% 
-%     session_per_file = params.session_per_file;
-%     run_number_per_file = params.run_number_per_file;
-% 
-%     % Get the selected session and run number
-%     sessionIdx = get(session_menu, 'Value');
-%     runIdx = get(run_menu, 'Value');
-% 
-%     % Extract the current session and run number
-%     current_session = all_sessions{sessionIdx};
-%     current_run = runs_in_session{runIdx};
-% 
-%     % Update file index
-%     current_file_ind = find(strcmp(session_per_file, current_session) & strcmp(run_number_per_file, current_run));
-% 
-%     pos_file_list = params.pos_file_list;
-%     time_file_list = params.time_file_list;
-%     fix_file_list = params.fix_file_list;
-%     roi_file_list = params.roi_file_list;
-% 
-%     pos_file = pos_file_list{current_file_ind};
-%     time_file = time_file_list{current_file_ind};
-%     roi_file = roi_file_list{current_file_ind};
-%     fix_file = fix_file_list{current_file_ind};
-% 
-%     time_struct = load(time_file);
-%     time_struct = time_struct.var;
-%     time_vec = time_struct.t;
-% 
-%     pos_struct = load(pos_file);
-%     pos_vecs = pos_struct.var;
-% 
-%     fix_struct = load(fix_file);
-%     fix_vecs = fix_struct.var;
-% 
-%     roi_struct = load(roi_file);
-%     roi_struct = roi_struct.var;
-%     roi_rects = get_roi_rects(roi_struct, rois_of_interest);
-% 
-%     set(fig, 'KeyPressFcn', @key_pressed_callback);
-%     is_paused = false;
-% 
-%     
-% 
-%     function key_pressed_callback(~, event)
-%         if ( strcmp(event.Key, 'space') )
-%             is_paused = ~is_paused;
-%         end
-%     end
-% end
 
 
 %% Helper functions
@@ -534,7 +493,8 @@ end
 
 end
 
-%%
+%% Old display function
+
 function plot_gaze_loc_last_n_sec(params)
 
 % Use the tic and toc functions in here to see how much time it takes for
