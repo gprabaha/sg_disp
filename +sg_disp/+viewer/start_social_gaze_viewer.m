@@ -18,6 +18,7 @@ function start_social_gaze_viewer(params)
     rois_of_interest = params.rois_of_interest;
     pause_time = params.pause_time;
     n_frames = params.n_frames;
+    time_ind_reset_method = params.time_ind_reset_method;
 
     % Initialize file index
     current_file_ind = [];
@@ -38,8 +39,6 @@ function start_social_gaze_viewer(params)
     fetch_behavioral_data();
 
     function fetch_behavioral_data(~, ~)
-        params.current_time_ind = 1; %reset start time to 1 everytime a new file is selected
-
         % Get the selected session and run number
         sessionIdx = get(session_menu, 'Value');
         runIdx = get(run_menu, 'Value');
@@ -62,12 +61,17 @@ function start_social_gaze_viewer(params)
         roi_struct = load(roi_file);
         offset_struct = load(offset_file);
         disp('Done');
+        
+        time_struct = get_sub_struct( time_struct );
 
-        behav_data.time_vec = time_struct.var.t;
-        behav_data.pos_vecs = pos_struct.var;
-        behav_data.fix_vecs = fix_struct.var;
+        params.current_time_ind = update_current_time_ind( ...
+            time_struct.t, time_ind_reset_method ); % randsample or reset to 1
+
+        behav_data.time_vec = time_struct.t;
+        behav_data.pos_vecs = get_sub_struct( pos_struct );
+        behav_data.fix_vecs = get_sub_struct( fix_struct );
         behav_data.roi_rects = sg_disp.util.get_roi_rects( roi_struct.var, rois_of_interest );
-        behav_data.offsets = offset_struct.var;
+        behav_data.offsets = get_sub_struct( offset_struct );
     end
 
     % Callback function for the play/pause button
@@ -81,10 +85,14 @@ function start_social_gaze_viewer(params)
             current_time_ind = params.current_time_ind;
             disp_time_inds = calculate_disp_time_inds( current_time_ind, disp_time_win );
             if sum( ~isnan( behav_data.time_vec(disp_time_inds) ) ) > 1
+                % Plot the gaze location for m1
                 monkey = 'm1';
-                sg_disp.plotting.draw_one_timeframe_for_one_monkey( monkey, ax, disp_time_inds, behav_data, params );
+                roi_color_table = sg_disp.plotting.draw_one_timeframe_for_one_monkey( monkey, ax, disp_time_inds, behav_data, params );
+                % Plot the gaze location for m1
                 monkey = 'm2';
                 sg_disp.plotting.draw_one_timeframe_for_one_monkey( monkey, ax, disp_time_inds, behav_data, params );
+                % Add legend for ROIs
+                sg_disp.plotting.add_roi_legend(ax, roi_color_table);
                 drawnow;
                 pause(pause_time);
             end
@@ -98,4 +106,27 @@ function disp_time_inds = calculate_disp_time_inds(current_time_ind, disp_time_w
     num_time_inds_to_disp = disp_time_win * 1e3;
     disp_ind_start = max(1, current_time_ind - num_time_inds_to_disp + 1);
     disp_time_inds = disp_ind_start:current_time_ind;
+end
+
+
+function current_time_ind = update_current_time_ind(time_vec, update_method)
+    % Validate input update_method
+    if ~(strcmp(update_method, 'randsample') || strcmp(update_method, 'reset'))
+        error('update_method must be either ''randsample'' or ''reset''.');
+    end
+    % Determine the current time index based on the update method
+    if strcmp(update_method, 'randsample')
+        % Randomly select an index from time_vec using randsample
+        current_time_ind = randsample(length(time_vec), 1);
+    else
+        % If update_method is 'reset', set current_time_ind to 1
+        current_time_ind = 1;
+    end
+end
+
+function str = get_sub_struct( input_struct )
+    if numel(fieldnames(input_struct)) > 1
+        error('Struct has more than one fields!');
+    end
+    str = input_struct.( char( fieldnames(input_struct) ) );
 end

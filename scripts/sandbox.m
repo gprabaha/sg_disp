@@ -111,6 +111,7 @@ else
 end
 disp( 'Done' );
 
+
 %% Preprocessing Neural data
 
 disp( 'Preprocessing data...' );
@@ -130,6 +131,9 @@ replace( spike_labels, 'm', 'broad' );
 replace( spike_labels, 'b', 'outlier' );
 disp( 'Done' );
 
+spike_data = struct();
+spike_data.unit_spike_ts = unit_spike_ts;
+spike_data.spike_labels = spike_labels;
 
 %%
 % disp_size tells us about the calibration window size for the task. The
@@ -159,15 +163,20 @@ menu_height             = 30; %px
 menu_x_offset           = 0.065;
 run_menu_y_offset       = 0.03;
 menu_font_size          = 16;
-m1_axes                 = [0.05 0.55 0.37 0.37];
-m2_axes                 = [0.55 0.55 0.37 0.37];
-flanking_screen_prop = 0.9;
+m1_axis                 = [0.05 0.52 0.42 0.4];
+m2_axis                 = [0.55 0.52 0.42 0.4];
+legend_axis             = [0.05 0.5 0.42 0.05];
+acc_axis                = [0.05 0.05 0.42 0.42];
+bla_axis                = [0.55 0.05 0.42 0.42];
+flanking_screen_prop    = 0.9;
 
 %
-pause_time              = 0.01;
+pause_time              = 0.001;
+
+time_ind_reset_method   = 'second_non_nan';
 
 
-params                      = struct();
+params                  = struct();
 
 % Viewer design parameters
 params.font_size                = font_size;
@@ -180,8 +189,11 @@ params.menu_x_offset            = menu_x_offset;
 params.run_menu_y_offset        = run_menu_y_offset;
 params.menu_font_size           = menu_font_size;
 params.border_fraction          = border_fraction;
-params.m1_axes                  = m1_axes;
-params.m2_axes                  = m2_axes;
+params.m1_axis                  = m1_axis;
+params.m2_axis                  = m2_axis;
+params.legend_axis              = legend_axis;
+params.acc_axis                 = acc_axis;
+params.bla_axis                 = bla_axis;
 
 params.pos_file_list        = pos_file_list;
 params.fix_file_list        = fix_file_list;
@@ -189,6 +201,7 @@ params.roi_file_list        = roi_file_list;
 params.bounds_file_list     = bounds_file_list;
 params.time_file_list       = time_file_list;
 params.offset_file_list     = offset_file_list;
+params.spike_data           = spike_data;
 
 params.rois_of_interest     = rois_of_interest;
 
@@ -200,12 +213,17 @@ params.current_time_ind     = current_time_ind;
 params.disp_time_win        = disp_time_win;
 params.pause_time           = pause_time;
 params.n_frames             = n_frames;
+params.time_ind_reset_method = time_ind_reset_method;
 
 params.monitor_size         = monitor_size;
 params.flanking_screen_prop = flanking_screen_prop;
 
+sg_disp.plotting.generate_gaze_data_videos_for_each_run(params);
+
+%%
 sg_disp.viewer.start_social_gaze_viewer(params);
 
+%%
 
 
 %% Helper functions

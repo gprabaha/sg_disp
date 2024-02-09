@@ -1,0 +1,33 @@
+function make_video_for_one_file(behav_data, params)
+
+current_time_ind = params.current_time_ind;
+disp_time_win = params.disp_time_win;
+disp_time_inds = calculate_disp_time_inds( current_time_ind, disp_time_win );
+session = params.current_session;
+run = params.current_run;
+
+% Create viewer figure
+[fig, ax] = sg_disp.viewer.make_viewer_fig_and_axes( params );
+
+last_ind = find( ~isnan( behav_data.time_vec ), end );
+
+monkey = 'm1';
+roi_color_table = sg_disp.plotting.draw_one_timeframe_for_one_monkey( monkey, ax, disp_time_inds, behav_data, params );
+% Plot the gaze location for m1
+monkey = 'm2';
+sg_disp.plotting.draw_one_timeframe_for_one_monkey( monkey, ax, disp_time_inds, behav_data, params );
+% Add legend for ROIs
+sg_disp.plotting.add_roi_legend(ax, roi_color_table);
+title_str = sprintf('Gaze Signals for Session: %s; Run: %s;', session, run);
+sgtitle( title_str );
+drawnow;
+
+
+
+end
+
+function disp_time_inds = calculate_disp_time_inds(current_time_ind, disp_time_win)
+    num_time_inds_to_disp = disp_time_win * 1e3;
+    disp_ind_start = max(1, current_time_ind - num_time_inds_to_disp + 1);
+    disp_time_inds = disp_ind_start:current_time_ind;
+end
