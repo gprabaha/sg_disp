@@ -25,7 +25,6 @@ function start_social_gaze_viewer(params)
     all_sessions = [];
     runs_in_session = [];
     behav_data = struct();
-    neural_data = struct();
 
     % Create viewer
     [fig, ax] = sg_disp.viewer.make_viewer_fig_and_axes( params );
@@ -45,7 +44,9 @@ function start_social_gaze_viewer(params)
 
         % Extract the current session and run number
         current_session = all_sessions{sessionIdx};
+        params.current_session = current_session;
         current_run = runs_in_session{runIdx};
+        params.current_run = current_run;
         current_file_ind = find(strcmp(session_per_file, current_session) & strcmp(run_number_per_file, current_run));
 
         pos_file = pos_file_list{current_file_ind};
@@ -78,21 +79,35 @@ function start_social_gaze_viewer(params)
     function generate_updating_plots(~, ~)
         if get(play_pause_button, 'Value')
             set(play_pause_button, 'String', 'Pause');
+            time_vec = behav_data.time_vec;
         else
             set(play_pause_button, 'String', 'Play');
         end
         while play_pause_button.Value == 1
             current_time_ind = params.current_time_ind;
             disp_time_inds = calculate_disp_time_inds( current_time_ind, disp_time_win );
-            if sum( ~isnan( behav_data.time_vec(disp_time_inds) ) ) > 1
-                % Plot the gaze location for m1
+            if sum( ~isnan( time_vec(disp_time_inds) ) ) > 1
+                clear_all_axes(ax);
+                disp_time_inds = calculate_disp_time_inds(current_time_ind, disp_time_win);
                 monkey = 'm1';
-                roi_color_table = sg_disp.plotting.draw_one_timeframe_for_one_monkey( monkey, ax, disp_time_inds, behav_data, params );
+                roi_color_table = sg_disp.plotting.draw_one_timeframe_for_one_monkey(...
+                    ax, behav_data, params, disp_time_inds, monkey);
                 % Plot the gaze location for m1
                 monkey = 'm2';
-                sg_disp.plotting.draw_one_timeframe_for_one_monkey( monkey, ax, disp_time_inds, behav_data, params );
+                sg_disp.plotting.draw_one_timeframe_for_one_monkey(...
+                    ax, behav_data, params, disp_time_inds, monkey);
                 % Add legend for ROIs
                 sg_disp.plotting.add_roi_legend(ax, roi_color_table);
+                current_time = time_vec(current_time_ind);
+                region = 'acc';
+                sg_disp.plotting.draw_celltype_coded_raster_for_a_region(...
+                    ax, params, current_time, region );
+                region = 'bla';
+                sg_disp.plotting.draw_celltype_coded_raster_for_a_region(...
+                    ax, params, current_time, region );
+                title_str = sprintf('Gaze Signals for Session: %s; Run: %s;', ...
+                    params.current_session, params.current_run);
+                sgtitle(title_str);
                 drawnow;
                 pause(pause_time);
             end
@@ -111,22 +126,38 @@ end
 
 function current_time_ind = update_current_time_ind(time_vec, update_method)
     % Validate input update_method
-    if ~(strcmp(update_method, 'randsample') || strcmp(update_method, 'reset'))
-        error('update_method must be either ''randsample'' or ''reset''.');
+    if ~(strcmp(update_method, 'randsample') || strcmp(update_method, 'reset') || strcmp(update_method, 'second_non_nan'))
+        error('update_method must be either ''randsample'' or ''reset'' or ''second_non_nan''.');
     end
     % Determine the current time index based on the update method
     if strcmp(update_method, 'randsample')
         % Randomly select an index from time_vec using randsample
         current_time_ind = randsample(length(time_vec), 1);
-    else
+    elseif strcmp(update_method, 'reset')
         % If update_method is 'reset', set current_time_ind to 1
         current_time_ind = 1;
+    else
+        % If update_method is 'first_non_nan', set current_time_ind to 1
+        first_two_time_inds = find(  ~isnan( time_vec ), 2);
+        current_time_ind = first_two_time_inds(2);
     end
 end
+
+
 
 function str = get_sub_struct( input_struct )
     if numel(fieldnames(input_struct)) > 1
         error('Struct has more than one fields!');
     end
     str = input_struct.( char( fieldnames(input_struct) ) );
+end
+
+
+function clear_all_axes(ax)
+    % Iterate through each field of the struct
+    fields = fieldnames(ax);
+    for i = 1:numel(fields)
+        % Clear the axis object using cla
+        cla(ax.(fields{i}));
+    end
 end

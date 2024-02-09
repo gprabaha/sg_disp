@@ -10,7 +10,7 @@ fix_vec = behav_data.fix_vecs.(monkey);
 roi_rects = behav_data.roi_rects;
 
 monitor_size = params.monitor_size;
-flanking_screen_prop = params.flanking_screen_prop;
+screen_prop_to_display = params.screen_prop_to_display;
 disp_time_win = params.disp_time_win;
 
 screen_x = monitor_size(1);
@@ -21,6 +21,9 @@ if ( offsets.m1(1) == 0 )
     origin_x = origin_x + 1024;
 end
 display_x_range = [origin_x, origin_x + screen_x * 3];
+x_array = display_x_range(1):display_x_range(2);
+x_array = extract_middle_chunk_of_array(x_array, screen_prop_to_display);
+display_x_range = x_array([1, end]);
 display_y_range = [1, screen_y];
 
 % We are handling offsets here. Be careful!
@@ -42,7 +45,6 @@ cmap_fix = get_fixation_colormap(disp_time_inds);
 fix_in_disp = fix_vec(disp_time_inds);
 
 % Plot scatter points with specified colormaps
-cla(relevant_axis);
 hold( relevant_axis, 'on' );
 % Draw the roi boinding boxes
 roi_color_table = draw_roi_bounding_boxes( relevant_axis, roi_names, offset_adjusted_roi_boxes, monkey );
@@ -55,11 +57,12 @@ cmap_fix = cmap_fix(fix_in_disp, :);
 scatter( relevant_axis, x_fix, y_fix, 50, cmap_fix, 'filled' );
 
 time_range = time_vec(disp_time_inds);
-colormap(relevant_axis, cmap);
+colormap( relevant_axis, cmap );
 start_time = min(time_range, [], 'omitnan');
-end_time = max(time_range, [], 'omitnan');
+end_time = time_range(end);
 clim( relevant_axis, [start_time, end_time] ); % Set colorbar limits
-colorbar( relevant_axis );
+% colorbar takes a long time to draw
+% colorbar( relevant_axis );
 title( relevant_axis, sprintf('Last %0.1fs gaze location of %s at t=%0.3fs', ...
     disp_time_win, monkey, end_time ) );
 xlim( relevant_axis, display_x_range);
@@ -129,4 +132,11 @@ function roi_color_table = draw_roi_bounding_boxes(relevant_axis, roi_names, off
     end
 end
 
-
+function middle_chunk = extract_middle_chunk_of_array(array, f)
+    % Calculate number of elements to skip at the beginning and end
+    num_elements = length(array);
+    num_skip = round((1 - f) * num_elements / 2);
+    
+    % Extract middle fraction of the array
+    middle_chunk = array(num_skip+1:end-num_skip);
+end

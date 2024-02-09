@@ -168,15 +168,21 @@ m2_axis                 = [0.55 0.52 0.42 0.4];
 legend_axis             = [0.05 0.5 0.42 0.05];
 acc_axis                = [0.05 0.05 0.42 0.42];
 bla_axis                = [0.55 0.05 0.42 0.42];
-flanking_screen_prop    = 0.9;
+screen_prop_to_display  = 0.6;
+
+unit_validity_filter    = {'valid-unit', 'maybe-valid-unit'};
 
 %
 pause_time              = 0.001;
 
+
 time_ind_reset_method   = 'second_non_nan';
+% time_ind_reset_method   = 'randsample';
 
 
 params                  = struct();
+
+params.data_p                   = data_p;
 
 % Viewer design parameters
 params.font_size                = font_size;
@@ -195,28 +201,33 @@ params.legend_axis              = legend_axis;
 params.acc_axis                 = acc_axis;
 params.bla_axis                 = bla_axis;
 
+% behavioral data
 params.pos_file_list        = pos_file_list;
 params.fix_file_list        = fix_file_list;
 params.roi_file_list        = roi_file_list;
 params.bounds_file_list     = bounds_file_list;
 params.time_file_list       = time_file_list;
 params.offset_file_list     = offset_file_list;
-params.spike_data           = spike_data;
-
 params.rois_of_interest     = rois_of_interest;
-
 params.session_per_file     = session_per_file;
 params.current_session      = current_session;
 params.run_number_per_file  = run_number_per_file;
 params.current_run          = current_run;
 params.current_time_ind     = current_time_ind;
+params.time_ind_reset_method = time_ind_reset_method;
+
+% neural data
+params.spike_data           = spike_data;
+params.unit_validity_filter = unit_validity_filter;
+
 params.disp_time_win        = disp_time_win;
 params.pause_time           = pause_time;
 params.n_frames             = n_frames;
-params.time_ind_reset_method = time_ind_reset_method;
 
-params.monitor_size         = monitor_size;
-params.flanking_screen_prop = flanking_screen_prop;
+
+params.monitor_size                 = monitor_size;
+params.screen_prop_to_display       = screen_prop_to_display;
+%%
 
 sg_disp.plotting.generate_gaze_data_videos_for_each_run(params);
 
