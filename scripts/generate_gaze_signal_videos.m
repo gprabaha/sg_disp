@@ -89,6 +89,10 @@ end
 params                              = struct();
 params.data_p                       = data_p;
 % Data extraction
+params.total_pos_file_number        = NaN;
+params.current_pos_file_number      = NaN;
+params.current_session              = NaN;
+params.current_run                  = NaN;
 params.rois_of_interest             = {'eyes', ...
     'mouth', ...
     'face', ...
@@ -115,12 +119,17 @@ spike_data.spike_labels             = spike_labels;
 
 %%
 
-% for i = 1:numel(pos_file_list)
-for i = 175    
+num_pos_files = numel(pos_file_list);
+params.total_pos_file_number = num_pos_files;
+% for i = 1:num_pos_files
+for i = 175
+    params.current_pos_file_number = i;
     [~, filename, ~] = fileparts(pos_file_list{i});
     split_filename = strsplit(filename, '_');
     current_session = split_filename{1};
+    params.current_session = current_session;
     current_run = split_filename{3};
+    params.current_run = current_run;
     
     pos_file = pos_file_list{i};
     time_file = time_file_list{i};
@@ -128,14 +137,12 @@ for i = 175
     roi_file = roi_file_list{i};
     offset_file = offset_file_list{i};
     
-    disp('Loading eyetracking files for one run...');
     time_struct = load(time_file);
     time_struct = sg_disp.util.get_sub_struct( time_struct );
     pos_struct = load(pos_file);
     fix_struct = load(fix_file);
     roi_struct = load(roi_file);
     offset_struct = load(offset_file);
-    disp('Done');
     
     behav_data                      = struct();
     behav_data.start_time_ind       = sg_disp.util.get_start_time_ind_for_file( ...
@@ -149,7 +156,7 @@ for i = 175
         roi_struct.var, rois_of_interest );
     behav_data.offsets              = sg_disp.util.get_sub_struct( offset_struct );
     
-    sg_disp.vid_gen.extract_and_save_video_data_for_each_run( behav_data, spike_data, params );
+    sg_disp.vid_gen.extract_and_save_video_data_for_one_file( behav_data, spike_data, params );
 
 end
 
