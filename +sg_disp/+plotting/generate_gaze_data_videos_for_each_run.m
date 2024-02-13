@@ -11,7 +11,7 @@ rois_of_interest = params.rois_of_interest;
 time_ind_reset_method = params.time_ind_reset_method;
 
 
-for i=2:numel(session_per_file)
+for i=1:numel(session_per_file)
     session = session_per_file{i};
     run_number = run_number_per_file{i};
 

@@ -17,7 +17,6 @@ fig = figure('Units', 'normalized', 'Position', fig_position, 'Visible', 'off');
 set(fig, 'DefaultTextFontSize', font_size);
 ax = struct();
 ax.m1 = axes('Position', m1_axis); % x1 y1 width height
-
 ax.m1 = prune_axis( ax.m1 );
 ax.m2 = axes('Position', m2_axis);
 ax.m2 = prune_axis( ax.m2 );

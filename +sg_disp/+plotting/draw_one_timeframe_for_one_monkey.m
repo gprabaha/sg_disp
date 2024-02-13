@@ -26,17 +26,13 @@ x_array = extract_middle_chunk_of_array(x_array, screen_prop_to_display);
 display_x_range = x_array([1, end]);
 display_y_range = [1, screen_y];
 
-% We are handling offsets here. Be careful!
-offset = offsets.(monkey);
+
 x_vec = pos_vec(1, disp_time_inds)';
-% x_vec = x_vec - offset(1);
 y_vec = pos_vec(2, disp_time_inds)';
-% y_vec = y_vec - offset(2);
 
 monkey_rois = roi_rects.(monkey);
 roi_names = monkey_rois.roi;
 roi_boxes = monkey_rois.roi_rect;
-% offset_adjusted_roi_boxes = adjust_rect_offset(roi_boxes, offset);
 offset_adjusted_roi_boxes = roi_boxes;
 
 cmap = get_colormap_for_monkey(disp_time_inds, monkey);
@@ -58,9 +54,9 @@ scatter( relevant_axis, x_fix, y_fix, 50, cmap_fix, 'filled' );
 
 time_range = time_vec(disp_time_inds);
 colormap( relevant_axis, cmap );
-start_time = min(time_range, [], 'omitnan');
-end_time = time_range(end);
-clim( relevant_axis, [start_time, end_time] ); % Set colorbar limits
+% start_time = min(time_range, [], 'omitnan');
+% end_time = time_range(end);
+% clim( relevant_axis, [start_time, end_time] ); % Set colorbar limits
 % colorbar takes a long time to draw
 % colorbar( relevant_axis );
 title( relevant_axis, sprintf('Last %0.1fs gaze location of %s at t=%0.3fs', ...

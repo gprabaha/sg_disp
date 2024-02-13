@@ -55,6 +55,9 @@ function plot_raster( axis, unit_spike_ts, narrow_inds, broad_inds, current_time
     
     hold(axis, 'on');
     % Plot spikes in black for narrow units
+    spike_tick_size = 10;
+    narrow_spike_color = [24 75 241]/255; % Blue
+    broad_spike_color = [227 154 6]/255; % Ochre
     if ~isempty(narrow_inds)
         num_narrow_units = length(narrow_inds);
         for i = 1:num_narrow_units
@@ -63,7 +66,10 @@ function plot_raster( axis, unit_spike_ts, narrow_inds, broad_inds, current_time
             if any( ~isnan(spike_indices) )
                 spike_bins = spike_indices( ~isnan(spike_indices) );
                 for j=1:numel(spike_bins)
-                    plot(axis, bins(spike_bins(j)), i, 'b.', 'MarkerSize', 10);
+                    plot(axis, bins(spike_bins(j)), i, '|', ...
+                        'MarkerSize', spike_tick_size, ...
+                        'LineWidth', 2.5, ...
+                        'Color', narrow_spike_color);
                 end
             else
                 blue_background = [0.7, 0.7, 1];
@@ -84,7 +90,10 @@ function plot_raster( axis, unit_spike_ts, narrow_inds, broad_inds, current_time
             if any( ~isnan(spike_indices) )
                 spike_bins = spike_indices( ~isnan(spike_indices) );
                 for j=1:numel(spike_bins)
-                    plot(axis, bins(spike_bins(j)), num_narrow_units+i, 'r.', 'MarkerSize', 10);
+                    plot(axis, bins(spike_bins(j)), num_narrow_units+i, '|', ...
+                        'MarkerSize', spike_tick_size, ...
+                        'LineWidth', 2.5, ...
+                        'Color', broad_spike_color);
                 end
             else
                 red_background = [1, 0.7, 0.7];
