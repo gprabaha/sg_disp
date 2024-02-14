@@ -21,8 +21,8 @@ function [gaze_m1, gaze_m2] = extract_gaze_pos_frames_for_both_monkeys(behav_dat
     column_names = {'XVec', 'YVec', 'XFix', 'YFix', 'RoiNames', ...
                     'RoiBdBoxes', 'DispXRange', 'DispYRange', 'Monkey', ...
                     'CurrentTime', 'DispTimeWin'};
-    gaze_m1 = table();
-    gaze_m2 = table();
+    gaze_m1 = cell( num_rows, numel(column_names) );
+    gaze_m2 = cell( num_rows, numel(column_names) );
     
     % Calculate display ranges
     [display_x_range, display_y_range] = sg_disp.util.calculate_display_ranges(behav_data, params);
@@ -49,7 +49,7 @@ function [gaze_m1, gaze_m2] = extract_gaze_pos_frames_for_both_monkeys(behav_dat
             new_row_data = {x_vec, y_vec, x_fix, y_fix, roi_names, ...
                             roi_bd_boxes, display_x_range, display_y_range, monkey, ...
                             current_time, disp_time_win};
-            eval(['gaze_' monkey ' = [gaze_' monkey '; new_row_data];']);
+            eval(['gaze_' monkey '(row_ind, :) = new_row_data;']);
             
             % Progress display
             if mod(row_ind, num_frames_for_progress_disp) == 0
@@ -58,6 +58,7 @@ function [gaze_m1, gaze_m2] = extract_gaze_pos_frames_for_both_monkeys(behav_dat
                       monkey, ' Frame:', num2str(row_ind), '/', num2str(num_rows)]);
             end
         end
+        eval(['gaze_' monkey ' = cell2table(gaze_' monkey ');']);
         eval(['gaze_' monkey '.Properties.VariableNames = column_names;']);
     end
 end

@@ -29,6 +29,7 @@ disp( 'Done' );
 disp( 'Preprocessing data...' );
 [unit_spike_ts, unit_wfs, spike_labels] = eisg.util.linearize_sorted( sorted );
 bfw.add_monk_labels( spike_labels );
+validity_filter = {'valid-unit', 'maybe-valid-unit'};
 [uuid_I, uuids] = findall( spike_labels, 'uuid',...
   find( spike_labels, validity_filter ) );
 match_I = bfw.find_combinations( ct_labels, uuids );
@@ -62,11 +63,11 @@ time_file_list = shared_utils.io.findmat( time_dir );
 offset_file_list = shared_utils.io.findmat( offset_dir );
 
 % Make sure we have the only the files that correspond with each other
-pos_file_list(is_hidden(pos_file_list)) = [];
-fix_file_list(is_hidden(fix_file_list)) = [];
-roi_file_list(is_hidden(roi_file_list)) = [];
-bounds_file_list(is_hidden(roi_file_list)) = [];
-time_file_list(is_hidden(roi_file_list)) = [];
+pos_file_list(sg_disp.util.is_hidden(pos_file_list)) = [];
+fix_file_list(sg_disp.util.is_hidden(fix_file_list)) = [];
+roi_file_list(sg_disp.util.is_hidden(roi_file_list)) = [];
+bounds_file_list(sg_disp.util.is_hidden(roi_file_list)) = [];
+time_file_list(sg_disp.util.is_hidden(roi_file_list)) = [];
 
 fnames_pos = shared_utils.io.filenames( pos_file_list );
 fnames_roi = shared_utils.io.filenames( roi_file_list );
@@ -89,6 +90,7 @@ end
 params                              = struct();
 params.data_p                       = data_p;
 % Data extraction
+params.num_frames_for_progress_disp = 1000;
 params.total_pos_file_number        = NaN;
 params.current_pos_file_number      = NaN;
 params.current_session              = NaN;
@@ -99,11 +101,12 @@ params.rois_of_interest             = {'eyes', ...
     'left_nonsocial_object', ...
     'right_nonsocial_object'};
 params.time_ind_update_method       = 'second_non_nan';
-params.validity_filter              = {'valid-unit', 'maybe-valid-unit'};
 params.excluded_categories          = {'outlier', ... % from spike labels
     '<cell-type>', ... 
     'ofc', ...
     'dmpfc'};
+params.raster_bin_width             = 0.001; % ms
+params.moving_window_kernel_size    = 101;
 % Different categories of interest
 params.monkeys                      = {'m1', 'm2'};
 params.celltypes                    = {'narrow', 'broad'};
@@ -121,8 +124,16 @@ spike_data.spike_labels             = spike_labels;
 
 num_pos_files = numel(pos_file_list);
 params.total_pos_file_number = num_pos_files;
-% for i = 1:num_pos_files
-for i = 175
+stored_index_path = fullfile( data_p, 'index_to_start_from.mat');
+
+if exist(stored_index_path, 'file')
+    start_index = load( stored_index_path, 'i' );
+    start_index = start_index.i + 1;
+else
+    start_index = 1;
+end
+for i = start_index:num_pos_files
+%for i = 574
     params.current_pos_file_number = i;
     [~, filename, ~] = fileparts(pos_file_list{i});
     split_filename = strsplit(filename, '_');
@@ -153,22 +164,11 @@ for i = 175
     behav_data.pos_vecs             = sg_disp.util.get_sub_struct( pos_struct );
     behav_data.fix_vecs             = sg_disp.util.get_sub_struct( fix_struct );
     behav_data.roi_rects            = sg_disp.util.get_roi_rects( ...
-        roi_struct.var, rois_of_interest );
+        roi_struct.var, params.rois_of_interest );
     behav_data.offsets              = sg_disp.util.get_sub_struct( offset_struct );
     
-    sg_disp.vid_gen.extract_and_save_video_data_for_one_file( behav_data, spike_data, params );
-
+    vid_gen_frames = sg_disp.vid_gen.extract_and_save_video_data_for_one_file( behav_data, spike_data, params );
+    
+    save( stored_index_path, 'i' );
 end
 
-
-
-
-
-
-
-
-
-
-
-
-extract_data_for_gaze_signal_video_generation( params );
