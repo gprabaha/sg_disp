@@ -11,7 +11,7 @@ disp_time_win           = params.disp_time_win;
 progress_interval       = params.progress_interval;
 
 % Here we calculate the mean and std of spiking rate of units in session
-spike_data = calculate_mean_and_std_activity_of_unit_within_run(...
+spike_data = sg_disp.util.calculate_mean_and_std_activity_of_unit_within_run(...
     behav_data, spike_data, params);
 
 all_time_inds = start_time_ind:end_time_ind;
@@ -49,9 +49,11 @@ for i = 1:numel(all_time_inds)
         ax, roi_color_table );
 
     region = 'acc';
-    % mean and std of spiking rate is calculated above
     sg_disp.plotting.draw_one_raster_timeframe_for_one_region( ...
-        ax, spike_data, behav_data, params, current_time, region );
+        ax, spike_data, params, current_time, region );
+    region = 'bla';
+    sg_disp.plotting.draw_one_raster_timeframe_for_one_region( ...
+        ax, spike_data, params, current_time, region );
 
 
     title_str = sprintf('Gaze Signals for Session: %s; Run: %s;', session, run_number);

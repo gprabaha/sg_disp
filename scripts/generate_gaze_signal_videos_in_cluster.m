@@ -37,6 +37,7 @@ params.rois_of_interest         = {'eyes'...
 % Spike display paremeters
 params.unit_validity_filter     = {'valid-unit', 'maybe-valid-unit'};
 params.raster_bin_width         = 0.001; % ms
+params.kernel_size              = 101; % 101 ms moving window
 params.celltypes_of_interest    = {'narrow', 'broad'};
 % General viewer parameters
 params.disp_time_win            = 0.5; % seconds
