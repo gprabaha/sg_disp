@@ -90,7 +90,7 @@ end
 params                              = struct();
 params.data_p                       = data_p;
 % Data extraction
-params.num_frames_for_progress_disp = 1000;
+params.num_frames_for_progress_disp = 10000;
 params.total_pos_file_number        = NaN;
 params.current_pos_file_number      = NaN;
 params.current_session              = NaN;

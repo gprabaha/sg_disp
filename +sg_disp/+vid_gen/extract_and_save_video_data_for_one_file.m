@@ -30,7 +30,7 @@ data_p = params.data_p;
 folder_name = 'gaze_vid_files';
 save_folder = fullfile( data_p, folder_name, session );
 file_name = sprintf( 'gaze_signal_vid_frames_session_%s_run_%02d.mat', session, str2double( run ) );
-filepath = fullfile( save_folder, file_name, '-v7.3' );
+filepath = fullfile( save_folder, file_name );
 if ~exist(save_folder, 'dir')
     % If the folder doesn't exist, create it
     mkdir(save_folder);

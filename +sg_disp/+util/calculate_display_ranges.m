@@ -1,12 +1,12 @@
 function [display_x_range, display_y_range] = calculate_display_ranges(behav_data, params)
     
-    monitor_size = params.monitor_size;
+    calib_monitor_size = params.calib_monitor_size;
     screen_prop_to_display = params.screen_prop_to_display;
     offsets = behav_data.offsets;
     
     % Extract monitor dimensions
-    screen_x = monitor_size(1);
-    screen_y = monitor_size(2);
+    screen_x = calib_monitor_size(1);
+    screen_y = calib_monitor_size(2);
 
     % Define origin_x
     origin_x = -1024;

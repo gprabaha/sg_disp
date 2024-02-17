@@ -1,6 +1,6 @@
 function [fig, ax] = make_video_fig_and_axes(params)
 
-border_fraction = params.border_fraction;
+fig_position = params.fig_position;
 font_size = params.font_size;
 m1_axis = params.m1_axis;
 m2_axis = params.m2_axis;
@@ -8,12 +8,9 @@ legend_axis = params.legend_axis;
 acc_axis = params.acc_axis;
 bla_axis = params.bla_axis;
 
-% Get the figure position for the primary screen with borders
-fig_position = [border_fraction border_fraction...
-    1-(2*border_fraction) 1-(2*border_fraction)];
-% Create a figure on the primary screen with borders
-fig = figure('Units', 'normalized', 'Position', fig_position, 'Visible', 'off');
-% Set default font size for all text within the figure
+% Create a figure of size specified by params
+fig = figure( 'Position', fig_position );
+% fig = figure('Position', fig_position, 'Visible', 'off');
 set(fig, 'DefaultTextFontSize', font_size);
 ax = struct();
 ax.m1 = axes('Position', m1_axis); % x1 y1 width height
