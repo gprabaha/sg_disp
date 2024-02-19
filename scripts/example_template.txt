@@ -1,7 +1,0 @@
-!/bin/bash
-
-#sdfsdf
-#CPUS_PER_TASK=%d
-
-module load MATLAB/R2022b
-matlab -r "session=%s; run('/path/to/my/script.m');"

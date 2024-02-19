@@ -8,11 +8,15 @@ roi_file_list           = params.roi_file_list;
 offset_file_list        = params.offset_file_list;
 session_per_file        = params.session_per_file;
 run_number_per_file     = params.run_number_per_file;
+spike_data_filename     = params.spike_data_filename;
 
-spike_data              = load( fullfile( data_p, 'spike_data_celltype_labelled.mat' ) );
+spike_data              = load( fullfile( data_p, spike_data_filename ) );
 spike_data              = sg_disp.util.get_sub_struct( spike_data );
 
 file_inds_for_session = find( strcmp( session_per_file, session ) );
+
+num_files = numel(file_inds_for_session);
+parpool( num_files );
 
 for file_ind = file_inds_for_session'
     run_number = run_number_per_file{file_ind};

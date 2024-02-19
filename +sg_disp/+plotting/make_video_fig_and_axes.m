@@ -9,8 +9,8 @@ acc_axis = params.acc_axis;
 bla_axis = params.bla_axis;
 
 % Create a figure of size specified by params
-fig = figure( 'Position', fig_position );
-% fig = figure('Position', fig_position, 'Visible', 'off');
+% fig = figure( 'Position', fig_position );
+fig = figure('Position', fig_position, 'Visible', 'off');
 set(fig, 'DefaultTextFontSize', font_size);
 ax = struct();
 ax.m1 = axes('Position', m1_axis); % x1 y1 width height

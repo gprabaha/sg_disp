@@ -26,7 +26,8 @@ end
 video_filename = sprintf( 'gaze_signal_video_session-%s_run-%02d.mp4', session, str2double( run_number ) );
 video_filepath = fullfile( video_folder, video_filename );
 % Create VideoWriter object
-video_writer_obj = VideoWriter(video_filepath, 'MPEG-4');
+video_writer_obj = VideoWriter(video_filepath);
+% video_writer_obj = VideoWriter(video_filepath, 'MPEG-4');
 video_writer_obj.FrameRate = 100; % Adjust as needed
 video_writer_obj.Quality = 30; % Adjust as needed
 % Open the video writer
@@ -54,7 +55,7 @@ for i = 1:numel(all_time_inds)
     region = 'bla';
     sg_disp.plotting.draw_one_raster_timeframe_for_one_region( ...
         ax, spike_data, params, current_time, region );
-
+    % drawnow;
 
     title_str = sprintf('Gaze Signals for Session: %s; Run: %s;', session, run_number);
     sgtitle(title_str);
@@ -64,7 +65,7 @@ for i = 1:numel(all_time_inds)
     writeVideo( video_writer_obj, frame );
     
     if mod( i, progress_interval ) == 0
-        fprintf('Progress (Session: %s, Run: %s): %d / %d frames\n', ...
+        fprintf('    Progress (Session: %s, Run: %s): %d / %d frames\n', ...
             session, run_number, ...
             current_time_ind - all_time_inds(1) + 1, ...
             end_time_ind - all_time_inds(1) + 1);
@@ -72,5 +73,6 @@ for i = 1:numel(all_time_inds)
 end
 
 close( video_writer_obj );
+close all;
 
 end

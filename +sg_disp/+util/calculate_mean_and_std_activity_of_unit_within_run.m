@@ -62,6 +62,18 @@ function spike_data = calculate_mean_and_std_activity_of_unit_within_run(...
     spike_data.unit_inds_for_session = unit_inds_for_session;
     spike_data.mean_activity = mean_activity;
     spike_data.std_activity = std_activity;
-    spike_data.max_activity = max_activity;
-    spike_data.min_activity = min_activity;
+
+    mean_activity = mean_activity(~isnan( mean_activity ));
+    std_activity = std_activity(~isnan( std_activity ));
+    max_activity = max_activity(~isnan( max_activity ));
+    max_activity_z = (max_activity - mean_activity)./std_activity;
+    max_activity_z( isnan(max_activity_z) ) = 0;
+    max_activity_z = max( max_activity_z );
+    min_activity = min_activity(~isnan( min_activity ));
+    min_activity_z = (min_activity - mean_activity)./std_activity;
+    min_activity_z( isnan(min_activity_z) ) = 0;
+    min_activity_z = min( min_activity_z );
+
+    spike_data.max_activity_z = max_activity_z;
+    spike_data.min_activity_z = min_activity_z;
 end
