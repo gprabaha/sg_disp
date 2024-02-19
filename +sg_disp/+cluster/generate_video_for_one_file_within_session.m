@@ -23,7 +23,7 @@ video_folder = fullfile( data_p, 'gaze_signal_videos', session );
 if ~exist(video_folder, 'dir')
     mkdir(video_folder);
 end
-video_filename = sprintf( 'gaze_signal_video_session-%s_run-%02d.mp4', session, str2double( run_number ) );
+video_filename = sprintf( 'gaze_signal_video_session-%s_run-%02d', session, str2double( run_number ) );
 video_filepath = fullfile( video_folder, video_filename );
 % Create VideoWriter object
 video_writer_obj = VideoWriter(video_filepath);
