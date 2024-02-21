@@ -29,11 +29,12 @@ else
     high_color = [0, 1, 0]; % Green
     custom_colormap = create_custom_colormap( num_colors, low_color, high_color ); % Generate the custom colormap
     imagesc( relevant_axis, z_scored_spiking_mat, [-colorbar_positive_bound colorbar_positive_bound] );
-    [row, col] = size( z_scored_spiking_mat );
-    xlim( relevant_axis, [-0.5, col + 0.5] );
-    ylim( relevant_axis, [0.5, row + 0.5] );
-    colormap( relevant_axis, custom_colormap );
+    [n_rows, n_cols] = size( z_scored_spiking_mat );
+    xlim( relevant_axis, [-0.5, n_cols + 0.5] );
+    ylim( relevant_axis, [0.5, n_rows + 0.5] );
+    yticks(1:n_rows);
     yticklabels( relevant_axis, raster_celltype_labels );
+    colormap( relevant_axis, custom_colormap );
     colorbar( relevant_axis );
     % Raster
     for neuron = 1:num_neurons
