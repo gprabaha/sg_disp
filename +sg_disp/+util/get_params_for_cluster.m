@@ -12,12 +12,12 @@ function params = get_params_for_cluster()
     params.data_p                   = data_p;
     % Cluster specific params
     params.cluster_out_path         = '/gpfs/milgram/scratch60/chang/pg496/';
-    params.video_output_folder      = 'gaze_signal_videos_500fps';
-    params.clustur_job_suffix       = '500fps';
+    params.clustur_job_suffix       = '100fps';     
+    params.video_output_folder      = 'gaze_signal_videos_100fps';
+    params.frame_rate               = 100;
+    params.video_quality            = 50;
     params.mem_per_cpu              = 200; % gbs
     params.num_cpu                  = 10;
-    params.frame_rate               = 500;
-    params.video_quality            = 50;
     % Behavioral file paths
     params.pos_file_list            = pos_file_list;
     params.fix_file_list            = fix_file_list;
