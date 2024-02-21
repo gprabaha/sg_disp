@@ -32,7 +32,7 @@ else
     [n_rows, n_cols] = size( z_scored_spiking_mat );
     xlim( relevant_axis, [-0.5, n_cols + 0.5] );
     ylim( relevant_axis, [0.5, n_rows + 0.5] );
-    yticks(1:n_rows);
+    yticks( 1:n_rows );
     yticklabels( relevant_axis, raster_celltype_labels );
     colormap( relevant_axis, custom_colormap );
     colorbar( relevant_axis );
@@ -41,7 +41,7 @@ else
         firing_times = find(raster_mat(neuron, :) == 1);
         plot( relevant_axis, firing_times, repmat(neuron, size(firing_times)), '|k', 'LineWidth', 2);
     end
-    title_string = sprintf( 'Raster plot for units in %s overlayed on Z-scored spikng rate', region );
+    title_string = sprintf( 'Raster plot for units in %s overlayed on Z-scored spiking rate', region );
     xlabel( relevant_axis, 'Time (ms)' );
     x_tick_nums = -500:50:0;
     x_tick_nums = num2str( x_tick_nums' );

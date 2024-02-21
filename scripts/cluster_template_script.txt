@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=%s
 #SBATCH --mem=%sG
 #SBATCH --time=3-00:00:00
-#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-type=FAIL
 
 module load MATLAB/2022b
 
