@@ -11,6 +11,10 @@ spike_labels            = spike_data.spike_labels;
 %%
 params                  = sg_disp.util.get_params_for_cluster();
 
+params.clustur_job_suffix       = '500fps';
+params.video_output_folder      = 'gaze_signal_videos_500fps';
+params.frame_rate               = 500;
+
 clustur_job_suffix      = params.clustur_job_suffix;
 mem_per_cpu             = params.mem_per_cpu;
 num_cpu                 = params.num_cpu;
