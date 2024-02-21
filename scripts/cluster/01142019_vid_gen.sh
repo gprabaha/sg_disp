@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=01142019_1000fps
-#SBATCH --output=cluster/01142019_1000fps.out
-#SBATCH --error=cluster/01142019_1000fps.err
+#SBATCH --job-name=01142019_500fps
+#SBATCH --output=cluster/01142019_500fps.out
+#SBATCH --error=cluster/01142019_500fps.err
 #SBATCH --partition=psych_week
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=10
