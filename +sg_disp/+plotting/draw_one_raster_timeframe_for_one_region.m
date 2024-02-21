@@ -6,6 +6,8 @@ relevant_axis           = ax.(region);
 max_activity_z          = spike_data.max_activity_z;
 min_activity_z          = spike_data.min_activity_z;
 
+z_score_stdev_bound     = params.z_score_stdev_bound;
+
 [raster_mat, z_scored_spiking_mat, raster_celltype_labels] = ...
     sg_disp.plotting.extract_raster_data_for_one_timeframe(...
     spike_data, params, current_time, region);
@@ -21,12 +23,12 @@ else
     num_neurons = size( raster_mat, 1 );
     hold( relevant_axis, 'on' );
     % Raster background
-    bound = max( abs(max_activity_z), abs(min_activity_z) )/3;
+    colorbar_positive_bound = z_score_stdev_bound;
     num_colors = 501; 
     low_color = [1, 0, 0]; % Red
     high_color = [0, 1, 0]; % Green
     custom_colormap = create_custom_colormap( num_colors, low_color, high_color ); % Generate the custom colormap
-    imagesc( relevant_axis, z_scored_spiking_mat, [-bound bound] );
+    imagesc( relevant_axis, z_scored_spiking_mat, [-colorbar_positive_bound colorbar_positive_bound] );
     [row, col] = size( z_scored_spiking_mat );
     xlim( relevant_axis, [-0.5, col + 0.5] );
     ylim( relevant_axis, [0.5, row + 0.5] );
