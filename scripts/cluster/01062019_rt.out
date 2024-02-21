@@ -1,0 +1,236 @@
+MATLAB is selecting SOFTWARE OPENGL rendering.
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2022 The MathWorks, Inc.
+             R2022b Update 1 (9.13.0.2080170) 64-bit (glnxa64)
+                             September 28, 2022
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+[Warning: Function newline has the same name as a MATLAB builtin. We suggest you
+rename the function to avoid a potential name conflict.] 
+[> In path (line 109)
+In addpath (line 86)] 
+[Warning: Function randi has the same name as a MATLAB builtin. We suggest you
+rename the function to avoid a potential name conflict.] 
+[> In path (line 109)
+In addpath (line 86)] 
+Starting parallel pool (parpool) using the 'Processes' profile ...
+[Warning: The system time zone setting, 'US/Eastern', does not specify a single
+time zone unambiguously. It will be treated as 'America/New_York'. See the <a
+href="matlab:doc('datetime.TimeZone')">datetime.TimeZone property</a> for
+details about specifying time zones.] 
+[> In verifyTimeZone (line 38)
+In datetime (line 559)
+In parallel.internal.pool.JavaBackedSessionNotifier>iLongToDatetime (line 128)
+In parallel.internal.pool.JavaBackedSessionNotifier>iJavaDateToDatetime (line
+148)
+In parallel.internal.pool.JavaBackedSessionNotifier.sessionInfoFromJava (line
+102)
+In parallel.internal.pool/JavaBackedSessionNotifier/wrapNotificationMethod
+(line 17)
+In parallel.internal.pool/JavaBackedSessionNotifier/notifyAboutToStart (line
+36)
+In parallel.internal.pool.ISessionNotifier.buildAboutToStartInfo (line 34)
+In parallel.internal.pool.argumentsParser>iPoolStartingMessage (line 188)
+In parallel.internal.pool.argumentsParser>iGetClusterAndNumWorkers (line 108)
+In parallel.internal.pool.argumentsParser (line 45)
+In parallel.internal.pool.doParpool (line 17)
+In parpool (line 127)
+In parallel.internal.parpool.getOrCreateCurrentPool (line 17)
+In parallel.internal.pool.PoolArrayManager.getOrAutoCreateWithCleanup (line 44)
+In pctTryCreatePoolIfNecessary (line 28)
+In parallel_function (line 423)
+In sg_disp.cluster.generate_video_for_one_session (line 21)
+] 
+Connected to the parallel pool (number of workers: 12).
+Warning: Directory already exists.
+Warning: Directory already exists.
+Warning: Directory already exists.
+Warning: Directory already exists.
+Warning: Directory already exists.
+Warning: Directory already exists.
+Warning: Directory already exists.
+Warning: Directory already exists.
+Warning: Directory already exists.
+> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sg_disp.cluster.generate_video_for_one_file_within_session', '/gpfs/milgram/pi/chang/pg496/repositories/sg_disp/+sg_disp/+cluster/generate_video_for_one_file_within_session.m', 27)" style="font-weight:bold">sg_disp.cluster.generate_video_for_one_file_within_session</a> (<a href="matlab: opentoline('/gpfs/milgram/pi/chang/pg496/repositories/sg_disp/+sg_disp/+cluster/generate_video_for_one_file_within_session.m',27,0)">line 27</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('parallel_function>make_general_channel/channel_general', '/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/matlab/lang/parallel_function.m', 852)" style="font-weight:bold">parallel_function>make_general_channel/channel_general</a> (<a href="matlab: opentoline('/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/matlab/lang/parallel_function.m',852,0)">line 852</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('remoteParallelFunction', '/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/parallel/remoteParallelFunction.m', 67)" style="font-weight:bold">remoteParallelFunction</a> (<a href="matlab: opentoline('/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/parallel/remoteParallelFunction.m',67,0)">line 67</a>)
+    Progress (Session: 01062019, Run: 6): 1000 / 298488 frames
+> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sg_disp.cluster.generate_video_for_one_file_within_session', '/gpfs/milgram/pi/chang/pg496/repositories/sg_disp/+sg_disp/+cluster/generate_video_for_one_file_within_session.m', 27)" style="font-weight:bold">sg_disp.cluster.generate_video_for_one_file_within_session</a> (<a href="matlab: opentoline('/gpfs/milgram/pi/chang/pg496/repositories/sg_disp/+sg_disp/+cluster/generate_video_for_one_file_within_session.m',27,0)">line 27</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('parallel_function>make_general_channel/channel_general', '/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/matlab/lang/parallel_function.m', 852)" style="font-weight:bold">parallel_function>make_general_channel/channel_general</a> (<a href="matlab: opentoline('/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/matlab/lang/parallel_function.m',852,0)">line 852</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('remoteParallelFunction', '/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/parallel/remoteParallelFunction.m', 67)" style="font-weight:bold">remoteParallelFunction</a> (<a href="matlab: opentoline('/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/parallel/remoteParallelFunction.m',67,0)">line 67</a>)
+    Progress (Session: 01062019, Run: 3): 1000 / 298484 frames
+> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sg_disp.cluster.generate_video_for_one_file_within_session', '/gpfs/milgram/pi/chang/pg496/repositories/sg_disp/+sg_disp/+cluster/generate_video_for_one_file_within_session.m', 27)" style="font-weight:bold">sg_disp.cluster.generate_video_for_one_file_within_session</a> (<a href="matlab: opentoline('/gpfs/milgram/pi/chang/pg496/repositories/sg_disp/+sg_disp/+cluster/generate_video_for_one_file_within_session.m',27,0)">line 27</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('parallel_function>make_general_channel/channel_general', '/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/matlab/lang/parallel_function.m', 852)" style="font-weight:bold">parallel_function>make_general_channel/channel_general</a> (<a href="matlab: opentoline('/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/matlab/lang/parallel_function.m',852,0)">line 852</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('remoteParallelFunction', '/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/parallel/remoteParallelFunction.m', 67)" style="font-weight:bold">remoteParallelFunction</a> (<a href="matlab: opentoline('/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/parallel/remoteParallelFunction.m',67,0)">line 67</a>)
+    Progress (Session: 01062019, Run: 2): 1000 / 298521 frames
+> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sg_disp.cluster.generate_video_for_one_file_within_session', '/gpfs/milgram/pi/chang/pg496/repositories/sg_disp/+sg_disp/+cluster/generate_video_for_one_file_within_session.m', 27)" style="font-weight:bold">sg_disp.cluster.generate_video_for_one_file_within_session</a> (<a href="matlab: opentoline('/gpfs/milgram/pi/chang/pg496/repositories/sg_disp/+sg_disp/+cluster/generate_video_for_one_file_within_session.m',27,0)">line 27</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('parallel_function>make_general_channel/channel_general', '/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/matlab/lang/parallel_function.m', 852)" style="font-weight:bold">parallel_function>make_general_channel/channel_general</a> (<a href="matlab: opentoline('/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/matlab/lang/parallel_function.m',852,0)">line 852</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('remoteParallelFunction', '/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/parallel/remoteParallelFunction.m', 67)" style="font-weight:bold">remoteParallelFunction</a> (<a href="matlab: opentoline('/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/parallel/remoteParallelFunction.m',67,0)">line 67</a>)
+    Progress (Session: 01062019, Run: 8): 1000 / 298508 frames
+> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sg_disp.cluster.generate_video_for_one_file_within_session', '/gpfs/milgram/pi/chang/pg496/repositories/sg_disp/+sg_disp/+cluster/generate_video_for_one_file_within_session.m', 27)" style="font-weight:bold">sg_disp.cluster.generate_video_for_one_file_within_session</a> (<a href="matlab: opentoline('/gpfs/milgram/pi/chang/pg496/repositories/sg_disp/+sg_disp/+cluster/generate_video_for_one_file_within_session.m',27,0)">line 27</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('parallel_function>make_general_channel/channel_general', '/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/matlab/lang/parallel_function.m', 852)" style="font-weight:bold">parallel_function>make_general_channel/channel_general</a> (<a href="matlab: opentoline('/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/matlab/lang/parallel_function.m',852,0)">line 852</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('remoteParallelFunction', '/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/parallel/remoteParallelFunction.m', 67)" style="font-weight:bold">remoteParallelFunction</a> (<a href="matlab: opentoline('/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/parallel/remoteParallelFunction.m',67,0)">line 67</a>)
+    Progress (Session: 01062019, Run: 4): 1000 / 298488 frames
+> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sg_disp.cluster.generate_video_for_one_file_within_session', '/gpfs/milgram/pi/chang/pg496/repositories/sg_disp/+sg_disp/+cluster/generate_video_for_one_file_within_session.m', 27)" style="font-weight:bold">sg_disp.cluster.generate_video_for_one_file_within_session</a> (<a href="matlab: opentoline('/gpfs/milgram/pi/chang/pg496/repositories/sg_disp/+sg_disp/+cluster/generate_video_for_one_file_within_session.m',27,0)">line 27</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('parallel_function>make_general_channel/channel_general', '/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/matlab/lang/parallel_function.m', 852)" style="font-weight:bold">parallel_function>make_general_channel/channel_general</a> (<a href="matlab: opentoline('/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/matlab/lang/parallel_function.m',852,0)">line 852</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('remoteParallelFunction', '/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/parallel/remoteParallelFunction.m', 67)" style="font-weight:bold">remoteParallelFunction</a> (<a href="matlab: opentoline('/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/parallel/remoteParallelFunction.m',67,0)">line 67</a>)
+    Progress (Session: 01062019, Run: 10): 1000 / 298518 frames
+    Progress (Session: 01062019, Run: 5): 1000 / 298512 frames
+> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sg_disp.cluster.generate_video_for_one_file_within_session', '/gpfs/milgram/pi/chang/pg496/repositories/sg_disp/+sg_disp/+cluster/generate_video_for_one_file_within_session.m', 27)" style="font-weight:bold">sg_disp.cluster.generate_video_for_one_file_within_session</a> (<a href="matlab: opentoline('/gpfs/milgram/pi/chang/pg496/repositories/sg_disp/+sg_disp/+cluster/generate_video_for_one_file_within_session.m',27,0)">line 27</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('parallel_function>make_general_channel/channel_general', '/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/matlab/lang/parallel_function.m', 852)" style="font-weight:bold">parallel_function>make_general_channel/channel_general</a> (<a href="matlab: opentoline('/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/matlab/lang/parallel_function.m',852,0)">line 852</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('remoteParallelFunction', '/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/parallel/remoteParallelFunction.m', 67)" style="font-weight:bold">remoteParallelFunction</a> (<a href="matlab: opentoline('/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/parallel/remoteParallelFunction.m',67,0)">line 67</a>)
+    Progress (Session: 01062019, Run: 7): 1000 / 298507 frames
+> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sg_disp.cluster.generate_video_for_one_file_within_session', '/gpfs/milgram/pi/chang/pg496/repositories/sg_disp/+sg_disp/+cluster/generate_video_for_one_file_within_session.m', 27)" style="font-weight:bold">sg_disp.cluster.generate_video_for_one_file_within_session</a> (<a href="matlab: opentoline('/gpfs/milgram/pi/chang/pg496/repositories/sg_disp/+sg_disp/+cluster/generate_video_for_one_file_within_session.m',27,0)">line 27</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('parallel_function>make_general_channel/channel_general', '/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/matlab/lang/parallel_function.m', 852)" style="font-weight:bold">parallel_function>make_general_channel/channel_general</a> (<a href="matlab: opentoline('/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/matlab/lang/parallel_function.m',852,0)">line 852</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('remoteParallelFunction', '/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/parallel/remoteParallelFunction.m', 67)" style="font-weight:bold">remoteParallelFunction</a> (<a href="matlab: opentoline('/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/parallel/remoteParallelFunction.m',67,0)">line 67</a>)
+    Progress (Session: 01062019, Run: 1): 1000 / 298492 frames
+> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('sg_disp.cluster.generate_video_for_one_file_within_session', '/gpfs/milgram/pi/chang/pg496/repositories/sg_disp/+sg_disp/+cluster/generate_video_for_one_file_within_session.m', 27)" style="font-weight:bold">sg_disp.cluster.generate_video_for_one_file_within_session</a> (<a href="matlab: opentoline('/gpfs/milgram/pi/chang/pg496/repositories/sg_disp/+sg_disp/+cluster/generate_video_for_one_file_within_session.m',27,0)">line 27</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('parallel_function>make_general_channel/channel_general', '/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/matlab/lang/parallel_function.m', 852)" style="font-weight:bold">parallel_function>make_general_channel/channel_general</a> (<a href="matlab: opentoline('/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/matlab/lang/parallel_function.m',852,0)">line 852</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('remoteParallelFunction', '/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/parallel/remoteParallelFunction.m', 67)" style="font-weight:bold">remoteParallelFunction</a> (<a href="matlab: opentoline('/gpfs/milgram/apps/hpc.rhel7/software/MATLAB/2022b/toolbox/parallel/remoteParallelFunction.m',67,0)">line 67</a>)
+    Progress (Session: 01062019, Run: 9): 1000 / 298494 frames
+    Progress (Session: 01062019, Run: 6): 2000 / 298488 frames
+    Progress (Session: 01062019, Run: 2): 2000 / 298521 frames
+    Progress (Session: 01062019, Run: 3): 2000 / 298484 frames
+    Progress (Session: 01062019, Run: 8): 2000 / 298508 frames
+    Progress (Session: 01062019, Run: 7): 2000 / 298507 frames
+    Progress (Session: 01062019, Run: 5): 2000 / 298512 frames
+    Progress (Session: 01062019, Run: 1): 2000 / 298492 frames
+    Progress (Session: 01062019, Run: 4): 2000 / 298488 frames
+    Progress (Session: 01062019, Run: 10): 2000 / 298518 frames
+    Progress (Session: 01062019, Run: 9): 2000 / 298494 frames
+    Progress (Session: 01062019, Run: 6): 3000 / 298488 frames
+    Progress (Session: 01062019, Run: 2): 3000 / 298521 frames
+    Progress (Session: 01062019, Run: 3): 3000 / 298484 frames
+    Progress (Session: 01062019, Run: 8): 3000 / 298508 frames
+    Progress (Session: 01062019, Run: 7): 3000 / 298507 frames
+    Progress (Session: 01062019, Run: 5): 3000 / 298512 frames
+    Progress (Session: 01062019, Run: 4): 3000 / 298488 frames
+    Progress (Session: 01062019, Run: 1): 3000 / 298492 frames
+    Progress (Session: 01062019, Run: 9): 3000 / 298494 frames
+    Progress (Session: 01062019, Run: 10): 3000 / 298518 frames
+    Progress (Session: 01062019, Run: 6): 4000 / 298488 frames
+    Progress (Session: 01062019, Run: 2): 4000 / 298521 frames
+    Progress (Session: 01062019, Run: 3): 4000 / 298484 frames
+    Progress (Session: 01062019, Run: 8): 4000 / 298508 frames
+    Progress (Session: 01062019, Run: 5): 4000 / 298512 frames
+    Progress (Session: 01062019, Run: 4): 4000 / 298488 frames
+    Progress (Session: 01062019, Run: 7): 4000 / 298507 frames
+    Progress (Session: 01062019, Run: 1): 4000 / 298492 frames
+    Progress (Session: 01062019, Run: 10): 4000 / 298518 frames
+    Progress (Session: 01062019, Run: 9): 4000 / 298494 frames
+    Progress (Session: 01062019, Run: 6): 5000 / 298488 frames
+    Progress (Session: 01062019, Run: 2): 5000 / 298521 frames
+    Progress (Session: 01062019, Run: 3): 5000 / 298484 frames
+    Progress (Session: 01062019, Run: 8): 5000 / 298508 frames
+    Progress (Session: 01062019, Run: 5): 5000 / 298512 frames
+    Progress (Session: 01062019, Run: 4): 5000 / 298488 frames
+    Progress (Session: 01062019, Run: 7): 5000 / 298507 frames
+    Progress (Session: 01062019, Run: 10): 5000 / 298518 frames
+    Progress (Session: 01062019, Run: 1): 5000 / 298492 frames
+    Progress (Session: 01062019, Run: 9): 5000 / 298494 frames
+    Progress (Session: 01062019, Run: 6): 6000 / 298488 frames
+    Progress (Session: 01062019, Run: 2): 6000 / 298521 frames
+    Progress (Session: 01062019, Run: 3): 6000 / 298484 frames
+    Progress (Session: 01062019, Run: 8): 6000 / 298508 frames
+    Progress (Session: 01062019, Run: 5): 6000 / 298512 frames
+    Progress (Session: 01062019, Run: 4): 6000 / 298488 frames
+    Progress (Session: 01062019, Run: 7): 6000 / 298507 frames
+    Progress (Session: 01062019, Run: 1): 6000 / 298492 frames
+    Progress (Session: 01062019, Run: 10): 6000 / 298518 frames
+    Progress (Session: 01062019, Run: 9): 6000 / 298494 frames
+    Progress (Session: 01062019, Run: 6): 7000 / 298488 frames
+    Progress (Session: 01062019, Run: 2): 7000 / 298521 frames
+    Progress (Session: 01062019, Run: 3): 7000 / 298484 frames
+    Progress (Session: 01062019, Run: 8): 7000 / 298508 frames
+    Progress (Session: 01062019, Run: 5): 7000 / 298512 frames
+    Progress (Session: 01062019, Run: 10): 7000 / 298518 frames
+    Progress (Session: 01062019, Run: 4): 7000 / 298488 frames
+    Progress (Session: 01062019, Run: 7): 7000 / 298507 frames
+    Progress (Session: 01062019, Run: 1): 7000 / 298492 frames
+    Progress (Session: 01062019, Run: 9): 7000 / 298494 frames
+    Progress (Session: 01062019, Run: 6): 8000 / 298488 frames
+    Progress (Session: 01062019, Run: 2): 8000 / 298521 frames
+    Progress (Session: 01062019, Run: 3): 8000 / 298484 frames
+    Progress (Session: 01062019, Run: 8): 8000 / 298508 frames
+    Progress (Session: 01062019, Run: 5): 8000 / 298512 frames
+    Progress (Session: 01062019, Run: 7): 8000 / 298507 frames
+    Progress (Session: 01062019, Run: 10): 8000 / 298518 frames
+    Progress (Session: 01062019, Run: 4): 8000 / 298488 frames
+    Progress (Session: 01062019, Run: 1): 8000 / 298492 frames
+    Progress (Session: 01062019, Run: 9): 8000 / 298494 frames
+    Progress (Session: 01062019, Run: 6): 9000 / 298488 frames
+    Progress (Session: 01062019, Run: 2): 9000 / 298521 frames
+    Progress (Session: 01062019, Run: 3): 9000 / 298484 frames
+    Progress (Session: 01062019, Run: 8): 9000 / 298508 frames
+    Progress (Session: 01062019, Run: 5): 9000 / 298512 frames
+    Progress (Session: 01062019, Run: 7): 9000 / 298507 frames
+    Progress (Session: 01062019, Run: 10): 9000 / 298518 frames
+    Progress (Session: 01062019, Run: 4): 9000 / 298488 frames
+    Progress (Session: 01062019, Run: 1): 9000 / 298492 frames
+    Progress (Session: 01062019, Run: 9): 9000 / 298494 frames
+    Progress (Session: 01062019, Run: 6): 10000 / 298488 frames
+    Progress (Session: 01062019, Run: 2): 10000 / 298521 frames
+    Progress (Session: 01062019, Run: 8): 10000 / 298508 frames
+    Progress (Session: 01062019, Run: 3): 10000 / 298484 frames
+    Progress (Session: 01062019, Run: 5): 10000 / 298512 frames
+    Progress (Session: 01062019, Run: 7): 10000 / 298507 frames
+    Progress (Session: 01062019, Run: 10): 10000 / 298518 frames
+    Progress (Session: 01062019, Run: 4): 10000 / 298488 frames
+    Progress (Session: 01062019, Run: 1): 10000 / 298492 frames
+    Progress (Session: 01062019, Run: 9): 10000 / 298494 frames
+    Progress (Session: 01062019, Run: 6): 11000 / 298488 frames
+    Progress (Session: 01062019, Run: 2): 11000 / 298521 frames
+    Progress (Session: 01062019, Run: 8): 11000 / 298508 frames
+    Progress (Session: 01062019, Run: 3): 11000 / 298484 frames
+    Progress (Session: 01062019, Run: 5): 11000 / 298512 frames
+    Progress (Session: 01062019, Run: 7): 11000 / 298507 frames
+    Progress (Session: 01062019, Run: 10): 11000 / 298518 frames
+    Progress (Session: 01062019, Run: 4): 11000 / 298488 frames
+    Progress (Session: 01062019, Run: 1): 11000 / 298492 frames
+    Progress (Session: 01062019, Run: 9): 11000 / 298494 frames
+    Progress (Session: 01062019, Run: 6): 12000 / 298488 frames
+    Progress (Session: 01062019, Run: 2): 12000 / 298521 frames
+    Progress (Session: 01062019, Run: 8): 12000 / 298508 frames
+    Progress (Session: 01062019, Run: 3): 12000 / 298484 frames
+    Progress (Session: 01062019, Run: 5): 12000 / 298512 frames
+    Progress (Session: 01062019, Run: 7): 12000 / 298507 frames
+    Progress (Session: 01062019, Run: 10): 12000 / 298518 frames
+    Progress (Session: 01062019, Run: 4): 12000 / 298488 frames
+    Progress (Session: 01062019, Run: 1): 12000 / 298492 frames
+    Progress (Session: 01062019, Run: 9): 12000 / 298494 frames
+    Progress (Session: 01062019, Run: 6): 13000 / 298488 frames
+    Progress (Session: 01062019, Run: 2): 13000 / 298521 frames
+    Progress (Session: 01062019, Run: 8): 13000 / 298508 frames
+    Progress (Session: 01062019, Run: 3): 13000 / 298484 frames
+    Progress (Session: 01062019, Run: 5): 13000 / 298512 frames
+    Progress (Session: 01062019, Run: 7): 13000 / 298507 frames
+    Progress (Session: 01062019, Run: 4): 13000 / 298488 frames
+    Progress (Session: 01062019, Run: 10): 13000 / 298518 frames
+    Progress (Session: 01062019, Run: 1): 13000 / 298492 frames
+    Progress (Session: 01062019, Run: 9): 13000 / 298494 frames
+    Progress (Session: 01062019, Run: 6): 14000 / 298488 frames
+    Progress (Session: 01062019, Run: 2): 14000 / 298521 frames
+    Progress (Session: 01062019, Run: 8): 14000 / 298508 frames
+    Progress (Session: 01062019, Run: 3): 14000 / 298484 frames
+    Progress (Session: 01062019, Run: 5): 14000 / 298512 frames
+    Progress (Session: 01062019, Run: 7): 14000 / 298507 frames
+    Progress (Session: 01062019, Run: 4): 14000 / 298488 frames
+    Progress (Session: 01062019, Run: 1): 14000 / 298492 frames
+    Progress (Session: 01062019, Run: 10): 14000 / 298518 frames
+    Progress (Session: 01062019, Run: 9): 14000 / 298494 frames
+    Progress (Session: 01062019, Run: 6): 15000 / 298488 frames
+    Progress (Session: 01062019, Run: 2): 15000 / 298521 frames
+    Progress (Session: 01062019, Run: 8): 15000 / 298508 frames
+    Progress (Session: 01062019, Run: 3): 15000 / 298484 frames
+    Progress (Session: 01062019, Run: 5): 15000 / 298512 frames
+    Progress (Session: 01062019, Run: 7): 15000 / 298507 frames
+    Progress (Session: 01062019, Run: 4): 15000 / 298488 frames
+    Progress (Session: 01062019, Run: 1): 15000 / 298492 frames
+    Progress (Session: 01062019, Run: 10): 15000 / 298518 frames
+    Progress (Session: 01062019, Run: 9): 15000 / 298494 frames
+    Progress (Session: 01062019, Run: 2): 16000 / 298521 frames
+    Progress (Session: 01062019, Run: 6): 16000 / 298488 frames

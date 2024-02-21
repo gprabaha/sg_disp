@@ -1174,3 +1174,81 @@ Connected to the parallel pool (number of workers: 12).
     Progress (Session: 01102019, Run: 7): 110000 / 298533 frames
     Progress (Session: 01102019, Run: 5): 110000 / 298543 frames
     Progress (Session: 01102019, Run: 8): 111000 / 298505 frames
+    Progress (Session: 01102019, Run: 1): 111000 / 298527 frames
+    Progress (Session: 01102019, Run: 10): 111000 / 298514 frames
+    Progress (Session: 01102019, Run: 9): 110000 / 298545 frames
+    Progress (Session: 01102019, Run: 2): 113000 / 298531 frames
+    Progress (Session: 01102019, Run: 6): 111000 / 298552 frames
+    Progress (Session: 01102019, Run: 4): 111000 / 298533 frames
+    Progress (Session: 01102019, Run: 3): 112000 / 298532 frames
+    Progress (Session: 01102019, Run: 7): 111000 / 298533 frames
+    Progress (Session: 01102019, Run: 5): 111000 / 298543 frames
+    Progress (Session: 01102019, Run: 8): 112000 / 298505 frames
+    Progress (Session: 01102019, Run: 1): 112000 / 298527 frames
+    Progress (Session: 01102019, Run: 10): 112000 / 298514 frames
+    Progress (Session: 01102019, Run: 9): 111000 / 298545 frames
+    Progress (Session: 01102019, Run: 2): 114000 / 298531 frames
+    Progress (Session: 01102019, Run: 6): 112000 / 298552 frames
+    Progress (Session: 01102019, Run: 3): 113000 / 298532 frames
+    Progress (Session: 01102019, Run: 4): 112000 / 298533 frames
+    Progress (Session: 01102019, Run: 7): 112000 / 298533 frames
+    Progress (Session: 01102019, Run: 5): 112000 / 298543 frames
+    Progress (Session: 01102019, Run: 8): 113000 / 298505 frames
+    Progress (Session: 01102019, Run: 1): 113000 / 298527 frames
+    Progress (Session: 01102019, Run: 10): 113000 / 298514 frames
+    Progress (Session: 01102019, Run: 9): 112000 / 298545 frames
+    Progress (Session: 01102019, Run: 2): 115000 / 298531 frames
+    Progress (Session: 01102019, Run: 6): 113000 / 298552 frames
+    Progress (Session: 01102019, Run: 3): 114000 / 298532 frames
+    Progress (Session: 01102019, Run: 4): 113000 / 298533 frames
+    Progress (Session: 01102019, Run: 7): 113000 / 298533 frames
+    Progress (Session: 01102019, Run: 5): 113000 / 298543 frames
+    Progress (Session: 01102019, Run: 8): 114000 / 298505 frames
+    Progress (Session: 01102019, Run: 1): 114000 / 298527 frames
+    Progress (Session: 01102019, Run: 10): 114000 / 298514 frames
+    Progress (Session: 01102019, Run: 9): 113000 / 298545 frames
+    Progress (Session: 01102019, Run: 2): 116000 / 298531 frames
+    Progress (Session: 01102019, Run: 6): 114000 / 298552 frames
+    Progress (Session: 01102019, Run: 3): 115000 / 298532 frames
+    Progress (Session: 01102019, Run: 4): 114000 / 298533 frames
+    Progress (Session: 01102019, Run: 7): 114000 / 298533 frames
+    Progress (Session: 01102019, Run: 5): 114000 / 298543 frames
+    Progress (Session: 01102019, Run: 8): 115000 / 298505 frames
+    Progress (Session: 01102019, Run: 1): 115000 / 298527 frames
+    Progress (Session: 01102019, Run: 10): 115000 / 298514 frames
+    Progress (Session: 01102019, Run: 9): 114000 / 298545 frames
+    Progress (Session: 01102019, Run: 2): 117000 / 298531 frames
+    Progress (Session: 01102019, Run: 3): 116000 / 298532 frames
+    Progress (Session: 01102019, Run: 6): 115000 / 298552 frames
+    Progress (Session: 01102019, Run: 4): 115000 / 298533 frames
+    Progress (Session: 01102019, Run: 7): 115000 / 298533 frames
+    Progress (Session: 01102019, Run: 5): 115000 / 298543 frames
+    Progress (Session: 01102019, Run: 8): 116000 / 298505 frames
+    Progress (Session: 01102019, Run: 1): 116000 / 298527 frames
+    Progress (Session: 01102019, Run: 10): 116000 / 298514 frames
+    Progress (Session: 01102019, Run: 9): 115000 / 298545 frames
+    Progress (Session: 01102019, Run: 2): 118000 / 298531 frames
+    Progress (Session: 01102019, Run: 3): 117000 / 298532 frames
+    Progress (Session: 01102019, Run: 6): 116000 / 298552 frames
+    Progress (Session: 01102019, Run: 4): 116000 / 298533 frames
+    Progress (Session: 01102019, Run: 7): 116000 / 298533 frames
+    Progress (Session: 01102019, Run: 5): 116000 / 298543 frames
+    Progress (Session: 01102019, Run: 8): 117000 / 298505 frames
+    Progress (Session: 01102019, Run: 1): 117000 / 298527 frames
+    Progress (Session: 01102019, Run: 10): 117000 / 298514 frames
+    Progress (Session: 01102019, Run: 2): 119000 / 298531 frames
+    Progress (Session: 01102019, Run: 9): 116000 / 298545 frames
+    Progress (Session: 01102019, Run: 3): 118000 / 298532 frames
+    Progress (Session: 01102019, Run: 6): 117000 / 298552 frames
+    Progress (Session: 01102019, Run: 7): 117000 / 298533 frames
+    Progress (Session: 01102019, Run: 4): 117000 / 298533 frames
+    Progress (Session: 01102019, Run: 5): 117000 / 298543 frames
+    Progress (Session: 01102019, Run: 8): 118000 / 298505 frames
+    Progress (Session: 01102019, Run: 1): 118000 / 298527 frames
+[Warning: A worker aborted during execution of the parfor loop. The parfor loop
+will now run again on the remaining workers.] 
+[> In distcomp/remoteparfor/handleIntervalErrorResult (line 246)
+In distcomp/remoteparfor/getCompleteIntervals (line 396)
+In parallel_function>distributed_execution (line 746)
+In parallel_function (line 578)
+In sg_disp.cluster.generate_video_for_one_session (line 21)] 

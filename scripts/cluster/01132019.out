@@ -1264,3 +1264,66 @@ In sg_disp.cluster.generate_video_for_one_session (line 21)]
     Progress (Session: 01132019, Run: 9): 7000 / 298507 frames
     Progress (Session: 01132019, Run: 5): 7000 / 298326 frames
     Progress (Session: 01132019, Run: 3): 7000 / 298495 frames
+    Progress (Session: 01132019, Run: 10): 7000 / 298501 frames
+    Progress (Session: 01132019, Run: 8): 7000 / 298504 frames
+    Progress (Session: 01132019, Run: 2): 7000 / 298479 frames
+    Progress (Session: 01132019, Run: 1): 7000 / 298493 frames
+    Progress (Session: 01132019, Run: 4): 7000 / 298483 frames
+    Progress (Session: 01132019, Run: 7): 7000 / 298490 frames
+    Progress (Session: 01132019, Run: 6): 8000 / 298494 frames
+    Progress (Session: 01132019, Run: 9): 8000 / 298507 frames
+    Progress (Session: 01132019, Run: 5): 8000 / 298326 frames
+    Progress (Session: 01132019, Run: 3): 8000 / 298495 frames
+    Progress (Session: 01132019, Run: 10): 8000 / 298501 frames
+    Progress (Session: 01132019, Run: 8): 8000 / 298504 frames
+    Progress (Session: 01132019, Run: 2): 8000 / 298479 frames
+    Progress (Session: 01132019, Run: 1): 8000 / 298493 frames
+    Progress (Session: 01132019, Run: 4): 8000 / 298483 frames
+    Progress (Session: 01132019, Run: 7): 8000 / 298490 frames
+    Progress (Session: 01132019, Run: 6): 9000 / 298494 frames
+    Progress (Session: 01132019, Run: 9): 9000 / 298507 frames
+    Progress (Session: 01132019, Run: 5): 9000 / 298326 frames
+    Progress (Session: 01132019, Run: 3): 9000 / 298495 frames
+    Progress (Session: 01132019, Run: 10): 9000 / 298501 frames
+    Progress (Session: 01132019, Run: 8): 9000 / 298504 frames
+    Progress (Session: 01132019, Run: 2): 9000 / 298479 frames
+    Progress (Session: 01132019, Run: 1): 9000 / 298493 frames
+    Progress (Session: 01132019, Run: 4): 9000 / 298483 frames
+    Progress (Session: 01132019, Run: 7): 9000 / 298490 frames
+    Progress (Session: 01132019, Run: 6): 10000 / 298494 frames
+    Progress (Session: 01132019, Run: 9): 10000 / 298507 frames
+    Progress (Session: 01132019, Run: 5): 10000 / 298326 frames
+    Progress (Session: 01132019, Run: 3): 10000 / 298495 frames
+    Progress (Session: 01132019, Run: 10): 10000 / 298501 frames
+    Progress (Session: 01132019, Run: 8): 10000 / 298504 frames
+    Progress (Session: 01132019, Run: 2): 10000 / 298479 frames
+    Progress (Session: 01132019, Run: 1): 10000 / 298493 frames
+    Progress (Session: 01132019, Run: 4): 10000 / 298483 frames
+    Progress (Session: 01132019, Run: 7): 10000 / 298490 frames
+    Progress (Session: 01132019, Run: 6): 11000 / 298494 frames
+    Progress (Session: 01132019, Run: 9): 11000 / 298507 frames
+    Progress (Session: 01132019, Run: 5): 11000 / 298326 frames
+    Progress (Session: 01132019, Run: 10): 11000 / 298501 frames
+    Progress (Session: 01132019, Run: 3): 11000 / 298495 frames
+    Progress (Session: 01132019, Run: 8): 11000 / 298504 frames
+    Progress (Session: 01132019, Run: 2): 11000 / 298479 frames
+    Progress (Session: 01132019, Run: 1): 11000 / 298493 frames
+    Progress (Session: 01132019, Run: 4): 11000 / 298483 frames
+    Progress (Session: 01132019, Run: 7): 11000 / 298490 frames
+    Progress (Session: 01132019, Run: 6): 12000 / 298494 frames
+    Progress (Session: 01132019, Run: 9): 12000 / 298507 frames
+    Progress (Session: 01132019, Run: 5): 12000 / 298326 frames
+    Progress (Session: 01132019, Run: 10): 12000 / 298501 frames
+    Progress (Session: 01132019, Run: 3): 12000 / 298495 frames
+    Progress (Session: 01132019, Run: 8): 12000 / 298504 frames
+    Progress (Session: 01132019, Run: 2): 12000 / 298479 frames
+    Progress (Session: 01132019, Run: 1): 12000 / 298493 frames
+    Progress (Session: 01132019, Run: 4): 12000 / 298483 frames
+    Progress (Session: 01132019, Run: 7): 12000 / 298490 frames
+[Warning: A worker aborted during execution of the parfor loop. The parfor loop
+will now run again on the remaining workers.] 
+[> In distcomp/remoteparfor/handleIntervalErrorResult (line 246)
+In distcomp/remoteparfor/getCompleteIntervals (line 396)
+In parallel_function>distributed_execution (line 746)
+In parallel_function (line 578)
+In sg_disp.cluster.generate_video_for_one_session (line 21)] 

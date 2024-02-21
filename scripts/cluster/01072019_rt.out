@@ -1,0 +1,129 @@
+MATLAB is selecting SOFTWARE OPENGL rendering.
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2022 The MathWorks, Inc.
+             R2022b Update 1 (9.13.0.2080170) 64-bit (glnxa64)
+                             September 28, 2022
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+[Warning: Function newline has the same name as a MATLAB builtin. We suggest you
+rename the function to avoid a potential name conflict.] 
+[> In path (line 109)
+In addpath (line 86)] 
+[Warning: Function randi has the same name as a MATLAB builtin. We suggest you
+rename the function to avoid a potential name conflict.] 
+[> In path (line 109)
+In addpath (line 86)] 
+Starting parallel pool (parpool) using the 'Processes' profile ...
+[Warning: The system time zone setting, 'US/Eastern', does not specify a single
+time zone unambiguously. It will be treated as 'America/New_York'. See the <a
+href="matlab:doc('datetime.TimeZone')">datetime.TimeZone property</a> for
+details about specifying time zones.] 
+[> In verifyTimeZone (line 38)
+In datetime (line 559)
+In parallel.internal.pool.JavaBackedSessionNotifier>iLongToDatetime (line 128)
+In parallel.internal.pool.JavaBackedSessionNotifier>iJavaDateToDatetime (line
+148)
+In parallel.internal.pool.JavaBackedSessionNotifier.sessionInfoFromJava (line
+102)
+In parallel.internal.pool/JavaBackedSessionNotifier/wrapNotificationMethod
+(line 17)
+In parallel.internal.pool/JavaBackedSessionNotifier/notifyAboutToStart (line
+36)
+In parallel.internal.pool.ISessionNotifier.buildAboutToStartInfo (line 34)
+In parallel.internal.pool.argumentsParser>iPoolStartingMessage (line 188)
+In parallel.internal.pool.argumentsParser>iGetClusterAndNumWorkers (line 108)
+In parallel.internal.pool.argumentsParser (line 45)
+In parallel.internal.pool.doParpool (line 17)
+In parpool (line 127)
+In parallel.internal.parpool.getOrCreateCurrentPool (line 17)
+In parallel.internal.pool.PoolArrayManager.getOrAutoCreateWithCleanup (line 44)
+In pctTryCreatePoolIfNecessary (line 28)
+In parallel_function (line 423)
+In sg_disp.cluster.generate_video_for_one_session (line 21)
+] 
+Connected to the parallel pool (number of workers: 12).
+    Progress (Session: 01072019, Run: 8): 1000 / 298519 frames
+    Progress (Session: 01072019, Run: 2): 1000 / 298509 frames
+    Progress (Session: 01072019, Run: 1): 1000 / 298498 frames
+    Progress (Session: 01072019, Run: 6): 1000 / 298528 frames
+    Progress (Session: 01072019, Run: 4): 1000 / 298511 frames
+    Progress (Session: 01072019, Run: 9): 1000 / 298494 frames
+    Progress (Session: 01072019, Run: 5): 1000 / 298512 frames
+    Progress (Session: 01072019, Run: 10): 1000 / 298510 frames
+    Progress (Session: 01072019, Run: 7): 1000 / 298534 frames
+    Progress (Session: 01072019, Run: 3): 1000 / 298507 frames
+    Progress (Session: 01072019, Run: 2): 2000 / 298509 frames
+    Progress (Session: 01072019, Run: 1): 2000 / 298498 frames
+    Progress (Session: 01072019, Run: 4): 2000 / 298511 frames
+    Progress (Session: 01072019, Run: 6): 2000 / 298528 frames
+    Progress (Session: 01072019, Run: 8): 2000 / 298519 frames
+    Progress (Session: 01072019, Run: 9): 2000 / 298494 frames
+    Progress (Session: 01072019, Run: 5): 2000 / 298512 frames
+    Progress (Session: 01072019, Run: 10): 2000 / 298510 frames
+    Progress (Session: 01072019, Run: 3): 2000 / 298507 frames
+    Progress (Session: 01072019, Run: 7): 2000 / 298534 frames
+    Progress (Session: 01072019, Run: 2): 3000 / 298509 frames
+    Progress (Session: 01072019, Run: 1): 3000 / 298498 frames
+    Progress (Session: 01072019, Run: 6): 3000 / 298528 frames
+    Progress (Session: 01072019, Run: 4): 3000 / 298511 frames
+    Progress (Session: 01072019, Run: 8): 3000 / 298519 frames
+    Progress (Session: 01072019, Run: 5): 3000 / 298512 frames
+    Progress (Session: 01072019, Run: 9): 3000 / 298494 frames
+    Progress (Session: 01072019, Run: 10): 3000 / 298510 frames
+    Progress (Session: 01072019, Run: 3): 3000 / 298507 frames
+    Progress (Session: 01072019, Run: 7): 3000 / 298534 frames
+    Progress (Session: 01072019, Run: 1): 4000 / 298498 frames
+    Progress (Session: 01072019, Run: 2): 4000 / 298509 frames
+    Progress (Session: 01072019, Run: 6): 4000 / 298528 frames
+    Progress (Session: 01072019, Run: 4): 4000 / 298511 frames
+    Progress (Session: 01072019, Run: 8): 4000 / 298519 frames
+    Progress (Session: 01072019, Run: 5): 4000 / 298512 frames
+    Progress (Session: 01072019, Run: 9): 4000 / 298494 frames
+    Progress (Session: 01072019, Run: 10): 4000 / 298510 frames
+    Progress (Session: 01072019, Run: 3): 4000 / 298507 frames
+    Progress (Session: 01072019, Run: 7): 4000 / 298534 frames
+    Progress (Session: 01072019, Run: 1): 5000 / 298498 frames
+    Progress (Session: 01072019, Run: 2): 5000 / 298509 frames
+    Progress (Session: 01072019, Run: 6): 5000 / 298528 frames
+    Progress (Session: 01072019, Run: 8): 5000 / 298519 frames
+    Progress (Session: 01072019, Run: 4): 5000 / 298511 frames
+    Progress (Session: 01072019, Run: 5): 5000 / 298512 frames
+    Progress (Session: 01072019, Run: 9): 5000 / 298494 frames
+    Progress (Session: 01072019, Run: 10): 5000 / 298510 frames
+    Progress (Session: 01072019, Run: 3): 5000 / 298507 frames
+    Progress (Session: 01072019, Run: 7): 5000 / 298534 frames
+    Progress (Session: 01072019, Run: 1): 6000 / 298498 frames
+    Progress (Session: 01072019, Run: 2): 6000 / 298509 frames
+    Progress (Session: 01072019, Run: 6): 6000 / 298528 frames
+    Progress (Session: 01072019, Run: 4): 6000 / 298511 frames
+    Progress (Session: 01072019, Run: 8): 6000 / 298519 frames
+    Progress (Session: 01072019, Run: 9): 6000 / 298494 frames
+    Progress (Session: 01072019, Run: 10): 6000 / 298510 frames
+    Progress (Session: 01072019, Run: 5): 6000 / 298512 frames
+    Progress (Session: 01072019, Run: 3): 6000 / 298507 frames
+    Progress (Session: 01072019, Run: 7): 6000 / 298534 frames
+    Progress (Session: 01072019, Run: 1): 7000 / 298498 frames
+    Progress (Session: 01072019, Run: 2): 7000 / 298509 frames
+    Progress (Session: 01072019, Run: 6): 7000 / 298528 frames
+    Progress (Session: 01072019, Run: 4): 7000 / 298511 frames
+    Progress (Session: 01072019, Run: 8): 7000 / 298519 frames
+    Progress (Session: 01072019, Run: 9): 7000 / 298494 frames
+    Progress (Session: 01072019, Run: 10): 7000 / 298510 frames
+    Progress (Session: 01072019, Run: 5): 7000 / 298512 frames
+    Progress (Session: 01072019, Run: 3): 7000 / 298507 frames
+    Progress (Session: 01072019, Run: 7): 7000 / 298534 frames
+    Progress (Session: 01072019, Run: 1): 8000 / 298498 frames
+    Progress (Session: 01072019, Run: 2): 8000 / 298509 frames
+    Progress (Session: 01072019, Run: 6): 8000 / 298528 frames
+    Progress (Session: 01072019, Run: 4): 8000 / 298511 frames
+    Progress (Session: 01072019, Run: 8): 8000 / 298519 frames
+    Progress (Session: 01072019, Run: 10): 8000 / 298510 frames
+    Progress (Session: 01072019, Run: 9): 8000 / 298494 frames
+    Progress (Session: 01072019, Run: 5): 8000 / 298512 frames
+    Progress (Session: 01072019, Run: 3): 8000 / 298507 frames
+    Progress (Session: 01072019, Run: 7): 8000 / 298534 frames
+    Progress (Session: 01072019, Run: 1): 9000 / 298498 frames
