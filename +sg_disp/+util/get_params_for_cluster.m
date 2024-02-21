@@ -10,6 +10,7 @@ function params = get_params_for_cluster()
     params                          = struct();
     % Data path
     params.data_p                   = data_p;
+    params.cluster_out_path         = '/gpfs/milgram/scratch60/chang/pg496/';
     % Behavioral file paths
     params.pos_file_list            = pos_file_list;
     params.fix_file_list            = fix_file_list;

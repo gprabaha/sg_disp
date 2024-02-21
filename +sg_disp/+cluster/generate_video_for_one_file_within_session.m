@@ -6,7 +6,7 @@ run_number              = behav_data.run_number;
 start_time_ind          = behav_data.start_time_ind;
 end_time_ind            = behav_data.end_time_ind;
 
-data_p                  = params.data_p;
+cluster_out_path        = params.cluster_out_path;
 disp_time_win           = params.disp_time_win;
 progress_interval       = params.progress_interval;
 frame_rate              = params.frame_rate;
@@ -22,7 +22,7 @@ all_time_inds = start_time_ind:end_time_ind;
 [fig, ax] = sg_disp.plotting.make_video_fig_and_axes( params );
 
 % Define video filename
-video_folder = fullfile( data_p, video_output_folder, session );
+video_folder = fullfile( cluster_out_path, video_output_folder, session );
 if ~exist(video_folder, 'dir')
     mkdir(video_folder);
 end
@@ -30,9 +30,8 @@ video_filename = sprintf( 'gaze_signal_video_session-%s_run-%02d', session, str2
 video_filepath = fullfile( video_folder, video_filename );
 % Create VideoWriter object
 video_writer_obj = VideoWriter(video_filepath);
-% video_writer_obj = VideoWriter(video_filepath, 'MPEG-4');
 video_writer_obj.FrameRate = frame_rate; % Adjust as needed
-video_writer_obj.Quality = 30; % Adjust as needed
+video_writer_obj.Quality = video_quality; % Adjust as needed
 % Open the video writer
 open( video_writer_obj );
 
