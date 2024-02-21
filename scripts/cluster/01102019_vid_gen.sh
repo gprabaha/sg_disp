@@ -4,8 +4,8 @@
 #SBATCH --error=cluster/01102019.err
 #SBATCH --partition=psych_week
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=20
-#SBATCH --mem=16G
+#SBATCH --cpus-per-task=15
+#SBATCH --mem=150G
 #SBATCH --time=7-00:00:00
 
 module load MATLAB/2022b
