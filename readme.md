@@ -19,4 +19,4 @@ are used are same as the viewer, only the script grabs the figure frame for the 
 of each time point, and then saves a video for the run at a particular framerate.
 
 Below is an example frame from the video output
-![Video output example](video_output_example.png "Video output example")
+![Video output example](https://github.com/gprabaha/sg_disp/blob/main/video_outout_example.png "Video output example")
