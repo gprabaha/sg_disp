@@ -32,7 +32,10 @@ function params = get_params_for_cluster()
     params.raster_bin_width         = 0.001; % ms
     params.kernel_size              = 101; % 101 ms moving window
     params.celltypes_of_interest    = {'narrow', 'broad'};
-    % General viewer parameters
+    % General video and figure paramerters
+    params.video_output_folder      = 'gaze_signal_videos_1000fps';
+    params.frame_rate               = 1000;
+    params.video_quality            = 20;
     params.disp_time_win            = 0.5; % seconds
     params.calib_monitor_size       = [1024 768]; % px
     params.screen_prop_to_display   = 0.6; % float

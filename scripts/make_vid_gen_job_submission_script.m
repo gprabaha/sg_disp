@@ -37,7 +37,7 @@ for session_index = 1:numel( unique_sessions )
     end
 end
 
-fid = fopen( 'submit_vid_gen_jobs.sh', 'w' );
+fid = fopen( 'submit_vid_gen_jobs_rt.sh', 'w' );
 fwrite( fid, job_submit_text );
 fclose( fid );
 !chmod +x submit_vid_gen_jobs.sh

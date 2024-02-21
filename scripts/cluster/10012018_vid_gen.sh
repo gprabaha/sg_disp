@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=10012018
-#SBATCH --output=cluster/10012018.out
-#SBATCH --error=cluster/10012018.err
+#SBATCH --job-name=10012018_rt
+#SBATCH --output=cluster/10012018_rt.out
+#SBATCH --error=cluster/10012018_rt.err
 #SBATCH --partition=psych_week
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=15
