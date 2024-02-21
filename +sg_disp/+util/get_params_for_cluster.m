@@ -33,9 +33,10 @@ function params = get_params_for_cluster()
     params.kernel_size              = 101; % 101 ms moving window
     params.celltypes_of_interest    = {'narrow', 'broad'};
     % General video and figure paramerters
-    params.video_output_folder      = 'gaze_signal_videos_1000fps';
-    params.frame_rate               = 1000;
-    params.video_quality            = 20;
+    params.video_output_folder      = 'gaze_signal_videos_500fps';
+    params.frame_rate               = 500;
+    params.video_quality            = 50;
+    params.clustur_job_suffix       = '500fps';
     params.disp_time_win            = 0.5; % seconds
     params.calib_monitor_size       = [1024 768]; % px
     params.screen_prop_to_display   = 0.6; % float

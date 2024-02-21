@@ -15,6 +15,7 @@ params                  = sg_disp.util.get_params_for_cluster();
 
 template_text = string( fileread('cluster_template_script.txt') );
 job_submit_text = "";
+clustur_job_suffix = params.clustur_job_suffix;
 session_per_file = params.session_per_file;
 unique_sessions = unique( session_per_file );
 
@@ -25,7 +26,11 @@ for session_index = 1:numel( unique_sessions )
         regions_in_session = spike_labels(inds_of_units_in_session, 'region');
         if any( strcmp( regions_in_session, 'bla') | strcmp( regions_in_session, 'acc') )
 
-            job_submit_script = compose( template_text, session, session, session, session );
+            job_submit_script = compose( template_text, ...
+                session, clustur_job_suffix, ... % jobname
+                session, clustur_job_suffix, ... % output
+                session, clustur_job_suffix, ... % error
+                session ); % matlab -r input
             fid = fopen( sprintf('cluster/%s_vid_gen.sh', session), 'w' );
             fwrite( fid, job_submit_script );
             fclose( fid );
@@ -37,7 +42,7 @@ for session_index = 1:numel( unique_sessions )
     end
 end
 
-fid = fopen( 'submit_vid_gen_jobs_rt.sh', 'w' );
+fid = fopen( 'submit_vid_gen_jobs.sh', 'w' );
 fwrite( fid, job_submit_text );
 fclose( fid );
 !chmod +x submit_vid_gen_jobs.sh

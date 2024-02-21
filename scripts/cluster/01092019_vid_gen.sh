@@ -1,12 +1,13 @@
 #!/bin/bash
-#SBATCH --job-name=01092019_rt
-#SBATCH --output=cluster/01092019_rt.out
-#SBATCH --error=cluster/01092019_rt.err
+#SBATCH --job-name=01092019_500fps
+#SBATCH --output=cluster/01092019_500fps.out
+#SBATCH --error=cluster/01092019_500fps.err
 #SBATCH --partition=psych_week
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=10
 #SBATCH --mem=250G
-#SBATCH --time=7-00:00:00
+#SBATCH --time=5-00:00:00
+#SBATCH --mail-type=END,FAIL
 
 module load MATLAB/2022b
 
