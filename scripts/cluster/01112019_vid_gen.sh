@@ -4,8 +4,8 @@
 #SBATCH --error=cluster/01112019_100fps.err
 #SBATCH --partition=psych_week
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=10
-#SBATCH --mem=200G
+#SBATCH --cpus-per-task=5
+#SBATCH --mem=250G
 #SBATCH --time=5-00:00:00
 #SBATCH --mail-type=FAIL
 
