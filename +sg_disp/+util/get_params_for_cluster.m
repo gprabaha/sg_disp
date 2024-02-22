@@ -16,8 +16,8 @@ function params = get_params_for_cluster()
     params.video_output_folder      = 'gaze_signal_videos_100fps';
     params.frame_rate               = 100;
     params.video_quality            = 50;
-    params.mem_per_cpu              = 250; % gbs
-    params.num_cpu                  = 5;
+    params.mem_per_cpu              = 500; % gbs
+    params.num_cpu                  = 10;
     % Behavioral file paths
     params.pos_file_list            = pos_file_list;
     params.fix_file_list            = fix_file_list;
