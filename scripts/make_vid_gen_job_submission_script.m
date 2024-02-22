@@ -13,7 +13,7 @@ params                          = sg_disp.util.get_params_for_cluster();
 
 %%
 clustur_job_suffix      = params.clustur_job_suffix;
-mem_per_cpu             = params.mem_per_cpu;
+mem_per_node            = params.mem_per_node;
 num_cpu                 = params.num_cpu;
 session_per_file        = params.session_per_file;
 
@@ -36,7 +36,7 @@ for session_index = 1:numel( unique_sessions )
                 session, clustur_job_suffix, ... % output
                 session, clustur_job_suffix, ... % error
                 num2str( num_cpu ), ... % number of cores
-                num2str( mem_per_cpu ), ... % ram per cpu
+                num2str( mem_per_node ), ... % ram per cpu
                 session ); % matlab -r input
             fid = fopen( sprintf('cluster/%s_vid_gen.sh', session), 'w' );
             fwrite( fid, job_submit_script );
