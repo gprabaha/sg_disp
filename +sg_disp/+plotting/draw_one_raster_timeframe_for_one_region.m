@@ -32,7 +32,7 @@ else
     [n_rows, n_cols] = size( z_scored_spiking_mat );
     xlim( relevant_axis, [-0.5, n_cols + 0.5] );
     ylim( relevant_axis, [0.5, n_rows + 0.5] );
-    yticks( 1:n_rows );
+    yticks( relevant_axis, 1:n_rows );
     yticklabels( relevant_axis, raster_celltype_labels );
     colormap( relevant_axis, custom_colormap );
     colorbar( relevant_axis );

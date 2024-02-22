@@ -19,6 +19,7 @@ num_files = numel(file_inds_for_session);
 % parpool( num_files );
 
 parfor file_ind = file_inds_for_session'
+% for file_ind = file_inds_for_session'
     run_number = run_number_per_file{file_ind};
     pos_file = pos_file_list{file_ind};
     time_file = time_file_list{file_ind};

@@ -6,7 +6,7 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=10
 #SBATCH --mem=200G
-#SBATCH --time=3-00:00:00
+#SBATCH --time=5-00:00:00
 #SBATCH --mail-type=FAIL
 
 module load MATLAB/2022b

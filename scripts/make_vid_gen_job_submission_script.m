@@ -17,11 +17,14 @@ mem_per_cpu             = params.mem_per_cpu;
 num_cpu                 = params.num_cpu;
 session_per_file        = params.session_per_file;
 
+params.cluster_out_path         = '/Volumes/Stash/changlab/data_visualization/social_gaze';
+
 template_text = string( fileread('cluster_template_script.txt') );
 job_submit_text = "";
 unique_sessions = unique( session_per_file );
 
 for session_index = 1:numel( unique_sessions )
+% for session_index = 13
     session = unique_sessions{session_index};
     inds_of_units_in_session = find( spike_labels, session );
     if ~isempty( inds_of_units_in_session )
