@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Load dSQ module
+# Load dSQ module and python
 module load dSQ
+module load Python/3.8.6-GCCcore-10.2.0
 
 # Define input and output directories
 input_dir="/gpfs/milgram/scratch60/chang/pg496/gaze_signal_videos_100fps"
@@ -31,6 +32,5 @@ done
 
 dsq --job-file "$joblist" --mem-per-cpu 50g -t 5:00:00 --mail-type FAIL
 
-dsq_job_script="dsq-joblist-$(date +%Y-%m-%d).sh"
-chmod +x "$dsq_job_script"
-# sbatch "$dsq_job_script"
+dsq_job_script=$(find . -type f -name "*dsq*${joblist%.txt}*.sh")
+sbatch "$dsq_job_script"

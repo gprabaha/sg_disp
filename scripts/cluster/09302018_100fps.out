@@ -1,0 +1,1069 @@
+MATLAB is selecting SOFTWARE OPENGL rendering.
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2022 The MathWorks, Inc.
+             R2022b Update 1 (9.13.0.2080170) 64-bit (glnxa64)
+                             September 28, 2022
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+[Warning: Function newline has the same name as a MATLAB builtin. We suggest you
+rename the function to avoid a potential name conflict.] 
+[> In path (line 109)
+In addpath (line 86)] 
+[Warning: Function randi has the same name as a MATLAB builtin. We suggest you
+rename the function to avoid a potential name conflict.] 
+[> In path (line 109)
+In addpath (line 86)] 
+Starting parallel pool (parpool) using the 'Processes' profile ...
+[Warning: The system time zone setting, 'US/Eastern', does not specify a single
+time zone unambiguously. It will be treated as 'America/New_York'. See the <a
+href="matlab:doc('datetime.TimeZone')">datetime.TimeZone property</a> for
+details about specifying time zones.] 
+[> In verifyTimeZone (line 38)
+In datetime (line 559)
+In parallel.internal.pool.JavaBackedSessionNotifier>iLongToDatetime (line 128)
+In parallel.internal.pool.JavaBackedSessionNotifier>iJavaDateToDatetime (line
+148)
+In parallel.internal.pool.JavaBackedSessionNotifier.sessionInfoFromJava (line
+102)
+In parallel.internal.pool/JavaBackedSessionNotifier/wrapNotificationMethod
+(line 17)
+In parallel.internal.pool/JavaBackedSessionNotifier/notifyAboutToStart (line
+36)
+In parallel.internal.pool.ISessionNotifier.buildAboutToStartInfo (line 34)
+In parallel.internal.pool.argumentsParser>iPoolStartingMessage (line 188)
+In parallel.internal.pool.argumentsParser>iGetClusterAndNumWorkers (line 108)
+In parallel.internal.pool.argumentsParser (line 45)
+In parallel.internal.pool.doParpool (line 17)
+In parpool (line 127)
+In parallel.internal.parpool.getOrCreateCurrentPool (line 17)
+In parallel.internal.pool.PoolArrayManager.getOrAutoCreateWithCleanup (line 44)
+In pctTryCreatePoolIfNecessary (line 28)
+In parallel_function (line 423)
+In sg_disp.cluster.generate_video_for_one_session (line 21)
+] 
+[Warning: The Cluster reported an error while destroying a job. The error was:
+Could not open file
+"/gpfs/milgram/home/pg496/.matlab/local_cluster_jobs/R2022b/Job303.in.mat", the
+error returned was: Unable to find file or directory
+'/gpfs/milgram/home/pg496/.matlab/local_cluster_jobs/R2022b/Job303.in.mat'...] 
+[> In parallel.internal.cluster.CJSJobMethods.destroyOneJob (line 79)
+In parallel.job.CJSConcurrentJob>@(job)CJSJobMethods.destroyOneJob(job.Parent,job,job.Support,job.SupportID) (line 52)
+In parallel.job/CJSConcurrentJob/destroyJob (line 52)
+In parallel.Job>iDeleteJobs (line 1634)
+In parallel.internal.cluster.hetfun (line 57)
+In parallel/Job/delete (line 1429)
+In parallel/Cluster/hDeleteOneJob (line 1031)
+In parallel.internal.pool.AbstractInteractiveClient>iDeleteJobs (line 491)
+In parallel.internal.pool/AbstractInteractiveClient/pRemoveOldJobs (line 214)
+In parallel.internal.pool/AbstractInteractiveClient/start (line 103)
+In parallel.internal.pool.AbstractClusterPool>iStartClient (line 872)
+In parallel.internal.pool.AbstractClusterPool.hBuildPool (line 630)
+In parallel.internal.pool.doParpool (line 22)
+In parpool (line 127)
+In parallel.internal.parpool.getOrCreateCurrentPool (line 17)
+In parallel.internal.pool.PoolArrayManager.getOrAutoCreateWithCleanup (line 44)
+In pctTryCreatePoolIfNecessary (line 28)
+In parallel_function (line 423)
+In sg_disp.cluster.generate_video_for_one_session (line 21)] 
+[Warning: The Cluster reported an error while destroying a job. The error was:
+Could not open file
+"/gpfs/milgram/home/pg496/.matlab/local_cluster_jobs/R2022b/Job304.in.mat", the
+error returned was: Unable to find file or directory
+'/gpfs/milgram/home/pg496/.matlab/local_cluster_jobs/R2022b/Job304.in.mat'...] 
+[> In parallel.internal.cluster.CJSJobMethods.destroyOneJob (line 79)
+In parallel.job.CJSConcurrentJob>@(job)CJSJobMethods.destroyOneJob(job.Parent,job,job.Support,job.SupportID) (line 52)
+In parallel.job/CJSConcurrentJob/destroyJob (line 52)
+In parallel.Job>iDeleteJobs (line 1634)
+In parallel.internal.cluster.hetfun (line 57)
+In parallel/Job/delete (line 1429)
+In parallel/Cluster/hDeleteOneJob (line 1031)
+In parallel.internal.pool.AbstractInteractiveClient>iDeleteJobs (line 491)
+In parallel.internal.pool/AbstractInteractiveClient/pRemoveOldJobs (line 214)
+In parallel.internal.pool/AbstractInteractiveClient/start (line 103)
+In parallel.internal.pool.AbstractClusterPool>iStartClient (line 872)
+In parallel.internal.pool.AbstractClusterPool.hBuildPool (line 630)
+In parallel.internal.pool.doParpool (line 22)
+In parpool (line 127)
+In parallel.internal.parpool.getOrCreateCurrentPool (line 17)
+In parallel.internal.pool.PoolArrayManager.getOrAutoCreateWithCleanup (line 44)
+In pctTryCreatePoolIfNecessary (line 28)
+In parallel_function (line 423)
+In sg_disp.cluster.generate_video_for_one_session (line 21)] 
+[Warning: The Cluster reported an error while destroying a job. The error was:
+Could not open file
+"/gpfs/milgram/home/pg496/.matlab/local_cluster_jobs/R2022b/Job305.in.mat", the
+error returned was: Unable to find file or directory
+'/gpfs/milgram/home/pg496/.matlab/local_cluster_jobs/R2022b/Job305.in.mat'...] 
+[> In parallel.internal.cluster.CJSJobMethods.destroyOneJob (line 79)
+In parallel.job.CJSConcurrentJob>@(job)CJSJobMethods.destroyOneJob(job.Parent,job,job.Support,job.SupportID) (line 52)
+In parallel.job/CJSConcurrentJob/destroyJob (line 52)
+In parallel.Job>iDeleteJobs (line 1634)
+In parallel.internal.cluster.hetfun (line 57)
+In parallel/Job/delete (line 1429)
+In parallel/Cluster/hDeleteOneJob (line 1031)
+In parallel.internal.pool.AbstractInteractiveClient>iDeleteJobs (line 491)
+In parallel.internal.pool/AbstractInteractiveClient/pRemoveOldJobs (line 214)
+In parallel.internal.pool/AbstractInteractiveClient/start (line 103)
+In parallel.internal.pool.AbstractClusterPool>iStartClient (line 872)
+In parallel.internal.pool.AbstractClusterPool.hBuildPool (line 630)
+In parallel.internal.pool.doParpool (line 22)
+In parpool (line 127)
+In parallel.internal.parpool.getOrCreateCurrentPool (line 17)
+In parallel.internal.pool.PoolArrayManager.getOrAutoCreateWithCleanup (line 44)
+In pctTryCreatePoolIfNecessary (line 28)
+In parallel_function (line 423)
+In sg_disp.cluster.generate_video_for_one_session (line 21)] 
+[Warning: The Cluster reported an error while destroying a job. The error was:
+Could not open file
+"/gpfs/milgram/home/pg496/.matlab/local_cluster_jobs/R2022b/Job307.in.mat", the
+error returned was: Unable to find file or directory
+'/gpfs/milgram/home/pg496/.matlab/local_cluster_jobs/R2022b/Job307.in.mat'...] 
+[> In parallel.internal.cluster.CJSJobMethods.destroyOneJob (line 79)
+In parallel.job.CJSConcurrentJob>@(job)CJSJobMethods.destroyOneJob(job.Parent,job,job.Support,job.SupportID) (line 52)
+In parallel.job/CJSConcurrentJob/destroyJob (line 52)
+In parallel.Job>iDeleteJobs (line 1634)
+In parallel.internal.cluster.hetfun (line 57)
+In parallel/Job/delete (line 1429)
+In parallel/Cluster/hDeleteOneJob (line 1031)
+In parallel.internal.pool.AbstractInteractiveClient>iDeleteJobs (line 491)
+In parallel.internal.pool/AbstractInteractiveClient/pRemoveOldJobs (line 214)
+In parallel.internal.pool/AbstractInteractiveClient/start (line 103)
+In parallel.internal.pool.AbstractClusterPool>iStartClient (line 872)
+In parallel.internal.pool.AbstractClusterPool.hBuildPool (line 630)
+In parallel.internal.pool.doParpool (line 22)
+In parpool (line 127)
+In parallel.internal.parpool.getOrCreateCurrentPool (line 17)
+In parallel.internal.pool.PoolArrayManager.getOrAutoCreateWithCleanup (line 44)
+In pctTryCreatePoolIfNecessary (line 28)
+In parallel_function (line 423)
+In sg_disp.cluster.generate_video_for_one_session (line 21)] 
+[Warning: The cluster reported an error while deleting an unavailable job.  This
+job may already have been deleted.] 
+[> In parallel.internal.cluster.CJSJobMethods.destroyOneJob (line 77)
+In parallel.job.CJSConcurrentJob>@(job)CJSJobMethods.destroyOneJob(job.Parent,job,job.Support,job.SupportID) (line 52)
+In parallel.job/CJSConcurrentJob/destroyJob (line 52)
+In parallel.Job>iDeleteJobs (line 1634)
+In parallel.internal.cluster.hetfun (line 57)
+In parallel/Job/delete (line 1429)
+In parallel/Cluster/hDeleteOneJob (line 1031)
+In parallel.internal.pool.AbstractInteractiveClient>iDeleteJobs (line 491)
+In parallel.internal.pool/AbstractInteractiveClient/pRemoveOldJobs (line 214)
+In parallel.internal.pool/AbstractInteractiveClient/start (line 103)
+In parallel.internal.pool.AbstractClusterPool>iStartClient (line 872)
+In parallel.internal.pool.AbstractClusterPool.hBuildPool (line 630)
+In parallel.internal.pool.doParpool (line 22)
+In parpool (line 127)
+In parallel.internal.parpool.getOrCreateCurrentPool (line 17)
+In parallel.internal.pool.PoolArrayManager.getOrAutoCreateWithCleanup (line 44)
+In pctTryCreatePoolIfNecessary (line 28)
+In parallel_function (line 423)
+In sg_disp.cluster.generate_video_for_one_session (line 21)] 
+[Warning: The Cluster reported an error while destroying a job. The error was:
+Could not open file
+"/gpfs/milgram/home/pg496/.matlab/local_cluster_jobs/R2022b/Job314.in.mat", the
+error returned was: Unable to find file or directory
+'/gpfs/milgram/home/pg496/.matlab/local_cluster_jobs/R2022b/Job314.in.mat'...] 
+[> In parallel.internal.cluster.CJSJobMethods.destroyOneJob (line 79)
+In parallel.job.CJSConcurrentJob>@(job)CJSJobMethods.destroyOneJob(job.Parent,job,job.Support,job.SupportID) (line 52)
+In parallel.job/CJSConcurrentJob/destroyJob (line 52)
+In parallel.Job>iDeleteJobs (line 1634)
+In parallel.internal.cluster.hetfun (line 57)
+In parallel/Job/delete (line 1429)
+In parallel/Cluster/hDeleteOneJob (line 1031)
+In parallel.internal.pool.AbstractInteractiveClient>iDeleteJobs (line 491)
+In parallel.internal.pool/AbstractInteractiveClient/pRemoveOldJobs (line 214)
+In parallel.internal.pool/AbstractInteractiveClient/start (line 103)
+In parallel.internal.pool.AbstractClusterPool>iStartClient (line 872)
+In parallel.internal.pool.AbstractClusterPool.hBuildPool (line 630)
+In parallel.internal.pool.doParpool (line 22)
+In parpool (line 127)
+In parallel.internal.parpool.getOrCreateCurrentPool (line 17)
+In parallel.internal.pool.PoolArrayManager.getOrAutoCreateWithCleanup (line 44)
+In pctTryCreatePoolIfNecessary (line 28)
+In parallel_function (line 423)
+In sg_disp.cluster.generate_video_for_one_session (line 21)] 
+Connected to the parallel pool (number of workers: 10).
+    Progress (Session: 09302018, Run: 5): 1000 / 298485 frames
+    Progress (Session: 09302018, Run: 2): 1000 / 298495 frames
+    Progress (Session: 09302018, Run: 8): 1000 / 298489 frames
+    Progress (Session: 09302018, Run: 1): 1000 / 298469 frames
+    Progress (Session: 09302018, Run: 10): 1000 / 298479 frames
+    Progress (Session: 09302018, Run: 9): 1000 / 298499 frames
+    Progress (Session: 09302018, Run: 4): 1000 / 298484 frames
+    Progress (Session: 09302018, Run: 6): 1000 / 298500 frames
+    Progress (Session: 09302018, Run: 3): 1000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 1000 / 298497 frames
+    Progress (Session: 09302018, Run: 2): 2000 / 298495 frames
+    Progress (Session: 09302018, Run: 9): 2000 / 298499 frames
+    Progress (Session: 09302018, Run: 5): 2000 / 298485 frames
+    Progress (Session: 09302018, Run: 1): 2000 / 298469 frames
+    Progress (Session: 09302018, Run: 4): 2000 / 298484 frames
+    Progress (Session: 09302018, Run: 8): 2000 / 298489 frames
+    Progress (Session: 09302018, Run: 6): 2000 / 298500 frames
+    Progress (Session: 09302018, Run: 10): 2000 / 298479 frames
+    Progress (Session: 09302018, Run: 3): 2000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 2000 / 298497 frames
+    Progress (Session: 09302018, Run: 2): 3000 / 298495 frames
+    Progress (Session: 09302018, Run: 5): 3000 / 298485 frames
+    Progress (Session: 09302018, Run: 9): 3000 / 298499 frames
+    Progress (Session: 09302018, Run: 1): 3000 / 298469 frames
+    Progress (Session: 09302018, Run: 4): 3000 / 298484 frames
+    Progress (Session: 09302018, Run: 6): 3000 / 298500 frames
+    Progress (Session: 09302018, Run: 10): 3000 / 298479 frames
+    Progress (Session: 09302018, Run: 7): 3000 / 298497 frames
+    Progress (Session: 09302018, Run: 3): 3000 / 298483 frames
+    Progress (Session: 09302018, Run: 8): 3000 / 298489 frames
+    Progress (Session: 09302018, Run: 2): 4000 / 298495 frames
+    Progress (Session: 09302018, Run: 5): 4000 / 298485 frames
+    Progress (Session: 09302018, Run: 1): 4000 / 298469 frames
+    Progress (Session: 09302018, Run: 6): 4000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 4000 / 298499 frames
+    Progress (Session: 09302018, Run: 4): 4000 / 298484 frames
+    Progress (Session: 09302018, Run: 10): 4000 / 298479 frames
+    Progress (Session: 09302018, Run: 8): 4000 / 298489 frames
+    Progress (Session: 09302018, Run: 3): 4000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 4000 / 298497 frames
+    Progress (Session: 09302018, Run: 2): 5000 / 298495 frames
+    Progress (Session: 09302018, Run: 5): 5000 / 298485 frames
+    Progress (Session: 09302018, Run: 6): 5000 / 298500 frames
+    Progress (Session: 09302018, Run: 1): 5000 / 298469 frames
+    Progress (Session: 09302018, Run: 10): 5000 / 298479 frames
+    Progress (Session: 09302018, Run: 3): 5000 / 298483 frames
+    Progress (Session: 09302018, Run: 4): 5000 / 298484 frames
+    Progress (Session: 09302018, Run: 8): 5000 / 298489 frames
+    Progress (Session: 09302018, Run: 9): 5000 / 298499 frames
+    Progress (Session: 09302018, Run: 7): 5000 / 298497 frames
+    Progress (Session: 09302018, Run: 2): 6000 / 298495 frames
+    Progress (Session: 09302018, Run: 6): 6000 / 298500 frames
+    Progress (Session: 09302018, Run: 5): 6000 / 298485 frames
+    Progress (Session: 09302018, Run: 1): 6000 / 298469 frames
+    Progress (Session: 09302018, Run: 10): 6000 / 298479 frames
+    Progress (Session: 09302018, Run: 4): 6000 / 298484 frames
+    Progress (Session: 09302018, Run: 9): 6000 / 298499 frames
+    Progress (Session: 09302018, Run: 3): 6000 / 298483 frames
+    Progress (Session: 09302018, Run: 8): 6000 / 298489 frames
+    Progress (Session: 09302018, Run: 7): 6000 / 298497 frames
+    Progress (Session: 09302018, Run: 2): 7000 / 298495 frames
+    Progress (Session: 09302018, Run: 6): 7000 / 298500 frames
+    Progress (Session: 09302018, Run: 10): 7000 / 298479 frames
+    Progress (Session: 09302018, Run: 5): 7000 / 298485 frames
+    Progress (Session: 09302018, Run: 1): 7000 / 298469 frames
+    Progress (Session: 09302018, Run: 4): 7000 / 298484 frames
+    Progress (Session: 09302018, Run: 3): 7000 / 298483 frames
+    Progress (Session: 09302018, Run: 9): 7000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 7000 / 298489 frames
+    Progress (Session: 09302018, Run: 7): 7000 / 298497 frames
+    Progress (Session: 09302018, Run: 2): 8000 / 298495 frames
+    Progress (Session: 09302018, Run: 10): 8000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 8000 / 298500 frames
+    Progress (Session: 09302018, Run: 5): 8000 / 298485 frames
+    Progress (Session: 09302018, Run: 1): 8000 / 298469 frames
+    Progress (Session: 09302018, Run: 4): 8000 / 298484 frames
+    Progress (Session: 09302018, Run: 3): 8000 / 298483 frames
+    Progress (Session: 09302018, Run: 9): 8000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 8000 / 298489 frames
+    Progress (Session: 09302018, Run: 7): 8000 / 298497 frames
+    Progress (Session: 09302018, Run: 2): 9000 / 298495 frames
+    Progress (Session: 09302018, Run: 10): 9000 / 298479 frames
+    Progress (Session: 09302018, Run: 5): 9000 / 298485 frames
+    Progress (Session: 09302018, Run: 6): 9000 / 298500 frames
+    Progress (Session: 09302018, Run: 3): 9000 / 298483 frames
+    Progress (Session: 09302018, Run: 4): 9000 / 298484 frames
+    Progress (Session: 09302018, Run: 1): 9000 / 298469 frames
+    Progress (Session: 09302018, Run: 9): 9000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 9000 / 298489 frames
+    Progress (Session: 09302018, Run: 7): 9000 / 298497 frames
+    Progress (Session: 09302018, Run: 2): 10000 / 298495 frames
+    Progress (Session: 09302018, Run: 4): 10000 / 298484 frames
+    Progress (Session: 09302018, Run: 3): 10000 / 298483 frames
+    Progress (Session: 09302018, Run: 10): 10000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 10000 / 298500 frames
+    Progress (Session: 09302018, Run: 5): 10000 / 298485 frames
+    Progress (Session: 09302018, Run: 1): 10000 / 298469 frames
+    Progress (Session: 09302018, Run: 9): 10000 / 298499 frames
+    Progress (Session: 09302018, Run: 7): 10000 / 298497 frames
+    Progress (Session: 09302018, Run: 8): 10000 / 298489 frames
+    Progress (Session: 09302018, Run: 2): 11000 / 298495 frames
+    Progress (Session: 09302018, Run: 4): 11000 / 298484 frames
+    Progress (Session: 09302018, Run: 3): 11000 / 298483 frames
+    Progress (Session: 09302018, Run: 10): 11000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 11000 / 298500 frames
+    Progress (Session: 09302018, Run: 1): 11000 / 298469 frames
+    Progress (Session: 09302018, Run: 5): 11000 / 298485 frames
+    Progress (Session: 09302018, Run: 9): 11000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 11000 / 298489 frames
+    Progress (Session: 09302018, Run: 7): 11000 / 298497 frames
+    Progress (Session: 09302018, Run: 2): 12000 / 298495 frames
+    Progress (Session: 09302018, Run: 4): 12000 / 298484 frames
+    Progress (Session: 09302018, Run: 3): 12000 / 298483 frames
+    Progress (Session: 09302018, Run: 5): 12000 / 298485 frames
+    Progress (Session: 09302018, Run: 10): 12000 / 298479 frames
+    Progress (Session: 09302018, Run: 1): 12000 / 298469 frames
+    Progress (Session: 09302018, Run: 6): 12000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 12000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 12000 / 298489 frames
+    Progress (Session: 09302018, Run: 7): 12000 / 298497 frames
+    Progress (Session: 09302018, Run: 2): 13000 / 298495 frames
+    Progress (Session: 09302018, Run: 4): 13000 / 298484 frames
+    Progress (Session: 09302018, Run: 3): 13000 / 298483 frames
+    Progress (Session: 09302018, Run: 5): 13000 / 298485 frames
+    Progress (Session: 09302018, Run: 10): 13000 / 298479 frames
+    Progress (Session: 09302018, Run: 1): 13000 / 298469 frames
+    Progress (Session: 09302018, Run: 6): 13000 / 298500 frames
+    Progress (Session: 09302018, Run: 8): 13000 / 298489 frames
+    Progress (Session: 09302018, Run: 9): 13000 / 298499 frames
+    Progress (Session: 09302018, Run: 7): 13000 / 298497 frames
+    Progress (Session: 09302018, Run: 2): 14000 / 298495 frames
+    Progress (Session: 09302018, Run: 4): 14000 / 298484 frames
+    Progress (Session: 09302018, Run: 3): 14000 / 298483 frames
+    Progress (Session: 09302018, Run: 5): 14000 / 298485 frames
+    Progress (Session: 09302018, Run: 1): 14000 / 298469 frames
+    Progress (Session: 09302018, Run: 10): 14000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 14000 / 298500 frames
+    Progress (Session: 09302018, Run: 8): 14000 / 298489 frames
+    Progress (Session: 09302018, Run: 9): 14000 / 298499 frames
+    Progress (Session: 09302018, Run: 7): 14000 / 298497 frames
+    Progress (Session: 09302018, Run: 2): 15000 / 298495 frames
+    Progress (Session: 09302018, Run: 4): 15000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 15000 / 298485 frames
+    Progress (Session: 09302018, Run: 3): 15000 / 298483 frames
+    Progress (Session: 09302018, Run: 1): 15000 / 298469 frames
+    Progress (Session: 09302018, Run: 10): 15000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 15000 / 298500 frames
+    Progress (Session: 09302018, Run: 8): 15000 / 298489 frames
+    Progress (Session: 09302018, Run: 7): 15000 / 298497 frames
+    Progress (Session: 09302018, Run: 9): 15000 / 298499 frames
+    Progress (Session: 09302018, Run: 2): 16000 / 298495 frames
+    Progress (Session: 09302018, Run: 4): 16000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 16000 / 298485 frames
+    Progress (Session: 09302018, Run: 3): 16000 / 298483 frames
+    Progress (Session: 09302018, Run: 1): 16000 / 298469 frames
+    Progress (Session: 09302018, Run: 6): 16000 / 298500 frames
+    Progress (Session: 09302018, Run: 10): 16000 / 298479 frames
+    Progress (Session: 09302018, Run: 7): 16000 / 298497 frames
+    Progress (Session: 09302018, Run: 8): 16000 / 298489 frames
+    Progress (Session: 09302018, Run: 9): 16000 / 298499 frames
+    Progress (Session: 09302018, Run: 2): 17000 / 298495 frames
+    Progress (Session: 09302018, Run: 4): 17000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 17000 / 298485 frames
+    Progress (Session: 09302018, Run: 3): 17000 / 298483 frames
+    Progress (Session: 09302018, Run: 1): 17000 / 298469 frames
+    Progress (Session: 09302018, Run: 6): 17000 / 298500 frames
+    Progress (Session: 09302018, Run: 10): 17000 / 298479 frames
+    Progress (Session: 09302018, Run: 7): 17000 / 298497 frames
+    Progress (Session: 09302018, Run: 8): 17000 / 298489 frames
+    Progress (Session: 09302018, Run: 9): 17000 / 298499 frames
+    Progress (Session: 09302018, Run: 2): 18000 / 298495 frames
+    Progress (Session: 09302018, Run: 4): 18000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 18000 / 298485 frames
+    Progress (Session: 09302018, Run: 3): 18000 / 298483 frames
+    Progress (Session: 09302018, Run: 1): 18000 / 298469 frames
+    Progress (Session: 09302018, Run: 7): 18000 / 298497 frames
+    Progress (Session: 09302018, Run: 6): 18000 / 298500 frames
+    Progress (Session: 09302018, Run: 10): 18000 / 298479 frames
+    Progress (Session: 09302018, Run: 8): 18000 / 298489 frames
+    Progress (Session: 09302018, Run: 9): 18000 / 298499 frames
+    Progress (Session: 09302018, Run: 2): 19000 / 298495 frames
+    Progress (Session: 09302018, Run: 4): 19000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 19000 / 298485 frames
+    Progress (Session: 09302018, Run: 3): 19000 / 298483 frames
+    Progress (Session: 09302018, Run: 1): 19000 / 298469 frames
+    Progress (Session: 09302018, Run: 7): 19000 / 298497 frames
+    Progress (Session: 09302018, Run: 6): 19000 / 298500 frames
+    Progress (Session: 09302018, Run: 10): 19000 / 298479 frames
+    Progress (Session: 09302018, Run: 8): 19000 / 298489 frames
+    Progress (Session: 09302018, Run: 9): 19000 / 298499 frames
+    Progress (Session: 09302018, Run: 2): 20000 / 298495 frames
+    Progress (Session: 09302018, Run: 4): 20000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 20000 / 298485 frames
+    Progress (Session: 09302018, Run: 3): 20000 / 298483 frames
+    Progress (Session: 09302018, Run: 1): 20000 / 298469 frames
+    Progress (Session: 09302018, Run: 7): 20000 / 298497 frames
+    Progress (Session: 09302018, Run: 6): 20000 / 298500 frames
+    Progress (Session: 09302018, Run: 8): 20000 / 298489 frames
+    Progress (Session: 09302018, Run: 10): 20000 / 298479 frames
+    Progress (Session: 09302018, Run: 2): 21000 / 298495 frames
+    Progress (Session: 09302018, Run: 9): 20000 / 298499 frames
+    Progress (Session: 09302018, Run: 4): 21000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 21000 / 298485 frames
+    Progress (Session: 09302018, Run: 3): 21000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 21000 / 298497 frames
+    Progress (Session: 09302018, Run: 1): 21000 / 298469 frames
+    Progress (Session: 09302018, Run: 8): 21000 / 298489 frames
+    Progress (Session: 09302018, Run: 6): 21000 / 298500 frames
+    Progress (Session: 09302018, Run: 10): 21000 / 298479 frames
+    Progress (Session: 09302018, Run: 2): 22000 / 298495 frames
+    Progress (Session: 09302018, Run: 9): 21000 / 298499 frames
+    Progress (Session: 09302018, Run: 4): 22000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 22000 / 298485 frames
+    Progress (Session: 09302018, Run: 3): 22000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 22000 / 298497 frames
+    Progress (Session: 09302018, Run: 1): 22000 / 298469 frames
+    Progress (Session: 09302018, Run: 2): 23000 / 298495 frames
+    Progress (Session: 09302018, Run: 8): 22000 / 298489 frames
+    Progress (Session: 09302018, Run: 10): 22000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 22000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 22000 / 298499 frames
+    Progress (Session: 09302018, Run: 4): 23000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 23000 / 298485 frames
+    Progress (Session: 09302018, Run: 3): 23000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 23000 / 298497 frames
+    Progress (Session: 09302018, Run: 2): 24000 / 298495 frames
+    Progress (Session: 09302018, Run: 1): 23000 / 298469 frames
+    Progress (Session: 09302018, Run: 8): 23000 / 298489 frames
+    Progress (Session: 09302018, Run: 10): 23000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 23000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 23000 / 298499 frames
+    Progress (Session: 09302018, Run: 4): 24000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 24000 / 298485 frames
+    Progress (Session: 09302018, Run: 3): 24000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 24000 / 298497 frames
+    Progress (Session: 09302018, Run: 2): 25000 / 298495 frames
+    Progress (Session: 09302018, Run: 8): 24000 / 298489 frames
+    Progress (Session: 09302018, Run: 1): 24000 / 298469 frames
+    Progress (Session: 09302018, Run: 6): 24000 / 298500 frames
+    Progress (Session: 09302018, Run: 10): 24000 / 298479 frames
+    Progress (Session: 09302018, Run: 9): 24000 / 298499 frames
+    Progress (Session: 09302018, Run: 4): 25000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 25000 / 298485 frames
+    Progress (Session: 09302018, Run: 3): 25000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 25000 / 298497 frames
+    Progress (Session: 09302018, Run: 2): 26000 / 298495 frames
+    Progress (Session: 09302018, Run: 1): 25000 / 298469 frames
+    Progress (Session: 09302018, Run: 8): 25000 / 298489 frames
+    Progress (Session: 09302018, Run: 6): 25000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 25000 / 298499 frames
+    Progress (Session: 09302018, Run: 10): 25000 / 298479 frames
+    Progress (Session: 09302018, Run: 4): 26000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 26000 / 298485 frames
+    Progress (Session: 09302018, Run: 3): 26000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 26000 / 298497 frames
+    Progress (Session: 09302018, Run: 2): 27000 / 298495 frames
+    Progress (Session: 09302018, Run: 1): 26000 / 298469 frames
+    Progress (Session: 09302018, Run: 8): 26000 / 298489 frames
+    Progress (Session: 09302018, Run: 6): 26000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 26000 / 298499 frames
+    Progress (Session: 09302018, Run: 10): 26000 / 298479 frames
+    Progress (Session: 09302018, Run: 4): 27000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 27000 / 298485 frames
+    Progress (Session: 09302018, Run: 3): 27000 / 298483 frames
+    Progress (Session: 09302018, Run: 2): 28000 / 298495 frames
+    Progress (Session: 09302018, Run: 7): 27000 / 298497 frames
+    Progress (Session: 09302018, Run: 1): 27000 / 298469 frames
+    Progress (Session: 09302018, Run: 8): 27000 / 298489 frames
+    Progress (Session: 09302018, Run: 6): 27000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 27000 / 298499 frames
+    Progress (Session: 09302018, Run: 10): 27000 / 298479 frames
+    Progress (Session: 09302018, Run: 4): 28000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 28000 / 298485 frames
+    Progress (Session: 09302018, Run: 2): 29000 / 298495 frames
+    Progress (Session: 09302018, Run: 3): 28000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 28000 / 298497 frames
+    Progress (Session: 09302018, Run: 1): 28000 / 298469 frames
+    Progress (Session: 09302018, Run: 8): 28000 / 298489 frames
+    Progress (Session: 09302018, Run: 6): 28000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 28000 / 298499 frames
+    Progress (Session: 09302018, Run: 10): 28000 / 298479 frames
+    Progress (Session: 09302018, Run: 4): 29000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 29000 / 298485 frames
+    Progress (Session: 09302018, Run: 2): 30000 / 298495 frames
+    Progress (Session: 09302018, Run: 7): 29000 / 298497 frames
+    Progress (Session: 09302018, Run: 3): 29000 / 298483 frames
+    Progress (Session: 09302018, Run: 1): 29000 / 298469 frames
+    Progress (Session: 09302018, Run: 8): 29000 / 298489 frames
+    Progress (Session: 09302018, Run: 9): 29000 / 298499 frames
+    Progress (Session: 09302018, Run: 10): 29000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 29000 / 298500 frames
+    Progress (Session: 09302018, Run: 4): 30000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 30000 / 298485 frames
+    Progress (Session: 09302018, Run: 2): 31000 / 298495 frames
+    Progress (Session: 09302018, Run: 7): 30000 / 298497 frames
+    Progress (Session: 09302018, Run: 3): 30000 / 298483 frames
+    Progress (Session: 09302018, Run: 1): 30000 / 298469 frames
+    Progress (Session: 09302018, Run: 8): 30000 / 298489 frames
+    Progress (Session: 09302018, Run: 9): 30000 / 298499 frames
+    Progress (Session: 09302018, Run: 10): 30000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 30000 / 298500 frames
+    Progress (Session: 09302018, Run: 4): 31000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 31000 / 298485 frames
+    Progress (Session: 09302018, Run: 2): 32000 / 298495 frames
+    Progress (Session: 09302018, Run: 7): 31000 / 298497 frames
+    Progress (Session: 09302018, Run: 3): 31000 / 298483 frames
+    Progress (Session: 09302018, Run: 1): 31000 / 298469 frames
+    Progress (Session: 09302018, Run: 8): 31000 / 298489 frames
+    Progress (Session: 09302018, Run: 9): 31000 / 298499 frames
+    Progress (Session: 09302018, Run: 10): 31000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 31000 / 298500 frames
+    Progress (Session: 09302018, Run: 4): 32000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 32000 / 298485 frames
+    Progress (Session: 09302018, Run: 2): 33000 / 298495 frames
+    Progress (Session: 09302018, Run: 7): 32000 / 298497 frames
+    Progress (Session: 09302018, Run: 1): 32000 / 298469 frames
+    Progress (Session: 09302018, Run: 3): 32000 / 298483 frames
+    Progress (Session: 09302018, Run: 8): 32000 / 298489 frames
+    Progress (Session: 09302018, Run: 9): 32000 / 298499 frames
+    Progress (Session: 09302018, Run: 10): 32000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 32000 / 298500 frames
+    Progress (Session: 09302018, Run: 4): 33000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 33000 / 298485 frames
+    Progress (Session: 09302018, Run: 2): 34000 / 298495 frames
+    Progress (Session: 09302018, Run: 1): 33000 / 298469 frames
+    Progress (Session: 09302018, Run: 3): 33000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 33000 / 298497 frames
+    Progress (Session: 09302018, Run: 9): 33000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 33000 / 298489 frames
+    Progress (Session: 09302018, Run: 10): 33000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 33000 / 298500 frames
+    Progress (Session: 09302018, Run: 4): 34000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 34000 / 298485 frames
+    Progress (Session: 09302018, Run: 2): 35000 / 298495 frames
+    Progress (Session: 09302018, Run: 1): 34000 / 298469 frames
+    Progress (Session: 09302018, Run: 3): 34000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 34000 / 298497 frames
+    Progress (Session: 09302018, Run: 9): 34000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 34000 / 298489 frames
+    Progress (Session: 09302018, Run: 10): 34000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 34000 / 298500 frames
+    Progress (Session: 09302018, Run: 4): 35000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 35000 / 298485 frames
+    Progress (Session: 09302018, Run: 2): 36000 / 298495 frames
+    Progress (Session: 09302018, Run: 1): 35000 / 298469 frames
+    Progress (Session: 09302018, Run: 3): 35000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 35000 / 298497 frames
+    Progress (Session: 09302018, Run: 9): 35000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 35000 / 298489 frames
+    Progress (Session: 09302018, Run: 10): 35000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 35000 / 298500 frames
+    Progress (Session: 09302018, Run: 4): 36000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 36000 / 298485 frames
+    Progress (Session: 09302018, Run: 2): 37000 / 298495 frames
+    Progress (Session: 09302018, Run: 1): 36000 / 298469 frames
+    Progress (Session: 09302018, Run: 3): 36000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 36000 / 298497 frames
+    Progress (Session: 09302018, Run: 9): 36000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 36000 / 298489 frames
+    Progress (Session: 09302018, Run: 10): 36000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 36000 / 298500 frames
+    Progress (Session: 09302018, Run: 4): 37000 / 298484 frames
+    Progress (Session: 09302018, Run: 2): 38000 / 298495 frames
+    Progress (Session: 09302018, Run: 5): 37000 / 298485 frames
+    Progress (Session: 09302018, Run: 1): 37000 / 298469 frames
+    Progress (Session: 09302018, Run: 3): 37000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 37000 / 298497 frames
+    Progress (Session: 09302018, Run: 9): 37000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 37000 / 298489 frames
+    Progress (Session: 09302018, Run: 10): 37000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 37000 / 298500 frames
+    Progress (Session: 09302018, Run: 2): 39000 / 298495 frames
+    Progress (Session: 09302018, Run: 4): 38000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 38000 / 298485 frames
+    Progress (Session: 09302018, Run: 3): 38000 / 298483 frames
+    Progress (Session: 09302018, Run: 1): 38000 / 298469 frames
+    Progress (Session: 09302018, Run: 7): 38000 / 298497 frames
+    Progress (Session: 09302018, Run: 9): 38000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 38000 / 298489 frames
+    Progress (Session: 09302018, Run: 10): 38000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 38000 / 298500 frames
+    Progress (Session: 09302018, Run: 2): 40000 / 298495 frames
+    Progress (Session: 09302018, Run: 4): 39000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 39000 / 298485 frames
+    Progress (Session: 09302018, Run: 1): 39000 / 298469 frames
+    Progress (Session: 09302018, Run: 3): 39000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 39000 / 298497 frames
+    Progress (Session: 09302018, Run: 9): 39000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 39000 / 298489 frames
+    Progress (Session: 09302018, Run: 10): 39000 / 298479 frames
+    Progress (Session: 09302018, Run: 2): 41000 / 298495 frames
+    Progress (Session: 09302018, Run: 6): 39000 / 298500 frames
+    Progress (Session: 09302018, Run: 4): 40000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 40000 / 298485 frames
+    Progress (Session: 09302018, Run: 1): 40000 / 298469 frames
+    Progress (Session: 09302018, Run: 3): 40000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 40000 / 298497 frames
+    Progress (Session: 09302018, Run: 9): 40000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 40000 / 298489 frames
+    Progress (Session: 09302018, Run: 10): 40000 / 298479 frames
+    Progress (Session: 09302018, Run: 2): 42000 / 298495 frames
+    Progress (Session: 09302018, Run: 4): 41000 / 298484 frames
+    Progress (Session: 09302018, Run: 6): 40000 / 298500 frames
+    Progress (Session: 09302018, Run: 5): 41000 / 298485 frames
+    Progress (Session: 09302018, Run: 1): 41000 / 298469 frames
+    Progress (Session: 09302018, Run: 3): 41000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 41000 / 298497 frames
+    Progress (Session: 09302018, Run: 9): 41000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 41000 / 298489 frames
+    Progress (Session: 09302018, Run: 2): 43000 / 298495 frames
+    Progress (Session: 09302018, Run: 10): 41000 / 298479 frames
+    Progress (Session: 09302018, Run: 4): 42000 / 298484 frames
+    Progress (Session: 09302018, Run: 6): 41000 / 298500 frames
+    Progress (Session: 09302018, Run: 5): 42000 / 298485 frames
+    Progress (Session: 09302018, Run: 1): 42000 / 298469 frames
+    Progress (Session: 09302018, Run: 3): 42000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 42000 / 298497 frames
+    Progress (Session: 09302018, Run: 9): 42000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 42000 / 298489 frames
+    Progress (Session: 09302018, Run: 2): 44000 / 298495 frames
+    Progress (Session: 09302018, Run: 10): 42000 / 298479 frames
+    Progress (Session: 09302018, Run: 4): 43000 / 298484 frames
+    Progress (Session: 09302018, Run: 1): 43000 / 298469 frames
+    Progress (Session: 09302018, Run: 6): 42000 / 298500 frames
+    Progress (Session: 09302018, Run: 5): 43000 / 298485 frames
+    Progress (Session: 09302018, Run: 3): 43000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 43000 / 298497 frames
+    Progress (Session: 09302018, Run: 9): 43000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 43000 / 298489 frames
+    Progress (Session: 09302018, Run: 2): 45000 / 298495 frames
+    Progress (Session: 09302018, Run: 10): 43000 / 298479 frames
+    Progress (Session: 09302018, Run: 4): 44000 / 298484 frames
+    Progress (Session: 09302018, Run: 1): 44000 / 298469 frames
+    Progress (Session: 09302018, Run: 5): 44000 / 298485 frames
+    Progress (Session: 09302018, Run: 6): 43000 / 298500 frames
+    Progress (Session: 09302018, Run: 3): 44000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 44000 / 298497 frames
+    Progress (Session: 09302018, Run: 9): 44000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 44000 / 298489 frames
+    Progress (Session: 09302018, Run: 2): 46000 / 298495 frames
+    Progress (Session: 09302018, Run: 10): 44000 / 298479 frames
+    Progress (Session: 09302018, Run: 4): 45000 / 298484 frames
+    Progress (Session: 09302018, Run: 1): 45000 / 298469 frames
+    Progress (Session: 09302018, Run: 5): 45000 / 298485 frames
+    Progress (Session: 09302018, Run: 6): 44000 / 298500 frames
+    Progress (Session: 09302018, Run: 3): 45000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 45000 / 298497 frames
+    Progress (Session: 09302018, Run: 9): 45000 / 298499 frames
+    Progress (Session: 09302018, Run: 2): 47000 / 298495 frames
+    Progress (Session: 09302018, Run: 8): 45000 / 298489 frames
+    Progress (Session: 09302018, Run: 10): 45000 / 298479 frames
+    Progress (Session: 09302018, Run: 4): 46000 / 298484 frames
+    Progress (Session: 09302018, Run: 1): 46000 / 298469 frames
+    Progress (Session: 09302018, Run: 5): 46000 / 298485 frames
+    Progress (Session: 09302018, Run: 6): 45000 / 298500 frames
+    Progress (Session: 09302018, Run: 3): 46000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 46000 / 298497 frames
+    Progress (Session: 09302018, Run: 9): 46000 / 298499 frames
+    Progress (Session: 09302018, Run: 2): 48000 / 298495 frames
+    Progress (Session: 09302018, Run: 8): 46000 / 298489 frames
+    Progress (Session: 09302018, Run: 10): 46000 / 298479 frames
+    Progress (Session: 09302018, Run: 4): 47000 / 298484 frames
+    Progress (Session: 09302018, Run: 1): 47000 / 298469 frames
+    Progress (Session: 09302018, Run: 5): 47000 / 298485 frames
+    Progress (Session: 09302018, Run: 6): 46000 / 298500 frames
+    Progress (Session: 09302018, Run: 3): 47000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 47000 / 298497 frames
+    Progress (Session: 09302018, Run: 9): 47000 / 298499 frames
+    Progress (Session: 09302018, Run: 2): 49000 / 298495 frames
+    Progress (Session: 09302018, Run: 8): 47000 / 298489 frames
+    Progress (Session: 09302018, Run: 10): 47000 / 298479 frames
+    Progress (Session: 09302018, Run: 4): 48000 / 298484 frames
+    Progress (Session: 09302018, Run: 1): 48000 / 298469 frames
+    Progress (Session: 09302018, Run: 5): 48000 / 298485 frames
+    Progress (Session: 09302018, Run: 6): 47000 / 298500 frames
+    Progress (Session: 09302018, Run: 7): 48000 / 298497 frames
+    Progress (Session: 09302018, Run: 3): 48000 / 298483 frames
+    Progress (Session: 09302018, Run: 9): 48000 / 298499 frames
+    Progress (Session: 09302018, Run: 2): 50000 / 298495 frames
+    Progress (Session: 09302018, Run: 8): 48000 / 298489 frames
+    Progress (Session: 09302018, Run: 10): 48000 / 298479 frames
+    Progress (Session: 09302018, Run: 4): 49000 / 298484 frames
+    Progress (Session: 09302018, Run: 1): 49000 / 298469 frames
+    Progress (Session: 09302018, Run: 5): 49000 / 298485 frames
+    Progress (Session: 09302018, Run: 6): 48000 / 298500 frames
+    Progress (Session: 09302018, Run: 3): 49000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 49000 / 298497 frames
+    Progress (Session: 09302018, Run: 9): 49000 / 298499 frames
+    Progress (Session: 09302018, Run: 2): 51000 / 298495 frames
+    Progress (Session: 09302018, Run: 8): 49000 / 298489 frames
+    Progress (Session: 09302018, Run: 10): 49000 / 298479 frames
+    Progress (Session: 09302018, Run: 4): 50000 / 298484 frames
+    Progress (Session: 09302018, Run: 1): 50000 / 298469 frames
+    Progress (Session: 09302018, Run: 5): 50000 / 298485 frames
+    Progress (Session: 09302018, Run: 3): 50000 / 298483 frames
+    Progress (Session: 09302018, Run: 6): 49000 / 298500 frames
+    Progress (Session: 09302018, Run: 7): 50000 / 298497 frames
+    Progress (Session: 09302018, Run: 9): 50000 / 298499 frames
+    Progress (Session: 09302018, Run: 2): 52000 / 298495 frames
+    Progress (Session: 09302018, Run: 8): 50000 / 298489 frames
+    Progress (Session: 09302018, Run: 10): 50000 / 298479 frames
+    Progress (Session: 09302018, Run: 4): 51000 / 298484 frames
+    Progress (Session: 09302018, Run: 1): 51000 / 298469 frames
+    Progress (Session: 09302018, Run: 5): 51000 / 298485 frames
+    Progress (Session: 09302018, Run: 3): 51000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 51000 / 298497 frames
+    Progress (Session: 09302018, Run: 6): 50000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 51000 / 298499 frames
+    Progress (Session: 09302018, Run: 2): 53000 / 298495 frames
+    Progress (Session: 09302018, Run: 8): 51000 / 298489 frames
+    Progress (Session: 09302018, Run: 4): 52000 / 298484 frames
+    Progress (Session: 09302018, Run: 10): 51000 / 298479 frames
+    Progress (Session: 09302018, Run: 1): 52000 / 298469 frames
+    Progress (Session: 09302018, Run: 5): 52000 / 298485 frames
+    Progress (Session: 09302018, Run: 3): 52000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 52000 / 298497 frames
+    Progress (Session: 09302018, Run: 6): 51000 / 298500 frames
+    Progress (Session: 09302018, Run: 2): 54000 / 298495 frames
+    Progress (Session: 09302018, Run: 9): 52000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 52000 / 298489 frames
+    Progress (Session: 09302018, Run: 4): 53000 / 298484 frames
+    Progress (Session: 09302018, Run: 10): 52000 / 298479 frames
+    Progress (Session: 09302018, Run: 5): 53000 / 298485 frames
+    Progress (Session: 09302018, Run: 1): 53000 / 298469 frames
+    Progress (Session: 09302018, Run: 3): 53000 / 298483 frames
+    Progress (Session: 09302018, Run: 7): 53000 / 298497 frames
+    Progress (Session: 09302018, Run: 6): 52000 / 298500 frames
+    Progress (Session: 09302018, Run: 2): 55000 / 298495 frames
+    Progress (Session: 09302018, Run: 9): 53000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 53000 / 298489 frames
+    Progress (Session: 09302018, Run: 4): 54000 / 298484 frames
+    Progress (Session: 09302018, Run: 5): 54000 / 298485 frames
+    Progress (Session: 09302018, Run: 10): 53000 / 298479 frames
+    Progress (Session: 09302018, Run: 1): 54000 / 298469 frames
+    Progress (Session: 09302018, Run: 7): 54000 / 298497 frames
+    Progress (Session: 09302018, Run: 3): 54000 / 298483 frames
+    Progress (Session: 09302018, Run: 6): 53000 / 298500 frames
+    Progress (Session: 09302018, Run: 2): 56000 / 298495 frames
+    Progress (Session: 09302018, Run: 9): 54000 / 298499 frames
+    Progress (Session: 09302018, Run: 4): 55000 / 298484 frames
+    Progress (Session: 09302018, Run: 8): 54000 / 298489 frames
+    Progress (Session: 09302018, Run: 5): 55000 / 298485 frames
+    Progress (Session: 09302018, Run: 10): 54000 / 298479 frames
+    Progress (Session: 09302018, Run: 1): 55000 / 298469 frames
+    Progress (Session: 09302018, Run: 7): 55000 / 298497 frames
+    Progress (Session: 09302018, Run: 3): 55000 / 298483 frames
+    Progress (Session: 09302018, Run: 6): 54000 / 298500 frames
+    Progress (Session: 09302018, Run: 2): 57000 / 298495 frames
+    Progress (Session: 09302018, Run: 9): 55000 / 298499 frames
+    Progress (Session: 09302018, Run: 4): 56000 / 298484 frames
+    Progress (Session: 09302018, Run: 8): 55000 / 298489 frames
+    Progress (Session: 09302018, Run: 5): 56000 / 298485 frames
+    Progress (Session: 09302018, Run: 10): 55000 / 298479 frames
+    Progress (Session: 09302018, Run: 1): 56000 / 298469 frames
+    Progress (Session: 09302018, Run: 7): 56000 / 298497 frames
+    Progress (Session: 09302018, Run: 3): 56000 / 298483 frames
+    Progress (Session: 09302018, Run: 2): 58000 / 298495 frames
+    Progress (Session: 09302018, Run: 6): 55000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 56000 / 298499 frames
+    Progress (Session: 09302018, Run: 4): 57000 / 298484 frames
+    Progress (Session: 09302018, Run: 8): 56000 / 298489 frames
+    Progress (Session: 09302018, Run: 5): 57000 / 298485 frames
+    Progress (Session: 09302018, Run: 1): 57000 / 298469 frames
+    Progress (Session: 09302018, Run: 10): 56000 / 298479 frames
+    Progress (Session: 09302018, Run: 7): 57000 / 298497 frames
+    Progress (Session: 09302018, Run: 3): 57000 / 298483 frames
+    Progress (Session: 09302018, Run: 2): 59000 / 298495 frames
+    Progress (Session: 09302018, Run: 6): 56000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 57000 / 298499 frames
+    Progress (Session: 09302018, Run: 4): 58000 / 298484 frames
+    Progress (Session: 09302018, Run: 8): 57000 / 298489 frames
+    Progress (Session: 09302018, Run: 5): 58000 / 298485 frames
+    Progress (Session: 09302018, Run: 1): 58000 / 298469 frames
+    Progress (Session: 09302018, Run: 10): 57000 / 298479 frames
+    Progress (Session: 09302018, Run: 7): 58000 / 298497 frames
+    Progress (Session: 09302018, Run: 2): 60000 / 298495 frames
+    Progress (Session: 09302018, Run: 3): 58000 / 298483 frames
+    Progress (Session: 09302018, Run: 6): 57000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 58000 / 298499 frames
+    Progress (Session: 09302018, Run: 4): 59000 / 298484 frames
+    Progress (Session: 09302018, Run: 8): 58000 / 298489 frames
+    Progress (Session: 09302018, Run: 1): 59000 / 298469 frames
+    Progress (Session: 09302018, Run: 5): 59000 / 298485 frames
+    Progress (Session: 09302018, Run: 10): 58000 / 298479 frames
+    Progress (Session: 09302018, Run: 7): 59000 / 298497 frames
+    Progress (Session: 09302018, Run: 2): 61000 / 298495 frames
+    Progress (Session: 09302018, Run: 3): 59000 / 298483 frames
+    Progress (Session: 09302018, Run: 6): 58000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 59000 / 298499 frames
+    Progress (Session: 09302018, Run: 4): 60000 / 298484 frames
+    Progress (Session: 09302018, Run: 8): 59000 / 298489 frames
+    Progress (Session: 09302018, Run: 1): 60000 / 298469 frames
+    Progress (Session: 09302018, Run: 5): 60000 / 298485 frames
+    Progress (Session: 09302018, Run: 7): 60000 / 298497 frames
+    Progress (Session: 09302018, Run: 10): 59000 / 298479 frames
+    Progress (Session: 09302018, Run: 2): 62000 / 298495 frames
+    Progress (Session: 09302018, Run: 3): 60000 / 298483 frames
+    Progress (Session: 09302018, Run: 6): 59000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 60000 / 298499 frames
+    Progress (Session: 09302018, Run: 4): 61000 / 298484 frames
+    Progress (Session: 09302018, Run: 1): 61000 / 298469 frames
+    Progress (Session: 09302018, Run: 8): 60000 / 298489 frames
+    Progress (Session: 09302018, Run: 5): 61000 / 298485 frames
+    Progress (Session: 09302018, Run: 7): 61000 / 298497 frames
+    Progress (Session: 09302018, Run: 10): 60000 / 298479 frames
+    Progress (Session: 09302018, Run: 2): 63000 / 298495 frames
+    Progress (Session: 09302018, Run: 3): 61000 / 298483 frames
+    Progress (Session: 09302018, Run: 6): 60000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 61000 / 298499 frames
+    Progress (Session: 09302018, Run: 4): 62000 / 298484 frames
+    Progress (Session: 09302018, Run: 1): 62000 / 298469 frames
+    Progress (Session: 09302018, Run: 8): 61000 / 298489 frames
+    Progress (Session: 09302018, Run: 7): 62000 / 298497 frames
+    Progress (Session: 09302018, Run: 5): 62000 / 298485 frames
+    Progress (Session: 09302018, Run: 2): 64000 / 298495 frames
+    Progress (Session: 09302018, Run: 10): 61000 / 298479 frames
+    Progress (Session: 09302018, Run: 3): 62000 / 298483 frames
+    Progress (Session: 09302018, Run: 9): 62000 / 298499 frames
+    Progress (Session: 09302018, Run: 6): 61000 / 298500 frames
+    Progress (Session: 09302018, Run: 4): 63000 / 298484 frames
+    Progress (Session: 09302018, Run: 1): 63000 / 298469 frames
+    Progress (Session: 09302018, Run: 5): 63000 / 298485 frames
+    Progress (Session: 09302018, Run: 8): 62000 / 298489 frames
+    Progress (Session: 09302018, Run: 7): 63000 / 298497 frames
+    Progress (Session: 09302018, Run: 2): 65000 / 298495 frames
+    Progress (Session: 09302018, Run: 10): 62000 / 298479 frames
+    Progress (Session: 09302018, Run: 3): 63000 / 298483 frames
+    Progress (Session: 09302018, Run: 9): 63000 / 298499 frames
+    Progress (Session: 09302018, Run: 6): 62000 / 298500 frames
+    Progress (Session: 09302018, Run: 4): 64000 / 298484 frames
+    Progress (Session: 09302018, Run: 1): 64000 / 298469 frames
+    Progress (Session: 09302018, Run: 5): 64000 / 298485 frames
+    Progress (Session: 09302018, Run: 8): 63000 / 298489 frames
+    Progress (Session: 09302018, Run: 7): 64000 / 298497 frames
+    Progress (Session: 09302018, Run: 2): 66000 / 298495 frames
+    Progress (Session: 09302018, Run: 10): 63000 / 298479 frames
+    Progress (Session: 09302018, Run: 3): 64000 / 298483 frames
+    Progress (Session: 09302018, Run: 6): 63000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 64000 / 298499 frames
+    Progress (Session: 09302018, Run: 4): 65000 / 298484 frames
+    Progress (Session: 09302018, Run: 1): 65000 / 298469 frames
+    Progress (Session: 09302018, Run: 5): 65000 / 298485 frames
+    Progress (Session: 09302018, Run: 8): 64000 / 298489 frames
+    Progress (Session: 09302018, Run: 7): 65000 / 298497 frames
+    Progress (Session: 09302018, Run: 2): 67000 / 298495 frames
+    Progress (Session: 09302018, Run: 10): 64000 / 298479 frames
+    Progress (Session: 09302018, Run: 3): 65000 / 298483 frames
+    Progress (Session: 09302018, Run: 9): 65000 / 298499 frames
+    Progress (Session: 09302018, Run: 6): 64000 / 298500 frames
+    Progress (Session: 09302018, Run: 4): 66000 / 298484 frames
+    Progress (Session: 09302018, Run: 1): 66000 / 298469 frames
+    Progress (Session: 09302018, Run: 5): 66000 / 298485 frames
+    Progress (Session: 09302018, Run: 2): 68000 / 298495 frames
+    Progress (Session: 09302018, Run: 7): 66000 / 298497 frames
+    Progress (Session: 09302018, Run: 8): 65000 / 298489 frames
+    Progress (Session: 09302018, Run: 10): 65000 / 298479 frames
+    Progress (Session: 09302018, Run: 3): 66000 / 298483 frames
+    Progress (Session: 09302018, Run: 9): 66000 / 298499 frames
+    Progress (Session: 09302018, Run: 4): 67000 / 298484 frames
+    Progress (Session: 09302018, Run: 6): 65000 / 298500 frames
+    Progress (Session: 09302018, Run: 1): 67000 / 298469 frames
+    Progress (Session: 09302018, Run: 2): 69000 / 298495 frames
+    Progress (Session: 09302018, Run: 5): 67000 / 298485 frames
+    Progress (Session: 09302018, Run: 8): 66000 / 298489 frames
+    Progress (Session: 09302018, Run: 7): 67000 / 298497 frames
+    Progress (Session: 09302018, Run: 10): 66000 / 298479 frames
+    Progress (Session: 09302018, Run: 3): 67000 / 298483 frames
+    Progress (Session: 09302018, Run: 4): 68000 / 298484 frames
+    Progress (Session: 09302018, Run: 9): 67000 / 298499 frames
+    Progress (Session: 09302018, Run: 6): 66000 / 298500 frames
+    Progress (Session: 09302018, Run: 1): 68000 / 298469 frames
+    Progress (Session: 09302018, Run: 2): 70000 / 298495 frames
+    Progress (Session: 09302018, Run: 5): 68000 / 298485 frames
+    Progress (Session: 09302018, Run: 8): 67000 / 298489 frames
+    Progress (Session: 09302018, Run: 7): 68000 / 298497 frames
+    Progress (Session: 09302018, Run: 10): 67000 / 298479 frames
+    Progress (Session: 09302018, Run: 3): 68000 / 298483 frames
+    Progress (Session: 09302018, Run: 4): 69000 / 298484 frames
+    Progress (Session: 09302018, Run: 9): 68000 / 298499 frames
+    Progress (Session: 09302018, Run: 1): 69000 / 298469 frames
+    Progress (Session: 09302018, Run: 6): 67000 / 298500 frames
+    Progress (Session: 09302018, Run: 2): 71000 / 298495 frames
+    Progress (Session: 09302018, Run: 5): 69000 / 298485 frames
+    Progress (Session: 09302018, Run: 8): 68000 / 298489 frames
+    Progress (Session: 09302018, Run: 7): 69000 / 298497 frames
+    Progress (Session: 09302018, Run: 10): 68000 / 298479 frames
+    Progress (Session: 09302018, Run: 3): 69000 / 298483 frames
+    Progress (Session: 09302018, Run: 4): 70000 / 298484 frames
+    Progress (Session: 09302018, Run: 1): 70000 / 298469 frames
+    Progress (Session: 09302018, Run: 9): 69000 / 298499 frames
+    Progress (Session: 09302018, Run: 6): 68000 / 298500 frames
+    Progress (Session: 09302018, Run: 2): 72000 / 298495 frames
+    Progress (Session: 09302018, Run: 8): 69000 / 298489 frames
+    Progress (Session: 09302018, Run: 5): 70000 / 298485 frames
+    Progress (Session: 09302018, Run: 7): 70000 / 298497 frames
+    Progress (Session: 09302018, Run: 10): 69000 / 298479 frames
+    Progress (Session: 09302018, Run: 3): 70000 / 298483 frames
+    Progress (Session: 09302018, Run: 4): 71000 / 298484 frames
+    Progress (Session: 09302018, Run: 1): 71000 / 298469 frames
+    Progress (Session: 09302018, Run: 9): 70000 / 298499 frames
+    Progress (Session: 09302018, Run: 2): 73000 / 298495 frames
+    Progress (Session: 09302018, Run: 6): 69000 / 298500 frames
+    Progress (Session: 09302018, Run: 8): 70000 / 298489 frames
+    Progress (Session: 09302018, Run: 5): 71000 / 298485 frames
+    Progress (Session: 09302018, Run: 7): 71000 / 298497 frames
+    Progress (Session: 09302018, Run: 10): 70000 / 298479 frames
+    Progress (Session: 09302018, Run: 3): 71000 / 298483 frames
+    Progress (Session: 09302018, Run: 4): 72000 / 298484 frames
+    Progress (Session: 09302018, Run: 1): 72000 / 298469 frames
+    Progress (Session: 09302018, Run: 2): 74000 / 298495 frames
+    Progress (Session: 09302018, Run: 9): 71000 / 298499 frames
+    Progress (Session: 09302018, Run: 6): 70000 / 298500 frames
+    Progress (Session: 09302018, Run: 8): 71000 / 298489 frames
+    Progress (Session: 09302018, Run: 5): 72000 / 298485 frames
+    Progress (Session: 09302018, Run: 7): 72000 / 298497 frames
+    Progress (Session: 09302018, Run: 10): 71000 / 298479 frames
+    Progress (Session: 09302018, Run: 3): 72000 / 298483 frames
+    Progress (Session: 09302018, Run: 4): 73000 / 298484 frames
+    Progress (Session: 09302018, Run: 1): 73000 / 298469 frames
+    Progress (Session: 09302018, Run: 2): 75000 / 298495 frames
+    Progress (Session: 09302018, Run: 9): 72000 / 298499 frames
+    Progress (Session: 09302018, Run: 6): 71000 / 298500 frames
+    Progress (Session: 09302018, Run: 8): 72000 / 298489 frames
+    Progress (Session: 09302018, Run: 5): 73000 / 298485 frames
+    Progress (Session: 09302018, Run: 7): 73000 / 298497 frames
+    Progress (Session: 09302018, Run: 10): 72000 / 298479 frames
+    Progress (Session: 09302018, Run: 3): 73000 / 298483 frames
+    Progress (Session: 09302018, Run: 4): 74000 / 298484 frames
+    Progress (Session: 09302018, Run: 1): 74000 / 298469 frames
+    Progress (Session: 09302018, Run: 2): 76000 / 298495 frames
+    Progress (Session: 09302018, Run: 6): 72000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 73000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 73000 / 298489 frames
+    Progress (Session: 09302018, Run: 7): 74000 / 298497 frames
+    Progress (Session: 09302018, Run: 5): 74000 / 298485 frames
+    Progress (Session: 09302018, Run: 10): 73000 / 298479 frames
+    Progress (Session: 09302018, Run: 3): 74000 / 298483 frames
+    Progress (Session: 09302018, Run: 1): 75000 / 298469 frames
+    Progress (Session: 09302018, Run: 4): 75000 / 298484 frames
+    Progress (Session: 09302018, Run: 2): 77000 / 298495 frames
+    Progress (Session: 09302018, Run: 9): 74000 / 298499 frames
+    Progress (Session: 09302018, Run: 6): 73000 / 298500 frames
+    Progress (Session: 09302018, Run: 8): 74000 / 298489 frames
+    Progress (Session: 09302018, Run: 5): 75000 / 298485 frames
+    Progress (Session: 09302018, Run: 7): 75000 / 298497 frames
+    Progress (Session: 09302018, Run: 1): 76000 / 298469 frames
+    Progress (Session: 09302018, Run: 3): 75000 / 298483 frames
+    Progress (Session: 09302018, Run: 10): 74000 / 298479 frames
+    Progress (Session: 09302018, Run: 4): 76000 / 298484 frames
+    Progress (Session: 09302018, Run: 2): 78000 / 298495 frames
+    Progress (Session: 09302018, Run: 6): 74000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 75000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 75000 / 298489 frames
+    Progress (Session: 09302018, Run: 5): 76000 / 298485 frames
+    Progress (Session: 09302018, Run: 7): 76000 / 298497 frames
+    Progress (Session: 09302018, Run: 1): 77000 / 298469 frames
+    Progress (Session: 09302018, Run: 3): 76000 / 298483 frames
+    Progress (Session: 09302018, Run: 4): 77000 / 298484 frames
+    Progress (Session: 09302018, Run: 10): 75000 / 298479 frames
+    Progress (Session: 09302018, Run: 2): 79000 / 298495 frames
+    Progress (Session: 09302018, Run: 6): 75000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 76000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 76000 / 298489 frames
+    Progress (Session: 09302018, Run: 5): 77000 / 298485 frames
+    Progress (Session: 09302018, Run: 7): 77000 / 298497 frames
+    Progress (Session: 09302018, Run: 1): 78000 / 298469 frames
+    Progress (Session: 09302018, Run: 4): 78000 / 298484 frames
+    Progress (Session: 09302018, Run: 3): 77000 / 298483 frames
+    Progress (Session: 09302018, Run: 2): 80000 / 298495 frames
+    Progress (Session: 09302018, Run: 10): 76000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 76000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 77000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 77000 / 298489 frames
+    Progress (Session: 09302018, Run: 5): 78000 / 298485 frames
+    Progress (Session: 09302018, Run: 7): 78000 / 298497 frames
+    Progress (Session: 09302018, Run: 1): 79000 / 298469 frames
+    Progress (Session: 09302018, Run: 2): 81000 / 298495 frames
+    Progress (Session: 09302018, Run: 4): 79000 / 298484 frames
+    Progress (Session: 09302018, Run: 3): 78000 / 298483 frames
+    Progress (Session: 09302018, Run: 10): 77000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 77000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 78000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 78000 / 298489 frames
+    Progress (Session: 09302018, Run: 5): 79000 / 298485 frames
+    Progress (Session: 09302018, Run: 7): 79000 / 298497 frames
+    Progress (Session: 09302018, Run: 1): 80000 / 298469 frames
+    Progress (Session: 09302018, Run: 2): 82000 / 298495 frames
+    Progress (Session: 09302018, Run: 4): 80000 / 298484 frames
+    Progress (Session: 09302018, Run: 3): 79000 / 298483 frames
+    Progress (Session: 09302018, Run: 10): 78000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 78000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 79000 / 298499 frames
+    Progress (Session: 09302018, Run: 5): 80000 / 298485 frames
+    Progress (Session: 09302018, Run: 8): 79000 / 298489 frames
+    Progress (Session: 09302018, Run: 7): 80000 / 298497 frames
+    Progress (Session: 09302018, Run: 1): 81000 / 298469 frames
+    Progress (Session: 09302018, Run: 2): 83000 / 298495 frames
+    Progress (Session: 09302018, Run: 4): 81000 / 298484 frames
+    Progress (Session: 09302018, Run: 3): 80000 / 298483 frames
+    Progress (Session: 09302018, Run: 10): 79000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 79000 / 298500 frames
+    Progress (Session: 09302018, Run: 9): 80000 / 298499 frames
+    Progress (Session: 09302018, Run: 5): 81000 / 298485 frames
+    Progress (Session: 09302018, Run: 8): 80000 / 298489 frames
+    Progress (Session: 09302018, Run: 7): 81000 / 298497 frames
+    Progress (Session: 09302018, Run: 1): 82000 / 298469 frames
+    Progress (Session: 09302018, Run: 2): 84000 / 298495 frames
+    Progress (Session: 09302018, Run: 4): 82000 / 298484 frames
+    Progress (Session: 09302018, Run: 3): 81000 / 298483 frames
+    Progress (Session: 09302018, Run: 10): 80000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 80000 / 298500 frames
+    Progress (Session: 09302018, Run: 5): 82000 / 298485 frames
+    Progress (Session: 09302018, Run: 9): 81000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 81000 / 298489 frames
+    Progress (Session: 09302018, Run: 7): 82000 / 298497 frames
+    Progress (Session: 09302018, Run: 1): 83000 / 298469 frames
+    Progress (Session: 09302018, Run: 2): 85000 / 298495 frames
+    Progress (Session: 09302018, Run: 4): 83000 / 298484 frames
+    Progress (Session: 09302018, Run: 3): 82000 / 298483 frames
+    Progress (Session: 09302018, Run: 10): 81000 / 298479 frames
+    Progress (Session: 09302018, Run: 6): 81000 / 298500 frames
+    Progress (Session: 09302018, Run: 5): 83000 / 298485 frames
+    Progress (Session: 09302018, Run: 9): 82000 / 298499 frames
+    Progress (Session: 09302018, Run: 7): 83000 / 298497 frames
+    Progress (Session: 09302018, Run: 8): 82000 / 298489 frames
+    Progress (Session: 09302018, Run: 1): 84000 / 298469 frames
+    Progress (Session: 09302018, Run: 2): 86000 / 298495 frames
+    Progress (Session: 09302018, Run: 4): 84000 / 298484 frames
+    Progress (Session: 09302018, Run: 3): 83000 / 298483 frames
+    Progress (Session: 09302018, Run: 10): 82000 / 298479 frames
+    Progress (Session: 09302018, Run: 5): 84000 / 298485 frames
+    Progress (Session: 09302018, Run: 6): 82000 / 298500 frames
+    Progress (Session: 09302018, Run: 7): 84000 / 298497 frames
+    Progress (Session: 09302018, Run: 9): 83000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 83000 / 298489 frames
+    Progress (Session: 09302018, Run: 2): 87000 / 298495 frames
+    Progress (Session: 09302018, Run: 1): 85000 / 298469 frames
+    Progress (Session: 09302018, Run: 4): 85000 / 298484 frames
+    Progress (Session: 09302018, Run: 3): 84000 / 298483 frames
+    Progress (Session: 09302018, Run: 10): 83000 / 298479 frames
+    Progress (Session: 09302018, Run: 5): 85000 / 298485 frames
+    Progress (Session: 09302018, Run: 6): 83000 / 298500 frames
+    Progress (Session: 09302018, Run: 7): 85000 / 298497 frames
+    Progress (Session: 09302018, Run: 9): 84000 / 298499 frames
+    Progress (Session: 09302018, Run: 8): 84000 / 298489 frames
+    Progress (Session: 09302018, Run: 1): 86000 / 298469 frames
+    Progress (Session: 09302018, Run: 2): 88000 / 298495 frames
+    Progress (Session: 09302018, Run: 4): 86000 / 298484 frames
+    Progress (Session: 09302018, Run: 3): 85000 / 298483 frames
+    Progress (Session: 09302018, Run: 10): 84000 / 298479 frames
+    Progress (Session: 09302018, Run: 5): 86000 / 298485 frames
+    Progress (Session: 09302018, Run: 7): 86000 / 298497 frames
+    Progress (Session: 09302018, Run: 6): 84000 / 298500 frames
+    Progress (Session: 09302018, Run: 8): 85000 / 298489 frames
+    Progress (Session: 09302018, Run: 9): 85000 / 298499 frames
+    Progress (Session: 09302018, Run: 2): 89000 / 298495 frames
+    Progress (Session: 09302018, Run: 1): 87000 / 298469 frames
+    Progress (Session: 09302018, Run: 4): 87000 / 298484 frames
+    Progress (Session: 09302018, Run: 3): 86000 / 298483 frames
+    Progress (Session: 09302018, Run: 10): 85000 / 298479 frames
+    Progress (Session: 09302018, Run: 7): 87000 / 298497 frames
+    Progress (Session: 09302018, Run: 5): 87000 / 298485 frames
+    Progress (Session: 09302018, Run: 6): 85000 / 298500 frames
+    Progress (Session: 09302018, Run: 8): 86000 / 298489 frames
+    Progress (Session: 09302018, Run: 9): 86000 / 298499 frames
+    Progress (Session: 09302018, Run: 4): 88000 / 298484 frames
+    Progress (Session: 09302018, Run: 2): 90000 / 298495 frames
+    Progress (Session: 09302018, Run: 1): 88000 / 298469 frames
+    Progress (Session: 09302018, Run: 3): 87000 / 298483 frames
+    Progress (Session: 09302018, Run: 10): 86000 / 298479 frames
+    Progress (Session: 09302018, Run: 7): 88000 / 298497 frames
+    Progress (Session: 09302018, Run: 5): 88000 / 298485 frames
+    Progress (Session: 09302018, Run: 6): 86000 / 298500 frames
+    Progress (Session: 09302018, Run: 8): 87000 / 298489 frames
+    Progress (Session: 09302018, Run: 9): 87000 / 298499 frames
+    Progress (Session: 09302018, Run: 4): 89000 / 298484 frames
+    Progress (Session: 09302018, Run: 2): 91000 / 298495 frames
+    Progress (Session: 09302018, Run: 1): 89000 / 298469 frames
+    Progress (Session: 09302018, Run: 3): 88000 / 298483 frames
+    Progress (Session: 09302018, Run: 10): 87000 / 298479 frames
