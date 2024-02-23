@@ -5,7 +5,7 @@
 #SBATCH --partition=psych_week
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=5
-#SBATCH --mem=247G
+#SBATCH --mem=240G
 #SBATCH --time=7-00:00:00
 #SBATCH --mail-type=FAIL
 
