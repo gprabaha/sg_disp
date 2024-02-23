@@ -4,7 +4,8 @@
 #SBATCH --error=cluster/ffmpeg_conv_01152019.err
 #SBATCH --partition=psych_day
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=5
+#SBATCH --ntasks=5
+#SBATCH --cpus-per-task=1
 #SBATCH --mem=240G
 #SBATCH --time=5:00:00
 #SBATCH --mail-type=FAIL
@@ -29,9 +30,6 @@ export output_subfolder="$output_subfolder"
 find "$input_subfolder" -type f -name "*.avi" | \
 xargs -I {} -P $num_processes sh -c ' \
     output_file="$output_subfolder${1#$input_subfolder}"; \
-    echo "$output_subfolder"; \
-    echo "${1#$input_subfolder}"; \
-    echo "$input_subfolder"; \
     output_file="${output_file%.avi}.mp4"; \
     echo "Input_file:$1"; \
     echo "Output_file:$output_file"; \
