@@ -4,7 +4,7 @@
 #SBATCH --error=cluster/ffmpeg_conv_10092018.err
 #SBATCH --partition=psych_day
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=10
+#SBATCH --cpus-per-task=5
 #SBATCH --mem=240G
 #SBATCH --time=5:00:00
 #SBATCH --mail-type=FAIL
@@ -22,11 +22,12 @@ output_subfolder="$output_folder/$subfolder"
 #Create output subfolder if it doesn't exist
 mkdir -p "$output_subfolder"
 
-num_processes=10  # Set the number of concurrent ffmpeg processes
+num_processes=5  # Set the number of concurrent ffmpeg processes
 
 find "$input_subfolder" -type f -name "*.avi" | \
 xargs -I {} -P $num_processes sh -c ' \
     output_file="$output_subfolder${1#$input_subfolder}"; \
+    echo "${1#$input_subfolder}"; \
     output_file="${output_file%.avi}.mp4"; \
     echo "Input_file:$1"; \
     echo "Output_file:$output_file"; \
