@@ -1,7 +1,0 @@
-{Error using sg_disp.cluster.generate_video_for_one_file_within_session
-Unrecognized field name "frame_rate".
-
-Error in sg_disp.cluster.generate_video_for_one_session (line 21)
-parfor file_ind = file_inds_for_session'
-} 
-slurmstepd: error: Detected 1 oom_kill event in StepId=25778519.batch. Some of the step tasks have been OOM Killed.

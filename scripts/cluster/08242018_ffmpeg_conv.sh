@@ -10,8 +10,8 @@
 #SBATCH --time=5:00:00
 #SBATCH --mail-type=FAIL
 
-input_folder="/gpfs/milgram/scratch60/chang/pg496/gaze_signal_videos_100fps"
-output_folder="/gpfs/milgram/scratch60/chang/pg496/gaze_signal_videos_100fps_mp4"
+input_folder="/gpfs/milgram/scratch60/chang/pg496/gaze_signal_videos"
+output_folder="/gpfs/milgram/scratch60/chang/pg496/gaze_signal_videos_mp4"
 
 #Create output folder if it doesn't exist
 mkdir -p "$output_folder"
