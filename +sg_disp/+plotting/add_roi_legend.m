@@ -1,5 +1,7 @@
 function add_roi_legend(ax, roi_color_table)
     fontsize = 14;
+    legend_letter_width = 0.01;
+
     % Get the legend axis from ax.legend
     legend_axis = ax.legend;
 
@@ -22,8 +24,7 @@ function add_roi_legend(ax, roi_color_table)
         % Create temporary text object to calculate width
         temp_text = text(0, 0, legend_entry, 'Visible', 'off', ...
             'FontSize', fontsize, 'Parent', legend_axis);
-        extent = get(temp_text, 'Extent');
-        legend_widths(i) = extent(3);
+        legend_widths(i) = numel(legend_text)*legend_letter_width;
         total_width = total_width + legend_widths(i);
         delete(temp_text); % Remove temporary text object
     end

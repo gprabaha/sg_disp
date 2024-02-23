@@ -7,6 +7,7 @@ max_activity_z          = spike_data.max_activity_z;
 min_activity_z          = spike_data.min_activity_z;
 
 z_score_stdev_bound     = params.z_score_stdev_bound;
+custom_colormap         = params.custom_colormap;
 
 [raster_mat, z_scored_spiking_mat, raster_celltype_labels] = ...
     sg_disp.plotting.extract_raster_data_for_one_timeframe(...
@@ -24,10 +25,6 @@ else
     hold( relevant_axis, 'on' );
     % Raster background
     colorbar_positive_bound = z_score_stdev_bound;
-    num_colors = 501; 
-    low_color = [1, 0, 0]; % Red
-    high_color = [0, 1, 0]; % Green
-    custom_colormap = create_custom_colormap( num_colors, low_color, high_color ); % Generate the custom colormap
     imagesc( relevant_axis, z_scored_spiking_mat, [-colorbar_positive_bound colorbar_positive_bound] );
     [n_rows, n_cols] = size( z_scored_spiking_mat );
     xlim( relevant_axis, [-0.5, n_cols + 0.5] );
@@ -35,13 +32,14 @@ else
     yticks( relevant_axis, 1:n_rows );
     yticklabels( relevant_axis, raster_celltype_labels );
     colormap( relevant_axis, custom_colormap );
-    colorbar( relevant_axis );
+    % colorbar( relevant_axis );
     % Raster
     for neuron = 1:num_neurons
         firing_times = find(raster_mat(neuron, :) == 1);
         plot( relevant_axis, firing_times, repmat(neuron, size(firing_times)), '|k', 'LineWidth', 2);
     end
-    title_string = sprintf( 'Raster plot for units in %s overlayed on Z-scored spiking rate', region );
+    title_string = sprintf( 'Raster plot of spikes in %s overlayed on Z-scored [%0.1f to %0.1f] spiking rate', ...
+        upper(region), -colorbar_positive_bound, colorbar_positive_bound );
     xlabel( relevant_axis, 'Time (ms)' );
     x_tick_nums = -500:50:0;
     x_tick_nums = num2str( x_tick_nums' );
@@ -50,31 +48,4 @@ else
     hold( relevant_axis, 'off' );
 end
 
-end
-
-function custom_colormap = create_custom_colormap(num_color_bins, low_color, high_color)
-    % Check if the number of color bins is odd
-    if mod(num_color_bins, 2) == 0
-        error('Number of color bins must be odd.');
-    end
-    
-    % Check if low_color and high_color are valid RGB values
-    if any(low_color < 0) || any(low_color > 1) || any(high_color < 0) || any(high_color > 1)
-        error('Low_color and high_color must be RGB values in the range [0, 1].');
-    end
-    
-    % Initialize colormap
-    custom_colormap = zeros(num_color_bins, 3);
-    
-    % Calculate mid index
-    mid_index = (num_color_bins + 1) / 2;
-    
-    % Generate colormap from low_color to white to high_color
-    custom_colormap(1:mid_index, 1) = linspace(low_color(1), 1, mid_index); % Red component
-    custom_colormap(1:mid_index, 2) = linspace(low_color(2), 1, mid_index); % Green component
-    custom_colormap(1:mid_index, 3) = linspace(low_color(3), 1, mid_index); % Blue component
-    
-    custom_colormap(mid_index:end, 1) = linspace(1, high_color(1), num_color_bins - mid_index + 1); % Red component
-    custom_colormap(mid_index:end, 2) = linspace(1, high_color(2), num_color_bins - mid_index + 1); % Green component
-    custom_colormap(mid_index:end, 3) = linspace(1, high_color(3), num_color_bins - mid_index + 1); % Blue component
 end

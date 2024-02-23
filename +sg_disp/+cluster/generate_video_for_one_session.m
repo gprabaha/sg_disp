@@ -16,7 +16,6 @@ spike_data              = sg_disp.util.get_sub_struct( spike_data );
 file_inds_for_session = find( strcmp( session_per_file, session ) );
 
 num_files = numel(file_inds_for_session);
-% parpool( num_files );
 
 parfor file_ind = file_inds_for_session'
 % for file_ind = file_inds_for_session'

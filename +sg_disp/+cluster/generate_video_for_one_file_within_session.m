@@ -65,8 +65,8 @@ for i = 1:numel(all_time_inds)
     % Capture the frame
     frame = getframe( fig );
     writeVideo( video_writer_obj, frame );
-    
-    if mod( i, progress_interval ) == 0
+
+    if rem(i, progress_interval) == 0
         fprintf('    Progress (Session: %s, Run: %s): %d / %d frames\n', ...
             session, run_number, ...
             current_time_ind - all_time_inds(1) + 1, ...

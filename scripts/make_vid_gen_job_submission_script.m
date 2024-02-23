@@ -9,7 +9,7 @@ spike_data              = sg_disp.util.get_sub_struct( spike_data );
 spike_labels            = spike_data.spike_labels;
 
 %%
-params                          = sg_disp.util.get_params_for_cluster();
+params                  = sg_disp.util.get_params_for_cluster();
 
 %%
 clustur_job_suffix      = params.clustur_job_suffix;
@@ -44,7 +44,6 @@ for session_index = 1:numel( unique_sessions )
             
             job_submit_text = job_submit_text + compose("sbatch cluster/%s_vid_gen.sh\n", session);
             % sg_disp.cluster.generate_video_for_one_session( session, params );
-
         end
     end
 end

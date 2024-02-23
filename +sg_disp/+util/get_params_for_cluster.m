@@ -6,12 +6,18 @@ function params = get_params_for_cluster()
         time_file_list, offset_file_list, session_per_file, run_number_per_file] ...
         = sg_disp.util.fetch_behavior_files( data_p );
     spike_data_filename = 'spike_data_celltype_labelled.mat';
+    
+    % for colormap
+    num_colors = 501; 
+    low_color = [1, 0, 0]; % Red
+    high_color = [0, 1, 0]; % Green
 
     params                          = struct();
     % Data path
     params.data_p                   = data_p;
     % Cluster specific params
     params.cluster_out_path         = '/gpfs/milgram/scratch60/chang/pg496/';
+    %params.cluster_out_path         = './';
     params.clustur_job_suffix       = '100fps';     
     params.video_output_folder      = 'gaze_signal_videos_100fps';
     params.frame_rate               = 100;
@@ -41,6 +47,8 @@ function params = get_params_for_cluster()
     params.kernel_size              = 101; % 101 ms moving window
     params.celltypes_of_interest    = {'narrow', 'broad'};
     params.z_score_stdev_bound      = 5;
+    params.custom_colormap          = sg_disp.plotting.create_custom_colormap( ...
+        num_colors, low_color, high_color );
     % General video and figure paramerters
     params.disp_time_win            = 0.5; % seconds
     params.calib_monitor_size       = [1024 768]; % px
