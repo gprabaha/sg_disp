@@ -26,9 +26,9 @@ mkdir -p "$output_subfolder"
 
 find "$input_subfolder" -type f -name "*.avi" | while IFS= read -r file; do
     output_file="$output_subfolder${file#$input_subfolder}"
-    echo "$file"
-    echo "$output_file"
-    #ffmpeg -i "$file" -c:v libx265 -crf 28 -preset medium -vf "fps=100" "$output_file" &
+    echo "Input_file:$file"
+    echo "Output_file:$output_file"
+    ffmpeg -i "$file" -c:v libx265 -crf 28 -preset medium -vf "fps=100" "$output_file" &
 done
 
 wait
