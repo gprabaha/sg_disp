@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=10022018_fast_iter
-#SBATCH --output=cluster/10022018_fast_iter.out
-#SBATCH --error=cluster/10022018_fast_iter.err
+#SBATCH --job-name=10022018_vid_gen
+#SBATCH --output=cluster/10022018_vid_gen.out
+#SBATCH --error=cluster/10022018_vid_gen.err
 #SBATCH --partition=psych_week
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=5
