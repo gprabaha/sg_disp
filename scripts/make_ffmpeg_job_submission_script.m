@@ -25,7 +25,7 @@ for session_index = 1:numel( unique_sessions )
                 session, ... % jobname
                 session, ... % output
                 session, ... % error
-                session ); % matlab -r input
+                session ); % bash input
             fid = fopen( sprintf('cluster/%s_ffmpeg_conv.sh', session), 'w' );
             fwrite( fid, job_submit_script );
             fclose( fid );
