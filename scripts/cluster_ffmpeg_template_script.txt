@@ -27,6 +27,7 @@ num_processes=5  # Set the number of concurrent ffmpeg processes
 find "$input_subfolder" -type f -name "*.avi" | \\
 xargs -I {} -P $num_processes sh -c ' \\
     output_file="$output_subfolder${1#$input_subfolder}"; \\
+    echo "$output_subfolder"; \\
     echo "$1"; \\
     echo "$input_subfolder"; \\
     output_file="${output_file%%.avi}.mp4"; \\
