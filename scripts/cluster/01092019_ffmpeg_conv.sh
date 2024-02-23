@@ -23,6 +23,8 @@ output_subfolder="$output_folder/$subfolder"
 mkdir -p "$output_subfolder"
 
 num_processes=5  # Set the number of concurrent ffmpeg processes
+export input_subfolder="$input_subfolder"
+export output_subfolder="$output_subfolder"
 
 find "$input_subfolder" -type f -name "*.avi" | \
 xargs -I {} -P $num_processes sh -c ' \
