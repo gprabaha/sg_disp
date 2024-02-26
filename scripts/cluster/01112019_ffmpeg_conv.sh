@@ -4,10 +4,10 @@
 #SBATCH --error=cluster/ffmpeg_conv_01112019.err
 #SBATCH --partition=psych_day
 #SBATCH --nodes=1
-#SBATCH --ntasks=5
+#SBATCH --ntasks=10
 #SBATCH --cpus-per-task=1
-#SBATCH --mem=240G
-#SBATCH --time=5:00:00
+#SBATCH --mem=24G
+#SBATCH --time=15:00:00
 #SBATCH --mail-type=FAIL
 
 input_folder="/gpfs/milgram/scratch60/chang/pg496/gaze_signal_videos"
@@ -23,7 +23,7 @@ output_subfolder="$output_folder/$subfolder"
 #Create output subfolder if it doesn't exist
 mkdir -p "$output_subfolder"
 
-num_processes=5  # Set the number of concurrent ffmpeg processes
+num_processes=10  # Set the number of concurrent ffmpeg processes
 export input_subfolder="$input_subfolder"
 export output_subfolder="$output_subfolder"
 
