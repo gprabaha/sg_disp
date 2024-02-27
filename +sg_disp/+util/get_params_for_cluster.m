@@ -17,7 +17,6 @@ function params = get_params_for_cluster()
     params.data_p                   = data_p;
     % Cluster specific params
     params.cluster_out_path         = '/gpfs/milgram/scratch60/chang/pg496/';
-    %params.cluster_out_path         = './';
     params.clustur_job_suffix       = '2.5sd_vid_gen';     
     params.video_output_folder      = 'gaze-signal-videos_2point5sd';
     params.frame_rate               = 100;

@@ -17,7 +17,8 @@ mem_per_node            = params.mem_per_node;
 num_cpu                 = params.num_cpu;
 session_per_file        = params.session_per_file;
 
-% params.cluster_out_path         = '/Volumes/Stash/changlab/data_visualization/social_gaze';
+params.cluster_out_path         = '/Volumes/Stash/changlab/data_visualization';
+
 
 template_text = string( fileread('cluster_template_script.txt') );
 job_submit_text = "";
