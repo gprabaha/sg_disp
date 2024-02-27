@@ -18,8 +18,8 @@ function params = get_params_for_cluster()
     % Cluster specific params
     params.cluster_out_path         = '/gpfs/milgram/scratch60/chang/pg496/';
     %params.cluster_out_path         = './';
-    params.clustur_job_suffix       = 'vid_gen';     
-    params.video_output_folder      = 'gaze_signal_videos';
+    params.clustur_job_suffix       = '2.5sd_vid_gen';     
+    params.video_output_folder      = 'gaze-signal-videos_2point5sd';
     params.frame_rate               = 100;
     params.video_quality            = 50;
     params.mem_per_node             = 240; % gbs
@@ -46,7 +46,7 @@ function params = get_params_for_cluster()
     params.raster_bin_width         = 0.001; % ms
     params.kernel_size              = 101; % 101 ms moving window
     params.celltypes_of_interest    = {'narrow', 'broad'};
-    params.z_score_stdev_bound      = 5;
+    params.z_score_stdev_bound      = 2.5;
     params.custom_colormap          = sg_disp.plotting.create_custom_colormap( ...
         num_colors, low_color, high_color );
     % General video and figure paramerters
