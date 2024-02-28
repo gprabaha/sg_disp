@@ -4,8 +4,7 @@
 #SBATCH --error=cluster/ffmpeg_conv_01082019.err
 #SBATCH --partition=psych_day
 #SBATCH --nodes=1
-#SBATCH --ntasks=10
-#SBATCH --cpus-per-task=1
+#SBATCH --cpus-per-task=10
 #SBATCH --mem=24G
 #SBATCH --time=15:00:00
 #SBATCH --mail-type=FAIL
@@ -34,6 +33,6 @@ xargs -I {} -P $num_processes sh -c ' \
     echo "Input_file:$1"; \
     echo "Output_file:$output_file"; \
     module load FFmpeg/4.3.1-GCCcore-10.2.0.lua; \
-    ffmpeg -i "$1" -c:v libx265 -crf 28 -preset medium -vf "fps=100" "$output_file"' _ {} &
+    ffmpeg -i "$1" -c:v libx264 -crf 23 -preset medium -vf "fps=100" "$output_file"' _ {} &
 
 wait
