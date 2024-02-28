@@ -4,9 +4,10 @@
 #SBATCH --error=cluster/ffmpeg_conv_08292018.err
 #SBATCH --partition=psych_day
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=10
+#SBATCH --ntasks=10
+#SBATCH --cpus-per-task=5
 #SBATCH --mem=24G
-#SBATCH --time=15:00:00
+#SBATCH --time=20:00:00
 #SBATCH --mail-type=FAIL
 
 input_folder="/gpfs/milgram/scratch60/chang/pg496/gaze_signal_videos"
